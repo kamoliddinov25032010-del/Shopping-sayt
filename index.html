@@ -1,0 +1,1117 @@
+
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080b10">
+<meta name="description" content="Muhammadamin — AI, dasturlash, Telegram botlar, veb-saytlar va raqamli mahsulotlar ishlab chiquvchisi.">
+<title>Muhammadamin AI Lab — Portfolio & Digital Solutions</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+ --bg:#080b10;--panel:#111720;--panel2:#18212c;
+ --text:#f4f6f8;--muted:#929eab;--line:rgba(255,255,255,.1);
+ --lime:#c5ff76;--gold:#d9bd80;--radius:18px;--max:1320px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:"DM Sans",sans-serif;overflow-x:hidden}
+body.lock{overflow:hidden}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.container{width:min(var(--max),calc(100% - 42px));margin:auto}
+.muted{color:var(--muted)}
+.mono{font-family:"DM Mono",monospace}
+.eyebrow{color:var(--lime);font:10px "DM Mono",monospace;letter-spacing:2px;text-transform:uppercase}
+.hidden{display:none!important}
+button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(--lime);outline-offset:3px}
+
+header{position:sticky;top:0;z-index:100;background:rgba(8,11,16,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--line)}
+.nav{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:22px}
+.brand{font-weight:800;font-size:17px;letter-spacing:-.8px}
+.brand span{color:var(--lime)}
+.brand small{display:block;color:var(--muted);font:9px "DM Mono";letter-spacing:2px;margin-top:4px}
+.navlinks{display:flex;gap:17px;align-items:center}
+.navlinks button{background:none;border:0;color:#b4bdc7;font-size:11px;font-weight:700}
+.navlinks button:hover,.navlinks button.active{color:var(--lime)}
+.navright{display:flex;gap:9px;align-items:center}
+.icon-btn,.menu-btn{background:transparent;color:var(--text);border:1px solid var(--line);border-radius:30px;padding:10px 14px}
+.menu-btn{display:none}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:13px 19px;border-radius:40px;border:1px solid var(--line);background:transparent;color:var(--text);font-size:12px;font-weight:800;transition:.25s}
+.btn:hover{transform:translateY(-3px);border-color:var(--lime)}
+.btn.primary{background:var(--lime);color:#111;border-color:var(--lime)}
+.btn.gold{background:var(--gold);color:#15110a;border-color:var(--gold)}
+.btn.small{padding:9px 13px;font-size:11px}
+.btn.full{width:100%}
+.page{display:none;animation:pageIn .35s ease}
+.page.active{display:block}
+@keyframes pageIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.section{padding:80px 0}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:28px}
+.section-head h2{margin:9px 0 0;font-size:clamp(30px,5vw,57px);letter-spacing:-2.8px;line-height:1.05}
+.section-head p{max-width:400px;color:var(--muted);font-size:12px;line-height:1.9}
+.line{border-top:1px solid var(--line)}
+
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:45px;align-items:center;padding:90px 0 65px}
+.hero h1{font-size:clamp(55px,8vw,105px);line-height:.95;letter-spacing:-7px;margin:25px 0}
+.hero h1 span{color:var(--lime)}
+.hero-copy{max-width:610px;color:#aeb9c5;font-size:14px;line-height:2}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.hero-visual{height:490px;position:relative;overflow:hidden;border:1px solid var(--line);border-radius:22px;background:#17202b}
+.hero-visual img{width:100%;height:100%;object-fit:cover;opacity:.75;transition:1s}
+.hero-visual:hover img{transform:scale(1.06)}
+.hero-visual:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,#080b10,transparent 75%);pointer-events:none}
+.hero-label{position:absolute;z-index:1;bottom:25px;left:25px;font-size:27px;font-weight:800}
+.hero-label small{display:block;color:var(--lime);font:10px "DM Mono";margin-bottom:8px}
+.hero-chip{position:absolute;z-index:1;right:18px;top:18px;padding:12px 15px;background:#101820dd;border:1px solid var(--line);border-radius:10px;font:10px "DM Mono"}
+.hero-numbers{display:flex;gap:30px;flex-wrap:wrap;border-top:1px solid var(--line);margin-top:35px;padding-top:22px}
+.hero-numbers strong{font-size:25px;display:block}
+.hero-numbers small{font:9px "DM Mono";color:var(--muted)}
+
+.stats{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--panel)}
+.stat{padding:24px;border-right:1px solid var(--line)}
+.stat:last-child{border:0}
+.stat strong{font-size:34px;letter-spacing:-2px}
+.stat p{font-size:11px;color:var(--muted)}
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.feature{padding:24px;background:var(--panel);border:1px solid var(--line);border-radius:15px;transition:.25s}
+.feature:hover{transform:translateY(-4px);border-color:var(--lime)}
+.feature-icon{width:43px;height:43px;display:grid;place-items:center;border-radius:12px;background:#c5ff7617;color:var(--lime);font-size:20px}
+.feature h3{font-size:15px;margin:18px 0 8px}
+.feature p{font-size:11px;color:var(--muted);line-height:1.9}
+
+.catalog-tools{display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap;margin:25px 0}
+.filters{display:flex;gap:8px;flex-wrap:wrap}
+.filter{border:1px solid var(--line);border-radius:30px;background:transparent;color:#bac3cc;padding:9px 14px;font-size:11px}
+.filter.active{background:var(--lime);color:#111;border-color:var(--lime);font-weight:800}
+.search{display:flex;align-items:center;gap:9px;background:var(--panel);border:1px solid var(--line);border-radius:30px;padding:0 15px;min-width:240px}
+.search input{background:none;border:0;outline:0;color:white;padding:12px 0;width:100%;font-size:12px}
+.project-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.project-card{border:1px solid var(--line);background:var(--panel);border-radius:18px;padding:12px;cursor:pointer;transition:.3s}
+.project-card:hover{transform:translateY(-5px);border-color:var(--lime)}
+.project-image{height:285px;border-radius:12px;overflow:hidden;position:relative;background:#1b2630}
+.project-image img{width:100%;height:100%;object-fit:cover;transition:.7s}
+.project-card:hover img{transform:scale(1.06)}
+.project-image:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,#0007,transparent 70%);pointer-events:none}
+.project-number{position:absolute;z-index:1;top:15px;left:15px;background:#080b10c9;border-radius:30px;padding:8px 11px;font:10px "DM Mono"}
+.project-open{position:absolute;z-index:1;bottom:15px;right:15px;width:42px;height:42px;border-radius:50%;background:var(--lime);color:#111;display:grid;place-items:center;font-size:20px}
+.project-body{padding:16px 7px 8px}
+.project-body h3{font-size:27px;letter-spacing:-1px;margin:8px 0}
+.project-body p{color:var(--muted);font-size:12px;line-height:1.8}
+.tags{display:flex;gap:7px;flex-wrap:wrap;margin-top:14px}
+.tag{padding:7px 10px;border:1px solid var(--line);border-radius:30px;color:#b7c1ca;font-size:10px}
+
+.process{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}
+.process article{padding:22px;border-top:1px solid var(--lime);background:linear-gradient(#c5ff760d,transparent)}
+.process b{color:var(--lime);font:11px "DM Mono"}
+.process h3{font-size:15px}
+.process p{font-size:11px;color:var(--muted);line-height:1.8}
+
+.about-hero{position:relative;overflow:hidden;padding:65px 45px;border:1px solid var(--line);border-radius:22px;background:radial-gradient(ellipse at 90% 10%,#d9bd801b,transparent 40%),linear-gradient(130deg,#151c26,#0c1118)}
+.about-hero:after{content:"M";position:absolute;right:3%;top:-70px;font:400 390px "Playfair Display";color:#ffffff06;pointer-events:none}
+.about-top{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.status-dot{width:8px;height:8px;background:var(--lime);border-radius:50%;display:inline-block;box-shadow:0 0 15px var(--lime)}
+.about-hero h1{position:relative;z-index:1;font-size:clamp(50px,8vw,100px);line-height:.95;letter-spacing:-6px;margin:35px 0 20px}
+.about-hero h1 span{color:var(--gold)}
+.about-hero>p{position:relative;z-index:1;max-width:700px;color:#aeb9c5;font-size:14px;line-height:2}
+.about-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:25px;position:relative;z-index:1}
+.about-meta{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:40px;position:relative;z-index:1}
+.meta-card{padding:17px;border:1px solid var(--line);border-radius:12px;background:#080b1077}
+.meta-card strong{display:block;font-size:23px;margin-bottom:6px}
+.meta-card small{color:var(--muted);font:9px "DM Mono";letter-spacing:1px}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.about-card{background:var(--panel);border:1px solid var(--line);border-radius:17px;padding:27px}
+.about-card h3{font-size:20px;letter-spacing:-.7px;margin:12px 0}
+.about-card p{font-size:12px;color:var(--muted);line-height:2}
+.about-quote{border-left:2px solid var(--gold);padding:8px 0 8px 20px;color:#d7dce2;font:italic 21px "Playfair Display";line-height:1.7}
+.timeline{display:grid;gap:0}
+.timeline-item{display:grid;grid-template-columns:120px 1fr;gap:20px;padding:24px 0;border-bottom:1px solid var(--line)}
+.timeline-date{font:11px "DM Mono";color:var(--gold)}
+.timeline-item h3{font-size:15px;margin:0 0 7px}
+.timeline-item p{font-size:12px;color:var(--muted);line-height:1.8;margin:0}
+.skill-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.skill{padding:17px;background:var(--panel);border:1px solid var(--line);border-radius:12px}
+.skill-top{display:flex;justify-content:space-between;gap:10px;align-items:center}
+.skill-top b{font-size:12px}
+.skill-top span{font:9px "DM Mono";color:var(--gold)}
+.skill p{font-size:10px;line-height:1.7;color:var(--muted);margin-bottom:0}
+
+.service-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.service{background:var(--panel);border:1px solid var(--line);border-radius:15px;padding:22px;transition:.25s}
+.service:hover{border-color:var(--gold);transform:translateY(-4px)}
+.service h3{font-size:16px}
+.service p{font-size:11px;color:var(--muted);line-height:1.8}
+.service strong{display:block;margin:15px 0;color:var(--gold);font-size:16px}
+.service small{font-size:9px;color:var(--muted)}
+.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.price-card{padding:24px;background:var(--panel);border:1px solid var(--line);border-radius:15px}
+.price-card.featured{border-color:var(--gold);background:linear-gradient(145deg,#d9bd8012,var(--panel))}
+.price-card h3{font-size:17px}
+.price-card .price{font-size:26px;font-weight:800;letter-spacing:-1px;color:var(--gold);margin:20px 0 5px}
+.price-card .price small{font-size:10px;color:var(--muted);font-weight:400}
+.price-card p{font-size:11px;color:var(--muted);line-height:1.8}
+.price-card ul{padding-left:17px;color:#c5cbd1;font-size:11px;line-height:2.3}
+
+.detail-top{padding:40px 0 20px}
+.detail-hero{display:grid;grid-template-columns:1fr 1fr;gap:35px;align-items:center;padding:30px 0 55px}
+.detail-hero h1{font-size:clamp(44px,7vw,82px);line-height:1;letter-spacing:-5px;margin:18px 0}
+.detail-hero p{font-size:13px;line-height:2;color:var(--muted)}
+.detail-cover{height:420px;border-radius:18px;overflow:hidden;border:1px solid var(--line);background:var(--panel)}
+.detail-cover img{width:100%;height:100%;object-fit:cover}
+.detail-section{padding:50px 0}
+.detail-section h2{font-size:clamp(28px,4vw,45px);letter-spacing:-2px;margin:10px 0 25px}
+.detail-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:13px}
+.detail-box{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:20px}
+.detail-box h3{font-size:14px;margin:10px 0}
+.detail-box p{font-size:11px;color:var(--muted);line-height:1.9}
+.detail-cta{padding:35px;border:1px solid #c5ff7655;border-radius:18px;background:linear-gradient(120deg,#c5ff7612,var(--panel))}
+.detail-cta h2{font-size:clamp(28px,4vw,45px)}
+.detail-cta p{color:var(--muted);font-size:12px;line-height:1.9}
+
+.demo{--demo:#c5ff76;--demo-bg:#111720}
+.demo .eyebrow{color:var(--demo)}
+.demo-banner{min-height:350px;padding:45px;border-radius:20px;display:flex;flex-direction:column;justify-content:end;background-size:cover;background-position:center;position:relative;overflow:hidden;background-color:#18212c}
+.demo-banner:before{content:"";position:absolute;inset:0;background:linear-gradient(0deg,#000d,transparent)}
+.demo-banner>*{position:relative;z-index:1}
+.demo-banner h1{font-size:clamp(42px,7vw,76px);line-height:1;letter-spacing:-4px;margin:15px 0}
+.demo-banner p{max-width:560px;color:#eee;font-size:13px;line-height:1.9}
+.demo-products{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.product{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:11px}
+.product img{width:100%;height:190px;object-fit:cover;border-radius:9px}
+.product h3{font-size:14px;margin:12px 0 5px}
+.product p{font-size:11px;color:var(--muted);line-height:1.6}
+.product-bottom{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:12px}
+.product button{border:0;border-radius:30px;padding:9px 12px;background:var(--demo);color:#111;font-size:11px;font-weight:800}
+.cartbar{position:sticky;bottom:12px;z-index:20;display:flex;justify-content:space-between;align-items:center;gap:15px;padding:14px 18px;background:#111d;border:1px solid var(--demo);border-radius:14px;backdrop-filter:blur(12px);margin-top:20px}
+.menu-list{display:grid;grid-template-columns:repeat(2,1fr);gap:13px}
+.menu-item{display:grid;grid-template-columns:110px 1fr;gap:14px;background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:10px}
+.menu-item img{width:110px;height:115px;object-fit:cover;border-radius:9px}
+
+.contact-panel{display:grid;grid-template-columns:1fr 1fr;gap:30px;padding:35px;background:var(--panel);border:1px solid var(--line);border-radius:18px}
+.contact-panel h2{font-size:clamp(30px,5vw,54px);letter-spacing:-2px}
+.contact-panel p{font-size:12px;color:var(--muted);line-height:1.9}
+.contact-actions{display:flex;flex-direction:column;gap:12px;justify-content:center}
+.contact-actions a,.contact-actions button{padding:17px;border:1px solid var(--line);border-radius:11px;background:#18212c;color:white;text-align:left;font-size:12px}
+.contact-actions a:hover,.contact-actions button:hover{border-color:var(--lime)}
+
+.modal{position:fixed;inset:0;z-index:500;background:#000b;backdrop-filter:blur(10px);display:none;place-items:center;padding:18px}
+.modal.show{display:grid}
+.modal-box{width:min(550px,100%);max-height:90vh;overflow:auto;background:#111923;border:1px solid var(--line);border-radius:18px;padding:27px;position:relative}
+.modal-close{position:absolute;right:17px;top:15px;border:1px solid var(--line);background:none;color:white;border-radius:50%;width:35px;height:35px}
+.modal-box h2{font-size:27px}
+.field{margin:14px 0}
+.field label{display:block;color:var(--muted);font-size:11px;margin-bottom:7px}
+.field input,.field select,.field textarea{width:100%;padding:13px;border-radius:9px;border:1px solid var(--line);background:#080d13;color:white;outline:0}
+.field textarea{min-height:90px;resize:vertical}
+.toast{position:fixed;bottom:22px;left:50%;z-index:1000;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:var(--lime);color:#10140b;padding:13px 20px;border-radius:30px;font-size:12px;font-weight:800;transition:.25s}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+.empty{padding:40px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:14px}
+footer{border-top:1px solid var(--line);padding:32px 0;margin-top:35px}
+.footer-inner{display:flex;justify-content:space-between;gap:20px;align-items:center}
+.footer-links{display:flex;gap:15px;flex-wrap:wrap;color:var(--muted);font-size:11px}
+.footer-links a:hover{color:var(--lime)}
+.backtop{position:fixed;right:18px;bottom:18px;z-index:80;display:none;border:0;border-radius:50%;width:44px;height:44px;background:var(--lime);color:#111;font-size:20px}
+.backtop.show{display:block}
+
+/* IMAGE STATUS */
+img{background:#18212c}
+img.image-fallback{object-fit:contain!important;padding:12px;background:radial-gradient(ellipse at center,#273544 0%,#111720 75%);border:1px solid rgba(255,255,255,.08)}
+.image-loading{background:linear-gradient(110deg,#18212c 8%,#273544 18%,#18212c 33%);background-size:200% 100%;animation:shimmer 1.5s linear infinite}
+@keyframes shimmer{to{background-position-x:-200%}}
+.image-status{position:absolute;bottom:10px;left:10px;z-index:3;padding:5px 8px;background:#080b10c9;color:#c5ff76;border-radius:20px;font:9px "DM Mono";pointer-events:none}
+
+@media(max-width:900px){
+ .navlinks{display:none;position:absolute;top:76px;left:0;right:0;background:#0c1118;padding:20px;flex-direction:column;align-items:stretch;border-bottom:1px solid var(--line)}
+ .navlinks.open{display:flex}.navlinks button{text-align:left;padding:8px}.menu-btn{display:block}
+ .hero,.detail-hero{grid-template-columns:1fr}.hero-visual{height:370px}
+ .features,.skill-grid{grid-template-columns:repeat(2,1fr)}.process{grid-template-columns:repeat(2,1fr)}
+ .service-grid,.price-grid{grid-template-columns:repeat(2,1fr)}
+ .about-meta{grid-template-columns:repeat(2,1fr)}.demo-products{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:620px){
+ .container{width:calc(100% - 26px)}.nav{min-height:68px}.navlinks{top:68px}
+ .brand{font-size:14px}.navright .icon-btn{display:none}
+ .hero{padding:55px 0}.hero h1{font-size:57px;letter-spacing:-4px}.hero-visual{height:290px}
+ .section{padding:55px 0}.section-head{display:block}.section-head p{margin-top:12px}
+ .project-grid,.detail-grid,.contact-panel,.about-grid{grid-template-columns:1fr}
+ .project-image{height:220px}.stats{grid-template-columns:repeat(2,1fr)}
+ .stat:nth-child(2){border-right:0}.stat:nth-child(-n+2){border-bottom:1px solid var(--line)}
+ .features,.process,.skill-grid{grid-template-columns:1fr 1fr}
+ .service-grid,.price-grid,.demo-products{grid-template-columns:1fr}
+ .about-hero{padding:35px 22px}.about-hero h1{font-size:54px;letter-spacing:-4px}
+ .about-hero:after{font-size:250px;top:20px}.about-meta{gap:8px}
+ .meta-card{padding:13px}.meta-card strong{font-size:19px}
+ .timeline-item{grid-template-columns:1fr;gap:8px}
+ .footer-inner{display:block}.footer-links{margin-top:18px}
+ .search{width:100%}.menu-list{grid-template-columns:1fr}
+ .menu-item{grid-template-columns:100px 1fr}.menu-item img{width:100px;height:110px}
+ .demo-banner{padding:25px;min-height:300px}.detail-cover{height:270px}.cartbar{flex-wrap:wrap}
+}
+</style>
+</head>
+<body>
+
+<header>
+ <div class="container nav">
+  <a href="#home" class="brand">MUHAMMADAMIN <span>AI LAB.</span><small>O‘RGAN · QUR · YARAT</small></a>
+  <nav class="navlinks" id="navlinks">
+   <button onclick="go('home')">Bosh sahifa</button>
+   <button onclick="go('portfolio')">Portfoliolar</button>
+   <button onclick="go('business')">Biznes saytlar</button>
+   <button onclick="go('about')">Men haqimda</button>
+   <button onclick="go('contact')">Aloqa</button>
+  </nav>
+  <div class="navright">
+   <button class="icon-btn" onclick="go('contact')">Bog‘lanish ↗</button>
+   <button class="menu-btn" onclick="toggleMenu()">☰</button>
+  </div>
+ </div>
+</header>
+
+<main>
+<section class="page active" id="page-home">
+ <div class="container">
+  <div class="hero">
+   <div>
+    <div class="eyebrow">MUHAMMADAMIN AI LAB / DIGITAL CREATION</div>
+    <h1>G‘oyadan<br><span>haqiqiy</span><br>loyihagacha.</h1>
+    <p class="hero-copy">Veb-platformalar, Telegram botlar, sun’iy intellekt va avtomatlashtirish. Men g‘oyalarni zamonaviy, qulay va funksional raqamli mahsulotlarga aylantiraman.</p>
+    <div class="hero-actions">
+     <button class="btn primary" onclick="go('portfolio')">Loyihalarni ko‘rish ↗</button>
+     <button class="btn" onclick="go('about')">Men haqimda</button>
+    </div>
+    <div class="hero-numbers">
+     <div><strong>20+</strong><small>LOYIHA TAJRIBASI</small></div>
+     <div><strong>10</strong><small>DEMO YECHIM</small></div>
+     <div><strong>06+</strong><small>TEXNOLOGIK YO‘NALISH</small></div>
+    </div>
+   </div>
+   <div class="hero-visual">
+    <img data-fallback-group="workspace" fetchpriority="high" loading="eager" src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=85" alt="Zamonaviy texnologik ish muhiti">
+    <div class="hero-chip">INDEPENDENT DEVELOPER / 01</div>
+    <div class="hero-label"><small>AI · CODE · DIGITAL PRODUCTS</small>Kelajakni quramiz.</div>
+   </div>
+  </div>
+
+  <section class="section">
+   <div class="stats">
+    <div class="stat"><strong>20+</strong><p>Loyiha ustida ishlash tajribasi</p></div>
+    <div class="stat"><strong>10</strong><p>Namuna raqamli mahsulot</p></div>
+    <div class="stat"><strong>AI</strong><p>Sun’iy intellekt yo‘nalishi</p></div>
+    <div class="stat"><strong>∞</strong><p>Yangi g‘oyalar va imkoniyatlar</p></div>
+   </div>
+  </section>
+
+  <section class="section line">
+   <div class="section-head"><div><div class="eyebrow">01 / PERSONAL BRANDING</div><h2>Men haqimda.</h2></div><button class="btn small" onclick="go('about')">Profilimni ko‘rish ↗</button></div>
+   <div class="about-grid">
+    <article class="about-card"><div class="eyebrow">MUHAMMADAMIN / DEVELOPER</div><h3>Texnologiya bilan g‘oyalarni amalga oshiraman.</h3><p>Men mustaqil dasturchi va raqamli mahsulotlar yaratuvchisiman. Web development, Telegram botlar, AI va avtomatlashtirish bilan shug‘ullanaman.</p><button class="btn gold" onclick="go('about')">To‘liq tanishish ↗</button></article>
+    <article class="about-card"><div class="about-quote">“Faqat o‘rganish emas. O‘rgangan bilimni haqiqiy mahsulotga aylantirish muhim.”</div><p class="muted">Muhammadamin AI Lab tamoyili.</p></article>
+   </div>
+  </section>
+
+  <section class="section line">
+   <div class="section-head"><div><div class="eyebrow">02 / PORTFOLIO</div><h2>Shaxsiy portfolio namunalari.</h2></div><button class="btn small" onclick="go('portfolio')">Barchasini ko‘rish ↗</button></div>
+   <div class="project-grid" id="homePortfolio"></div>
+  </section>
+
+  <section class="section line">
+   <div class="section-head"><div><div class="eyebrow">03 / BUSINESS SOLUTIONS</div><h2>Biznesingiz uchun.</h2></div><button class="btn small" onclick="go('business')">Barchasini ko‘rish ↗</button></div>
+   <div class="project-grid" id="homeBusiness"></div>
+  </section>
+
+  <section class="section">
+   <div class="section-head"><div><div class="eyebrow">04 / CAPABILITIES</div><h2>Raqamli yo‘nalishlar.</h2></div></div>
+   <div class="features">
+    <article class="feature"><div class="feature-icon">⌘</div><h3>Web development</h3><p>Landing page, korporativ sayt, shaxsiy portfolio va murakkab veb-platformalar.</p></article>
+    <article class="feature"><div class="feature-icon">✉</div><h3>Telegram botlar</h3><p>Buyurtma, ta’lim, boshqaruv, mijozlar va avtomatlashtirish botlari.</p></article>
+    <article class="feature"><div class="feature-icon">✳</div><h3>AI Engineering</h3><p>AI yordamchilar, API integratsiya, RAG va aqlli funksiyalar.</p></article>
+    <article class="feature"><div class="feature-icon">▦</div><h3>Web applications</h3><p>Shaxsiy kabinet, admin panel, CRM va ma’lumotlar bilan ishlovchi tizimlar.</p></article>
+    <article class="feature"><div class="feature-icon">◈</div><h3>UI/UX va dizayn</h3><p>Individual interfeys, brend ranglari va qulay foydalanuvchi tajribasi.</p></article>
+    <article class="feature"><div class="feature-icon">⌁</div><h3>Automation</h3><p>Takrorlanuvchi ishlarni avtomatlashtirish va xizmatlarni bog‘lash.</p></article>
+   </div>
+  </section>
+
+  <section class="section line">
+   <div class="section-head"><div><div class="eyebrow">05 / WORK PROCESS</div><h2>G‘oyadan ishga tushirishgacha.</h2></div></div>
+   <div class="process">
+    <article><b>01 / TAHLIL</b><h3>Maqsadni aniqlash</h3><p>Biznes, auditoriya va kerakli imkoniyatlarni o‘rganish.</p></article>
+    <article><b>02 / DIZAYN</b><h3>Arxitektura va dizayn</h3><p>Sahifalar, interfeys va tizim tuzilmasini belgilash.</p></article>
+    <article><b>03 / DEVELOPMENT</b><h3>Ishlab chiqish</h3><p>Dasturlash, integratsiya va funksiyalarni yaratish.</p></article>
+    <article><b>04 / LAUNCH</b><h3>Sinov va topshirish</h3><p>Tekshirish, joylashtirish va loyiha hujjatlarini topshirish.</p></article>
+   </div>
+  </section>
+ </div>
+</section>
+
+<section class="page" id="page-portfolio">
+ <div class="container section">
+  <div class="eyebrow">01—05 / PERSONAL WEBSITES</div>
+  <div class="section-head"><div><h2>Portfolio namunalari.</h2><p>Turli kasblar uchun individual dizayn va funksiyalarga ega namuna saytlar.</p></div></div>
+  <div class="catalog-tools">
+   <div class="filters" id="portfolioFilters">
+    <button class="filter active" data-filter="all">Barchasi</button><button class="filter" data-filter="businessman">Tadbirkor</button><button class="filter" data-filter="developer">Dasturchi</button><button class="filter" data-filter="designer">Dizayner</button><button class="filter" data-filter="creator">Kreator</button><button class="filter" data-filter="expert">Ekspert</button>
+   </div>
+   <label class="search">⌕ <input id="portfolioSearch" placeholder="Portfolio qidirish..."></label>
+  </div>
+  <div class="project-grid" id="portfolioGrid"></div>
+ </div>
+</section>
+
+<section class="page" id="page-business">
+ <div class="container section">
+  <div class="eyebrow">06—10 / BUSINESS PLATFORMS</div>
+  <div class="section-head"><div><h2>Biznes sayt namunalari.</h2><p>Bizneslar uchun interaktiv va moslashtirish mumkin bo‘lgan demo yechimlar.</p></div></div>
+  <div class="catalog-tools">
+   <div class="filters" id="businessFilters">
+    <button class="filter active" data-filter="all">Barchasi</button><button class="filter" data-filter="shop">Do‘kon</button><button class="filter" data-filter="food">Restoran</button><button class="filter" data-filter="beauty">Go‘zallik</button><button class="filter" data-filter="estate">Ko‘chmas mulk</button><button class="filter" data-filter="auto">Avtoservis</button>
+   </div>
+   <label class="search">⌕ <input id="businessSearch" placeholder="Biznes sayt qidirish..."></label>
+  </div>
+  <div class="project-grid" id="businessGrid"></div>
+ </div>
+</section>
+
+<section class="page" id="page-about">
+ <div class="container section">
+  <section class="about-hero">
+   <div class="about-top"><span class="status-dot"></span><span class="eyebrow">INDEPENDENT DEVELOPER · DIGITAL CREATOR</span></div>
+   <h1>Salom, men<br><span>Muhammadamin.</span></h1>
+   <p>Men texnologiya, dasturlash va sun’iy intellekt yordamida foydali raqamli mahsulotlar yaratishga qiziqadigan yosh mustaqil dasturchiman. O‘z g‘oyalarimni loyihalarga aylantiraman, bizneslar uchun raqamli yechimlar ishlab chiqaman va yangi texnologiyalarni amaliyotda sinab ko‘raman.</p>
+   <div class="about-actions"><button class="btn gold" onclick="go('contact')">Men bilan ishlash ↗</button><button class="btn" onclick="go('portfolio')">Loyihalarimni ko‘rish</button></div>
+   <div class="about-meta">
+    <div class="meta-card"><strong>16</strong><small>YOSH</small></div><div class="meta-card"><strong>20+</strong><small>LOYIHA TAJRIBASI</small></div><div class="meta-card"><strong>AI LAB</strong><small>SHAXSIY BREND</small></div><div class="meta-card"><strong>UZ</strong><small>O‘ZBEKISTON</small></div>
+   </div>
+  </section>
+
+  <section class="section">
+   <div class="section-head"><div><div class="eyebrow">01 / PERSONAL INTRODUCTION</div><h2>Men haqimda.</h2></div></div>
+   <div class="about-grid">
+    <article class="about-card"><div class="eyebrow">MY STORY</div><h3>Men faqat kod yozishni emas, mahsulot yaratishni yaxshi ko‘raman.</h3><p>Dasturlashga qiziqishim meni oddiy kodlardan murakkabroq tizimlar yaratishgacha olib keldi. Bugungi kunda veb-saytlar, Telegram botlar, AI vositalari, ma’lumotlar bazalari va avtomatlashtirish bilan ishlayman.</p><p>Men uchun loyiha faqat chiroyli interfeysdan iborat emas. Uning vazifasi, foydalanuvchiga beradigan foydasi, ishlash sifati va kelajakda kengaytirish imkoniyati ham muhim.</p></article>
+    <article class="about-card"><div class="eyebrow">MY PHILOSOPHY</div><div class="about-quote">“G‘oyani tasavvur qilish — boshlanish. Uni ishlaydigan mahsulotga aylantirish — haqiqiy natija.”</div><p>Muhammadamin AI Lab orqali o‘rganish, yaratish va texnologik bilimlarni boshqalar bilan bo‘lishishni maqsad qilganman.</p></article>
+   </div>
+  </section>
+
+  <section class="section line">
+   <div class="section-head"><div><div class="eyebrow">02 / EXPERIENCE</div><h2>Tajriba va rivojlanish.</h2></div></div>
+   <div class="timeline">
+    <article class="timeline-item"><div class="timeline-date">BOSHLANISH</div><div><h3>Dasturlash va raqamli texnologiyalar</h3><p>Python, HTML, CSS, JavaScript va dasturiy loyihalar yaratish asoslarini amaliy o‘rganish.</p></div></article>
+    <article class="timeline-item"><div class="timeline-date">KEYINGI BOSQICH</div><div><h3>Telegram botlar va backend</h3><p>Botlar, ma’lumotlar bazalari, API, foydalanuvchi tizimlari va admin panellar bilan ishlash.</p></div></article>
+    <article class="timeline-item"><div class="timeline-date">RIVOJLANISH</div><div><h3>AI Engineering va avtomatlashtirish</h3><p>AI API, AI agentlar, RAG, aqlli yordamchilar va biznes jarayonlarini avtomatlashtirishni o‘rganish va amalda qo‘llash.</p></div></article>
+    <article class="timeline-item"><div class="timeline-date">BUGUN</div><div><h3>Muhammadamin AI Lab</h3><p>Shaxsiy brend, portfolio, mustaqil buyurtmalar, tayyor demo mahsulotlar va yangi texnologik loyihalar ustida ishlash.</p></div></article>
+   </div>
+  </section>
+
+  <section class="section line">
+   <div class="section-head"><div><div class="eyebrow">03 / SELECTED PROJECTS</div><h2>Men ishlab chiqayotgan loyihalar.</h2></div></div>
+   <div class="features">
+    <article class="feature"><div class="eyebrow">01 / STARTUP</div><div class="feature-icon">◈</div><h3>UstaTop</h3><p>Ustalar va mijozlarni birlashtirishga mo‘ljallangan platforma. Buyurtmalar, profillar, xizmatlar va boshqaruv tizimi.</p><div class="tags"><span class="tag">Startup</span><span class="tag">Web</span><span class="tag">Backend</span></div></article>
+    <article class="feature"><div class="eyebrow">02 / EDUCATION</div><div class="feature-icon">▦</div><h3>CollegeOS</h3><p>Ta’lim muassasalari uchun o‘quvchilar, o‘qituvchilar, davomat, baholar va dars jadvalini boshqarish tizimi.</p><div class="tags"><span class="tag">Node.js</span><span class="tag">SQLite</span><span class="tag">Dashboard</span></div></article>
+    <article class="feature"><div class="eyebrow">03 / AI PRODUCT</div><div class="feature-icon">✳</div><h3>Novix</h3><p>Telegram orqali AI imkoniyatlarini taqdim etishga mo‘ljallangan ko‘p funksiyali yordamchi bot.</p><div class="tags"><span class="tag">Python</span><span class="tag">AI API</span><span class="tag">Telegram</span></div></article>
+    <article class="feature"><div class="eyebrow">04 / EDUCATION BOT</div><div class="feature-icon">✉</div><h3>AnnajahBot</h3><p>Ta’lim, qidiruv, AI ustoz, challenge, XP, reyting va foydalanuvchi profillarini birlashtiruvchi bot.</p><div class="tags"><span class="tag">Aiogram</span><span class="tag">SQLite</span><span class="tag">Education</span></div></article>
+    <article class="feature"><div class="eyebrow">05 / DIGITAL SERVICE</div><div class="feature-icon">⌘</div><h3>Portfolio & Business Systems</h3><p>Bizneslar, mutaxassislar va shaxsiy brendlar uchun veb-saytlar va interaktiv demo mahsulotlar.</p><div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span></div></article>
+    <article class="feature"><div class="eyebrow">06 / AUTOMATION</div><div class="feature-icon">⌁</div><h3>AI Automation</h3><p>Turli xizmatlar, API va botlarni bog‘lash orqali ish jarayonlarini soddalashtiruvchi yechimlar.</p><div class="tags"><span class="tag">API</span><span class="tag">AI</span><span class="tag">Automation</span></div></article>
+   </div>
+   <p class="muted" style="font-size:10px;line-height:1.8;margin-top:18px">Izoh: loyihalarning ayrimlari ishlab chiqish, sinov yoki takomillashtirish bosqichida. Ularning holati va imkoniyatlari loyiha taqdimotida alohida ko‘rsatiladi.</p>
+  </section>
+
+  <section class="section line">
+   <div class="section-head"><div><div class="eyebrow">04 / TECHNOLOGY STACK</div><h2>Texnologik yo‘nalishlar.</h2></div></div>
+   <div class="skill-grid">
+    <article class="skill"><div class="skill-top"><b>Python</b><span>BACKEND</span></div><p>Botlar, avtomatlashtirish va dasturiy yechimlar.</p></article>
+    <article class="skill"><div class="skill-top"><b>HTML / CSS</b><span>FRONTEND</span></div><p>Responsiv interfeyslar va zamonaviy veb-dizayn.</p></article>
+    <article class="skill"><div class="skill-top"><b>JavaScript</b><span>WEB</span></div><p>Interaktiv saytlar va frontend funksiyalari.</p></article>
+    <article class="skill"><div class="skill-top"><b>Aiogram</b><span>TELEGRAM</span></div><p>Telegram botlar va foydalanuvchi tizimlari.</p></article>
+    <article class="skill"><div class="skill-top"><b>Supabase</b><span>DATABASE</span></div><p>PostgreSQL, autentifikatsiya va real-time imkoniyatlar.</p></article>
+    <article class="skill"><div class="skill-top"><b>Node.js</b><span>BACKEND</span></div><p>Server ilovalari va API yaratish.</p></article>
+    <article class="skill"><div class="skill-top"><b>AI API</b><span>AI ENGINEERING</span></div><p>Sun’iy intellektni dastur va xizmatlarga integratsiya qilish.</p></article>
+    <article class="skill"><div class="skill-top"><b>RAG / AI Agents</b><span>ADVANCED AI</span></div><p>Aqlli qidiruv, agentlar va bilim bazalari bilan ishlash.</p></article>
+    <article class="skill"><div class="skill-top"><b>GitHub / Railway</b><span>DEPLOYMENT</span></div><p>Kod versiyalari, hosting va loyihalarni joylashtirish.</p></article>
+   </div>
+  </section>
+
+  <section class="section line">
+   <div class="section-head"><div><div class="eyebrow">05 / TELEGRAM DEVELOPMENT</div><h2>Qanday botlar yarataman?</h2></div></div>
+   <div class="service-grid">
+    <article class="service"><div class="eyebrow">01 / BUSINESS</div><h3>Biznes va buyurtma botlari</h3><p>Mahsulot katalogi, buyurtma qabul qilish, mijoz ma’lumotlari va administrator boshqaruvi.</p><strong>2–6 mln so‘m</strong><small>Taxminiy boshlang‘ich narx</small></article>
+    <article class="service"><div class="eyebrow">02 / EDUCATION</div><h3>Ta’lim botlari</h3><p>Test, darslar, reyting, XP, topshiriqlar, o‘quvchi profili va admin panel.</p><strong>3–8 mln so‘m</strong><small>Taxminiy boshlang‘ich narx</small></article>
+    <article class="service"><div class="eyebrow">03 / AI</div><h3>AI Telegram botlar</h3><p>AI chat, tarjima, savol-javob, hujjatlar bilan ishlash va AI API integratsiyasi.</p><strong>3–8 mln so‘m</strong><small>Taxminiy boshlang‘ich narx</small></article>
+    <article class="service"><div class="eyebrow">04 / MANAGEMENT</div><h3>Boshqaruv botlari</h3><p>Buyurtmalar, xodimlar, tasdiqlash, xabarnomalar va administrator funksiyalari.</p><strong>2–6 mln so‘m</strong><small>Taxminiy boshlang‘ich narx</small></article>
+    <article class="service"><div class="eyebrow">05 / AUTOMATION</div><h3>Avtomatlashtirish botlari</h3><p>API, tashqi xizmatlar va takrorlanuvchi biznes jarayonlarini bog‘lash.</p><strong>2–7 mln so‘m</strong><small>Taxminiy boshlang‘ich narx</small></article>
+    <article class="service"><div class="eyebrow">06 / MINI APPS</div><h3>Telegram Mini Apps</h3><p>Telegram ichida ochiladigan do‘kon, xizmat platformasi va interaktiv kabinetlar.</p><strong>4–10 mln so‘m</strong><small>Taxminiy boshlang‘ich narx</small></article>
+   </div>
+  </section>
+
+  <section class="section line">
+   <div class="section-head"><div><div class="eyebrow">06 / MY SERVICES</div><h2>Buyurtma asosida xizmatlar.</h2></div></div>
+   <div class="price-grid">
+    <article class="price-card"><div class="eyebrow">WEB START</div><h3>Landing page</h3><div class="price">1.5–3 mln <small>so‘m</small></div><p>Kichik biznes, xizmat yoki mahsulotni taqdim etish uchun.</p><ul><li>Individual dizayn</li><li>Mobil moslashuv</li><li>Kontakt va CTA</li><li>Hostingga joylashtirish</li></ul><button class="btn full" onclick="openRequest('Landing page buyurtmasi')">Buyurtma berish ↗</button></article>
+    <article class="price-card featured"><div class="eyebrow">WEB PROFESSIONAL</div><h3>Ko‘p sahifali sayt</h3><div class="price">3–6 mln <small>so‘m</small></div><p>Kompaniya, shaxsiy brend yoki xizmatlar uchun.</p><ul><li>Bir nechta sahifa</li><li>Individual interfeys</li><li>Interaktiv funksiyalar</li><li>Admin imkoniyatlari — kelishuv asosida</li></ul><button class="btn primary full" onclick="openRequest('Ko‘p sahifali sayt buyurtmasi')">Buyurtma berish ↗</button></article>
+    <article class="price-card"><div class="eyebrow">E-COMMERCE</div><h3>Internet do‘kon</h3><div class="price">5–10 mln <small>so‘m</small></div><p>Mahsulot va buyurtmalarni internet orqali boshqarish.</p><ul><li>Mahsulotlar katalogi</li><li>Savat va buyurtma</li><li>Ma’lumotlar bazasi</li><li>Admin panel</li></ul><button class="btn full" onclick="openRequest('Internet do‘kon buyurtmasi')">Buyurtma berish ↗</button></article>
+    <article class="price-card"><div class="eyebrow">TELEGRAM</div><h3>Telegram bot</h3><div class="price">2–6 mln <small>so‘m</small></div><p>Biznes va xizmatlar uchun individual bot.</p><ul><li>Foydalanuvchi menyusi</li><li>Admin boshqaruvi</li><li>Ma’lumotlar bazasi</li><li>Hosting va ishga tushirish</li></ul><button class="btn full" onclick="openRequest('Telegram bot buyurtmasi')">Buyurtma berish ↗</button></article>
+    <article class="price-card"><div class="eyebrow">ARTIFICIAL INTELLIGENCE</div><h3>AI integratsiya</h3><div class="price">2–7 mln <small>so‘m</small></div><p>Mavjud sayt yoki botga sun’iy intellekt imkoniyatlarini ulash.</p><ul><li>AI API</li><li>Aqlli yordamchi</li><li>Matn bilan ishlash</li><li>Maxsus funksiyalar</li></ul><button class="btn full" onclick="openRequest('AI integratsiya buyurtmasi')">Buyurtma berish ↗</button></article>
+    <article class="price-card"><div class="eyebrow">CUSTOM DEVELOPMENT</div><h3>Maxsus platforma</h3><div class="price">Kelishiladi</div><p>Murakkab tizimlar va individual biznes g‘oyalar uchun.</p><ul><li>Maxsus arxitektura</li><li>Backend va frontend</li><li>Ma’lumotlar bazasi</li><li>Integratsiya va kengaytirish</li></ul><button class="btn gold full" onclick="openRequest('Maxsus loyiha buyurtmasi')">Loyihani muhokama qilish ↗</button></article>
+   </div>
+   <p class="muted" style="font-size:10px;line-height:1.9;margin-top:20px">Narxlar orientir sifatida ko‘rsatilgan. Yakuniy qiymat funksiyalar soni, dizayn murakkabligi, integratsiyalar, server infratuzilmasi va texnik talablar asosida individual hisoblanadi. Hosting, domen, pullik API va uchinchi tomon xizmatlari alohida hisoblanishi mumkin.</p>
+  </section>
+
+  <section class="section"><div class="detail-cta"><div class="eyebrow">07 / INDIVIDUAL DEVELOPMENT</div><h2>Sizning g‘oyangiz uchun alohida yechim.</h2><p>Yuqoridagi xizmatlar bilan cheklanib qolmayman. Agar sizga maxsus sayt, mobil platforma, Telegram bot, CRM, AI yordamchi yoki boshqa dasturiy mahsulot kerak bo‘lsa, talablaringiz asosida individual loyiha ishlab chiqishimiz mumkin.</p><button class="btn gold" onclick="openRequest('Individual loyiha buyurtmasi')">O‘z loyihamni buyurtma qilish ↗</button></div></section>
+  <section class="section line"><div class="section-head"><div><div class="eyebrow">08 / LET'S CONNECT</div><h2>Birgalikda nimadir yaratamizmi?</h2></div></div><button class="btn primary" onclick="go('contact')">Men bilan bog‘lanish ↗</button></section>
+ </div>
+</section>
+
+<section class="page" id="page-detail"><div class="container" id="detailContent"></div></section>
+
+<section class="page" id="page-contact">
+ <div class="container section">
+  <div class="contact-panel">
+   <div><div class="eyebrow">LET'S BUILD SOMETHING</div><h2>Keyingi loyihangizni birga yarataylik.</h2><p>Sayt, Telegram bot, AI, internet do‘kon yoki maxsus platforma haqida yozing.</p><p>Avval talablarni o‘rganamiz, keyin loyiha hajmi, muddat va narxni kelishamiz.</p></div>
+   <div class="contact-actions">
+    <a href="https://t.me/Muhammad1y_20" target="_blank" rel="noopener">Telegram orqali yozish ↗</a>
+    <button onclick="copyPhone()">+998 88 982 22 27 — Nusxalash</button>
+    <a href="tel:+998889822227">Telefon orqali bog‘lanish ↗</a>
+    <button onclick="openRequest('Yangi individual loyiha')">Loyiha uchun so‘rov yuborish ↗</button>
+   </div>
+  </div>
+ </div>
+</section>
+</main>
+
+<footer>
+ <div class="container footer-inner">
+  <div><div class="brand">MUHAMMADAMIN <span>AI LAB.</span></div><p class="muted" style="font-size:11px">O‘rgan. Qur. Yarat.</p></div>
+  <div class="footer-links">
+   <a href="#home" onclick="go('home')">Bosh sahifa</a><a href="#portfolio" onclick="go('portfolio')">Portfolio</a><a href="#about" onclick="go('about')">Men haqimda</a><a href="#business" onclick="go('business')">Biznes</a><a href="https://t.me/Muhammad1y_20" target="_blank" rel="noopener">Telegram ↗</a>
+  </div>
+ </div>
+</footer>
+
+<div class="modal" id="modal">
+ <div class="modal-box">
+  <button class="modal-close" onclick="closeModal()">✕</button>
+  <div class="eyebrow">PROJECT REQUEST</div>
+  <h2 id="modalTitle">Loyiha haqida murojaat</h2>
+  <p class="muted" style="font-size:12px;line-height:1.8">Ma’lumotlaringizni kiriting. Telegram orqali yuborish uchun xabar tayyorlanadi.</p>
+  <form id="modalForm"><div id="dynamicFields"></div><button class="btn primary full" type="submit">Telegram orqali yuborish ↗</button></form>
+ </div>
+</div>
+<div class="toast" id="toast"></div>
+<button class="backtop" id="backtop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+"use strict";
+
+/* ==========================================
+   PROJECT DATA
+========================================== */
+
+const projects=[
+{id:"aurum",group:"portfolio",category:"businessman",number:"01",name:"AURUM",title:"Nufuzli shaxsiy brend.",role:"Tadbirkor / Strateg / Rahbar",desc:"Tadbirkor va rahbarlar uchun vazmin va hashamatli shaxsiy portfolio.",image:"https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=85",style:"Luxury / Classic",accent:"#d6b56d",features:["Shaxsiy taqdimot","Biznes tajribasi","Loyihalar galereyasi","Konsultatsiya","Tavsiyalar","Aloqa"],pages:["Bosh sahifa","Men haqimda","Tajriba","Loyihalar","Xizmatlar","Bog‘lanish"],audience:"Tadbirkorlar va rahbarlar."},
+{id:"nexus",group:"portfolio",category:"developer",number:"02",name:"NEXUS",title:"Kod. Intellekt. Kelajak.",role:"Dasturchi / AI mutaxassisi",desc:"Dasturchilar uchun texnologik portfolio va kod loyihalari vitrinası.",image:"https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=85",style:"Technology / Dark",accent:"#9cff70",features:["Texnologiyalar","Dasturiy loyihalar","AI ishlanmalari","GitHub havolalari","Tajriba","Aloqa"],pages:["Bosh sahifa","Men haqimda","Texnologiyalar","Loyihalar","Tajriba","Bog‘lanish"],audience:"Dasturchilar va AI mutaxassislari."},
+{id:"forma",group:"portfolio",category:"designer",number:"03",name:"FORMA",title:"Dizaynning o‘z tili bor.",role:"Grafik dizayner / Art direktor",desc:"Dizaynerlar uchun individual vizual ishlar va galereya.",image:"https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=1200&q=85",style:"Editorial / Minimal",accent:"#d4f16d",features:["Ishlar galereyasi","Brending","UI/UX","Jarayon","Xizmatlar","Buyurtma"],pages:["Bosh sahifa","Ishlar","Brending","UI/UX","Xizmatlar","Aloqa"],audience:"Dizaynerlar va ijodkorlar."},
+{id:"motion",group:"portfolio",category:"creator",number:"04",name:"MOTION",title:"Harakatdagi kreativlik.",role:"Videograf / Motion dizayner",desc:"Video, animatsiya va media ishlari uchun kreativ portfolio.",image:"https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=1200&q=85",style:"Creative / Dynamic",accent:"#ff8bba",features:["Video galereya","Reklama ishlari","Animatsiyalar","Xizmatlar","Buyurtma","Aloqa"],pages:["Bosh sahifa","Showreel","Video ishlar","Animatsiya","Xizmatlar","Aloqa"],audience:"Videograflar va kontent yaratuvchilar."},
+{id:"atlas",group:"portfolio",category:"expert",number:"05",name:"ATLAS",title:"Bilim va tajriba maydoni.",role:"Ekspert / Mentor / Konsultant",desc:"Ekspertlar uchun bilim, konsultatsiya va xizmatlar portfoliоsi.",image:"https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=85",style:"Professional / Elegant",accent:"#b7d7a8",features:["Ekspert profili","Konsultatsiya","Ta’lim","Maqolalar","Tavsiyalar","Aloqa"],pages:["Bosh sahifa","Mutaxassis","Xizmatlar","Konsultatsiya","Kurslar","Aloqa"],audience:"Mentorlar va mustaqil mutaxassislar."},
+{id:"market",group:"business",category:"shop",number:"06",name:"MARKET",title:"Onlayn savdo markazi.",role:"Internet do‘kon / Savdo",desc:"Mahsulot katalogi, qidiruv, savat va buyurtma imkoniyatlari.",image:"https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1200&q=85",style:"Modern Commerce",accent:"#b9e6ff",features:["Mahsulotlar katalogi","Qidiruv","Savat","Buyurtma","Aksiyalar","Admin panel"],pages:["Do‘kon","Katalog","Mahsulotlar","Savat","Buyurtma"]},
+{id:"saffron",group:"business",category:"food",number:"07",name:"SAFFRON",title:"Ta’mingizni namoyish eting.",role:"Restoran / Kafe",desc:"Taomlar menyusi, stol band qilish va yetkazib berish so‘rovlari.",image:"https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=85",style:"Restaurant / Elegant",accent:"#e8bc79",features:["Taomlar menyusi","Kategoriyalar","Narxlar","Stol band qilish","Yetkazib berish","Aloqa"],pages:["Bosh sahifa","Menyu","Taomlar","Band qilish","Aloqa"]},
+{id:"studio",group:"business",category:"beauty",number:"08",name:"STUDIO",title:"Go‘zallik va qulaylik.",role:"Go‘zallik saloni / Spa",desc:"Xizmatlar, narxlar, mutaxassislar va onlayn yozilish.",image:"https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1200&q=85",style:"Beauty / Elegant",accent:"#f2b8c9",features:["Xizmatlar","Mutaxassislar","Narxlar","Onlayn yozilish","Aksiyalar","Galereya"],pages:["Bosh sahifa","Xizmatlar","Mutaxassislar","Narxlar","Yozilish"]},
+{id:"estate",group:"business",category:"estate",number:"09",name:"ESTATEX",title:"Yangi manzilingiz shu yerdan.",role:"Ko‘chmas mulk / Rieltorlik",desc:"Uylar, kvartiralar, narx filtrlari va ko‘rikka yozilish.",image:"https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=85",style:"Architecture / Premium",accent:"#c5d8b5",features:["Obyektlar katalogi","Narx filtrlari","Hudud qidiruvi","Foto galereya","Ko‘rikka yozilish","Agent bilan aloqa"],pages:["Bosh sahifa","Obyektlar","Obyekt tafsiloti","Hududlar","Aloqa"]},
+{id:"garage",group:"business",category:"auto",number:"10",name:"GARAGE",title:"Avtomobilingizga e’tibor.",role:"Avtoservis / Diagnostika",desc:"Avtoservis xizmatlari, narxlar va servisga yozilish.",image:"https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&w=1200&q=85",style:"Automotive / Industrial",accent:"#ff9b5e",features:["Xizmatlar","Diagnostika","Narxlar","Servisga yozilish","Avtomobil ma’lumotlari","Aloqa"],pages:["Bosh sahifa","Xizmatlar","Narxlar","Servisga yozilish","Aloqa"]}
+];
+
+const products=[
+{id:1,name:"Klassik ko‘ylak",cat:"Kiyim",price:189000,img:"https://images.unsplash.com/photo-1598033129183-c4f50c736f10?auto=format&fit=crop&w=700&q=80",desc:"Kundalik foydalanish uchun."},
+{id:2,name:"Zamonaviy krossovka",cat:"Oyoq kiyim",price:349000,img:"https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=700&q=80",desc:"Yengil va qulay model."},
+{id:3,name:"Qo‘l soati",cat:"Aksessuar",price:279000,img:"https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=700&q=80",desc:"Minimal dizayn."},
+{id:4,name:"Charm sumka",cat:"Aksessuar",price:425000,img:"https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=700&q=80",desc:"Kundalik foydalanish uchun."},
+{id:5,name:"Naushnik",cat:"Texnika",price:520000,img:"https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=700&q=80",desc:"Musiqa uchun."},
+{id:6,name:"Ko‘zoynak",cat:"Aksessuar",price:159000,img:"https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=700&q=80",desc:"Zamonaviy aksessuar."}
+];
+
+const dishes=[
+{name:"An’anaviy osh",cat:"Asosiy taom",price:35000,img:"https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=700&q=80",desc:"Guruch, sabzi va go‘sht."},
+{name:"Mol go‘shtli sho‘rva",cat:"Sho‘rva",price:28000,img:"https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=700&q=80",desc:"Issiq an’anaviy sho‘rva."},
+{name:"Yangi salat",cat:"Salat",price:22000,img:"https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=700&q=80",desc:"Yangi sabzavotlar."},
+{name:"Go‘shtli somsa",cat:"Pishiriq",price:12000,img:"https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=700&q=80",desc:"Yangi pishirilgan."},
+{name:"Shokoladli desert",cat:"Desert",price:25000,img:"https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=700&q=80",desc:"Shirin desert."},
+{name:"Limonli ichimlik",cat:"Ichimlik",price:15000,img:"https://images.unsplash.com/photo-1513558161293-cdaf765edfd4?auto=format&fit=crop&w=700&q=80",desc:"Salqin ichimlik."}
+];
+
+/* ==========================================
+   IMAGE RELIABILITY SYSTEM
+========================================== */
+
+const IMAGE_FALLBACK = "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(`
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+ <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#263746"/><stop offset="1" stop-color="#0b1119"/></linearGradient></defs>
+ <rect width="800" height="500" fill="url(#g)"/>
+ <circle cx="400" cy="190" r="48" fill="none" stroke="#c5ff76" stroke-width="3"/>
+ <path d="M370 205l22-27 18 20 13-15 23 29" fill="none" stroke="#c5ff76" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+ <text x="400" y="300" fill="#f4f6f8" font-family="Arial" font-size="23" text-anchor="middle" letter-spacing="4">MUHAMMADAMIN AI LAB</text>
+ <text x="400" y="337" fill="#aab7c4" font-family="Arial" font-size="14" text-anchor="middle" letter-spacing="3">IMAGE PREVIEW</text>
+</svg>`);
+
+const IMAGE_BACKUPS={
+ workspace:[
+  "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1200&q=80",
+  "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80"
+ ],
+ portfolio:[
+  "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=80",
+  "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1200&q=80"
+ ],
+ product:[
+  "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=900&q=80",
+  "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=900&q=80"
+ ],
+ food:[
+  "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=80",
+  "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=900&q=80"
+ ],
+ property:[
+  "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=80",
+  "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=900&q=80"
+ ]
+};
+
+function getFallbacks(img){
+ const group=img.dataset.fallbackGroup||"portfolio";
+ return IMAGE_BACKUPS[group]||IMAGE_BACKUPS.portfolio;
+}
+
+function protectImage(img){
+ if(!(img instanceof HTMLImageElement)||img.dataset.protected==="1")return;
+ img.dataset.protected="1";
+ img.decoding="async";
+
+ const important=img.hasAttribute("fetchpriority")||img.closest(".hero-visual");
+ img.loading=important?"eager":"lazy";
+
+ if(important)img.fetchPriority="high";
+
+ img.classList.add("image-loading");
+ img.addEventListener("load",()=>{
+  img.classList.remove("image-loading");
+  img.dataset.imageState="loaded";
+  img.removeAttribute("aria-busy");
+ },{once:false});
+
+ img.addEventListener("error",()=>{
+  if(img.dataset.imageState==="fallback")return;
+
+  const sources=getFallbacks(img);
+  const index=Number(img.dataset.backupIndex||0);
+
+  if(index<sources.length){
+   img.dataset.backupIndex=String(index+1);
+   img.src=sources[index];
+   return;
+  }
+
+  img.dataset.imageState="fallback";
+  img.classList.remove("image-loading");
+  img.classList.add("image-fallback");
+  img.alt=img.alt||"Rasm mavjud emas";
+  img.src=IMAGE_FALLBACK;
+ },{once:false});
+}
+
+function protectAllImages(root=document){
+ root.querySelectorAll("img").forEach(protectImage);
+}
+
+function safeImage(src,group="portfolio",alt=""){
+ const safeSrc=String(src||"").replace(/&/g,"&amp;").replace(/"/g,"&quot;");
+ return `<img src="${safeSrc}" alt="${escapeHTML(alt)}" data-fallback-group="${group}" loading="lazy" decoding="async">`;
+}
+
+/* Capture phase catches errors from images created anywhere in the app. */
+document.addEventListener("error",event=>{
+ const img=event.target;
+ if(img instanceof HTMLImageElement&&!img.dataset.protected){
+  protectImage(img);
+ }
+},true);
+
+/* Watches newly inserted image elements. */
+const imageObserver=new MutationObserver(mutations=>{
+ for(const mutation of mutations){
+  for(const node of mutation.addedNodes){
+   if(node.nodeType!==1)continue;
+   if(node.matches?.("img"))protectImage(node);
+   protectAllImages(node);
+  }
+ }
+});
+imageObserver.observe(document.documentElement,{childList:true,subtree:true});
+
+/* Preload a CSS background before displaying it. */
+function setSafeBackground(element,url,group="portfolio"){
+ if(!element)return;
+ const backups=IMAGE_BACKUPS[group]||IMAGE_BACKUPS.portfolio;
+ const candidates=[url,...backups];
+ let index=0;
+
+ function attempt(){
+  if(index>=candidates.length){
+   element.style.backgroundImage=`linear-gradient(135deg,#1d2a37,#0b1119)`;
+   return;
+  }
+  const candidate=candidates[index++];
+  const tester=new Image();
+  tester.onload=()=>{element.style.backgroundImage=`url("${candidate}")`};
+  tester.onerror=attempt;
+  tester.src=candidate;
+ }
+ attempt();
+}
+
+/* ==========================================
+   HELPERS
+========================================== */
+
+const $=s=>document.querySelector(s);
+const $$=s=>document.querySelectorAll(s);
+let cart=[];
+let toastTimer;
+
+function money(n){return new Intl.NumberFormat("uz-UZ").format(n)+" so‘m"}
+
+function toast(message){
+ const el=$("#toast");
+ el.textContent=message;
+ el.classList.add("show");
+ clearTimeout(toastTimer);
+ toastTimer=setTimeout(()=>el.classList.remove("show"),2500);
+}
+
+async function copyPhone(){
+ const phone="+998889822227";
+ try{
+  if(navigator.clipboard&&window.isSecureContext){
+   await navigator.clipboard.writeText(phone);
+   toast("Telefon raqami nusxalandi");
+  }else{
+   const temp=document.createElement("textarea");
+   temp.value=phone;
+   document.body.appendChild(temp);
+   temp.select();
+   document.execCommand("copy");
+   temp.remove();
+   toast("Telefon raqami nusxalandi");
+  }
+ }catch{
+  toast("Raqam: +998 88 982 22 27");
+ }
+}
+
+function toggleMenu(){$("#navlinks").classList.toggle("open")}
+
+/* ==========================================
+   ROUTING
+========================================== */
+
+function go(page,id){
+ const target=$("#page-"+page);
+ if(!target)return;
+
+ $$(".page").forEach(x=>x.classList.remove("active"));
+ target.classList.add("active");
+ $("#navlinks").classList.remove("open");
+
+ $$("#navlinks button").forEach(b=>b.classList.remove("active"));
+ const active=[...$("#navlinks").children].find(b=>b.getAttribute("onclick")?.includes("'"+page+"'"));
+ active?.classList.add("active");
+
+ if(page==="detail"&&id)renderDetail(id);
+
+ const hash="#"+page+(id?"/"+id:"");
+ if(location.hash!==hash)history.pushState({page,id},"",hash);
+
+ window.scrollTo({top:0,behavior:"instant"});
+}
+
+function routeFromHash(){
+ const parts=location.hash.replace("#","").split("/");
+ const page=parts[0]||"home";
+ const id=parts[1];
+ const valid=["home","portfolio","business","about","contact","detail"];
+
+ if(valid.includes(page)){
+  $$(".page").forEach(x=>x.classList.remove("active"));
+  $("#page-"+page).classList.add("active");
+  if(page==="detail"&&id)renderDetail(id);
+ }else{
+  $("#page-home").classList.add("active");
+ }
+}
+
+window.addEventListener("popstate",routeFromHash);
+window.addEventListener("scroll",()=>{
+ $("#backtop").classList.toggle("show",scrollY>450);
+});
+
+/* ==========================================
+   CATALOG
+========================================== */
+
+function card(p){
+ const group=p.group==="portfolio"?"portfolio":"portfolio";
+ return `<article class="project-card" onclick="go('detail','${p.id}')">
+ <div class="project-image">
+ ${safeImage(p.image,group,p.name)}
+ <span class="project-number">${p.number} / ${p.group==="portfolio"?"PORTFOLIO":"BIZNES"}</span>
+ <span class="project-open">↗</span>
+ </div>
+ <div class="project-body">
+ <div class="eyebrow">${p.role}</div><h3>${p.name}</h3><p>${p.desc}</p>
+ <div class="tags"><span class="tag">${p.style}</span><span class="tag">${p.pages.length} ta bo‘lim</span></div>
+ </div></article>`;
+}
+
+function renderCatalog(){
+ const port=projects.filter(p=>p.group==="portfolio");
+ const biz=projects.filter(p=>p.group==="business");
+ $("#homePortfolio").innerHTML=port.slice(0,4).map(card).join("");
+ $("#homeBusiness").innerHTML=biz.map(card).join("");
+ $("#portfolioGrid").innerHTML=port.map(card).join("");
+ $("#businessGrid").innerHTML=biz.map(card).join("");
+ protectAllImages();
+}
+
+function filterCatalog(group,category){
+ const target=group==="portfolio"?"portfolioGrid":"businessGrid";
+ const list=projects.filter(p=>p.group===group&&(category==="all"||p.category===category));
+ $("#"+target).innerHTML=list.length?list.map(card).join():'<div class="empty">Mos loyiha topilmadi.</div>';
+ protectAllImages();
+}
+
+function searchCatalog(group,value){
+ const q=value.trim().toLowerCase();
+ const list=projects.filter(p=>p.group===group&&[p.name,p.title,p.role,p.desc,p.audience||""].join(" ").toLowerCase().includes(q));
+ $("#"+(group==="portfolio"?"portfolioGrid":"businessGrid")).innerHTML=list.length?list.map(card).join():'<div class="empty">Qidiruv bo‘yicha natija topilmadi.</div>';
+ protectAllImages();
+}
+
+function setupFilters(){
+ [["portfolioFilters","portfolio"],["businessFilters","business"]].forEach(([id,group])=>{
+  $("#"+id).addEventListener("click",e=>{
+   const b=e.target.closest("[data-filter]");
+   if(!b)return;
+   $("#"+id).querySelectorAll(".filter").forEach(x=>x.classList.remove("active"));
+   b.classList.add("active");
+   filterCatalog(group,b.dataset.filter);
+  });
+ });
+ $("#portfolioSearch").addEventListener("input",e=>searchCatalog("portfolio",e.target.value));
+ $("#businessSearch").addEventListener("input",e=>searchCatalog("business",e.target.value));
+}
+
+/* ==========================================
+   DETAIL PAGE
+========================================== */
+
+function renderDetail(id){
+ const p=projects.find(x=>x.id===id);
+ if(!p){go("home");return}
+
+ $("#detailContent").innerHTML=`
+ <div class="detail-top"><button class="btn small" onclick="go('${p.group}')">← Orqaga</button><span class="eyebrow" style="margin-left:12px">${p.number} / ${p.group.toUpperCase()}</span></div>
+ <section class="detail-hero">
+  <div>
+   <div class="eyebrow">${p.role}</div>
+   <h1>${p.name}<br><span style="color:${p.accent}">${p.title}</span></h1>
+   <p>${p.desc}</p>
+   <div class="tags"><span class="tag">${p.style}</span><span class="tag">${p.pages.length} ta sahifa</span></div>
+   <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:22px">
+    <button class="btn primary" onclick="document.getElementById('liveDemo').scrollIntoView({behavior:'smooth'})">Demo saytni ko‘rish ↓</button>
+    <button class="btn" onclick="openRequest('${p.name} loyihasi')">Buyurtma qilish</button>
+   </div>
+  </div>
+  <div class="detail-cover">${safeImage(p.image,"portfolio",p.name)}</div>
+ </section>
+ <section class="detail-section line">
+  <div class="eyebrow">PROJECT STRUCTURE</div><h2>Sayt ichidagi bo‘limlar.</h2>
+  <div class="detail-grid">${p.pages.map((x,i)=>`<article class="detail-box"><div class="eyebrow">SAHIFA / 0${i+1}</div><h3>${x}</h3><p>Ushbu bo‘lim loyiha maqsadiga mos ishlab chiqiladi.</p></article>`).join("")}</div>
+ </section>
+ <section class="detail-section">
+  <div class="eyebrow">FEATURES</div><h2>Asosiy imkoniyatlar.</h2>
+  <div class="detail-grid">${p.features.map((x,i)=>`<article class="detail-box"><div class="eyebrow">FUNCTION / 0${i+1}</div><h3>${x}</h3><p>Foydalanuvchi uchun qulay va tushunarli imkoniyat.</p></article>`).join("")}</div>
+ </section>
+ <div id="liveDemo"></div>
+ <section class="detail-section"><div class="detail-cta"><div class="eyebrow">CUSTOM DEVELOPMENT</div><h2>Bu namunani sizning biznesingizga moslashtiramiz.</h2><p>Ranglar, matnlar, rasmlar, funksiyalar va boshqa barcha elementlar buyurtmachi talabiga moslashtiriladi.</p><button class="btn primary" onclick="openRequest('${p.name} loyihasi')">Shu loyiha bo‘yicha murojaat ↗</button></div></section>
+ `;
+ renderDemo(p);
+ protectAllImages();
+}
+
+/* ==========================================
+   DEMO RENDERER
+========================================== */
+
+function renderDemo(p){
+ const root=$("#liveDemo");
+ if(!root)return;
+
+ if(p.id==="market"){
+  root.innerHTML=`
+  <div class="demo" style="--demo:#b9e6ff"><section class="detail-section">
+   <div class="eyebrow">MARKET / LIVE DEMO</div><h2>Onlayn do‘kon.</h2>
+   <div class="catalog-tools">
+    <div class="filters" id="productFilters"><button class="filter active" data-cat="Barchasi">Barchasi</button>${["Kiyim","Oyoq kiyim","Aksessuar","Texnika"].map(x=>`<button class="filter" data-cat="${x}">${x}</button>`).join("")}</div>
+    <label class="search">⌕ <input id="productSearch" placeholder="Mahsulot qidirish..."></label>
+   </div>
+   <div class="demo-products" id="productGrid"></div>
+   <div class="cartbar"><div><b>Savatcha: <span id="cartCount">0</span> ta</b><div class="muted" id="cartTotal">Jami: 0 so‘m</div></div><button class="btn primary" onclick="checkout()">Buyurtma berish ↗</button></div>
+  </section></div>`;
+  renderProducts();
+ }
+
+ else if(p.id==="saffron"){
+  root.innerHTML=`
+  <div class="demo" style="--demo:#e8bc79"><section class="detail-section">
+   <div class="eyebrow">SAFFRON / MENU DEMO</div><h2>Restoran menyusi.</h2>
+   <div class="filters" id="foodFilters"><button class="filter active" data-cat="Barchasi">Barchasi</button>${["Asosiy taom","Sho‘rva","Salat","Pishiriq","Desert","Ichimlik"].map(x=>`<button class="filter" data-cat="${x}">${x}</button>`).join("")}</div>
+   <div class="menu-list" id="foodGrid" style="margin-top:20px"></div>
+   <button class="btn primary" style="margin-top:20px" onclick="openRequest('Restoran stol band qilish')">Stol band qilish ↗</button>
+  </section></div>`;
+  renderDishes();
+ }
+
+ else if(p.id==="studio"){
+  root.innerHTML=`
+  <div class="demo" style="--demo:#f2b8c9"><section class="detail-section">
+   <div class="eyebrow">STUDIO / SERVICES</div><h2>Salon xizmatlari.</h2>
+   <div class="service-grid">${[["Soch turmagi","80 000 so‘mdan"],["Manikyur","100 000 so‘mdan"],["Yuz parvarishi","150 000 so‘mdan"],["Soch bo‘yash","250 000 so‘mdan"],["Makiyaj","180 000 so‘mdan"],["Qosh dizayni","60 000 so‘mdan"]].map(x=>`<article class="service"><h3>${x[0]}</h3><strong>${x[1]}</strong><button class="btn small" onclick="openRequest('Salon: ${x[0]}')">Yozilish ↗</button></article>`).join("")}</div>
+  </section></div>`;
+ }
+
+ else if(p.id==="estate"){
+  const homes=[
+   ["Zamonaviy oilaviy uy","Toshkent",4,1850000000,"https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=80"],
+   ["Ikki xonali kvartira","Samarqand",2,680000000,"https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=900&q=80"],
+   ["Keng zamonaviy hovli","Toshkent viloyati",5,1250000000,"https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=900&q=80"],
+   ["Minimalist xonadon","Buxoro",3,790000000,"https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=900&q=80"]
+  ];
+  root.innerHTML=`
+  <div class="demo" style="--demo:#c5d8b5"><section class="detail-section">
+   <div class="eyebrow">ESTATEX / PROPERTY DEMO</div><h2>Ko‘chmas mulk katalogi.</h2>
+   <div class="catalog-tools"><label class="search">⌕ <input id="homeSearch" placeholder="Hudud yoki uy nomi..."></label><select class="icon-btn" id="roomFilter"><option value="all">Barcha xonalar</option><option value="2">2 xona</option><option value="3">3 xona</option><option value="4">4 xona</option><option value="5">5 xona</option></select></div>
+   <div class="project-grid" id="propertyGrid"></div>
+  </section></div>`;
+
+  function drawHomes(){
+   const q=$("#homeSearch").value.toLowerCase();
+   const rooms=$("#roomFilter").value;
+   const list=homes.filter(h=>(h[0]+" "+h[1]).toLowerCase().includes(q)&&(rooms==="all"||String(h[2])===rooms));
+   $("#propertyGrid").innerHTML=list.map(h=>`
+    <article class="project-card"><div class="project-image">${safeImage(h[4],"property",h[0])}</div>
+    <div class="project-body"><h3>${h[0]}</h3><p>${h[1]} · ${h[2]} xona</p><strong>${money(h[3])}</strong><button class="btn small" style="margin-top:12px" onclick="openRequest('Ko‘chmas mulk: ${h[0]}')">Ko‘rikka yozilish</button></div></article>`).join("")||'<div class="empty">Obyekt topilmadi.</div>';
+   protectAllImages();
+  }
+  $("#homeSearch").addEventListener("input",drawHomes);
+  $("#roomFilter").addEventListener("change",drawHomes);
+  drawHomes();
+ }
+
+ else if(p.id==="garage"){
+  root.innerHTML=`
+  <div class="demo" style="--demo:#ff9b5e"><section class="detail-section">
+   <div class="eyebrow">GARAGE / AUTO SERVICE</div><h2>Avtoservis xizmatlari.</h2>
+   <div class="service-grid">${[["Kompyuter diagnostikasi","120 000 so‘mdan"],["Moy almashtirish","100 000 so‘mdan"],["Tormoz tizimi","180 000 so‘mdan"],["Konditsioner","150 000 so‘mdan"],["Dvigatel tekshiruvi","200 000 so‘mdan"],["Shina xizmati","80 000 so‘mdan"]].map(x=>`<article class="service"><h3>${x[0]}</h3><strong>${x[1]}</strong><button class="btn small" onclick="openRequest('Avtoservis: ${x[0]}')">Navbatga yozilish ↗</button></article>`).join("")}</div>
+  </section></div>`;
+ }
+
+ else{
+  root.innerHTML=`
+  <div class="demo" style="--demo:${p.accent}">
+   <section class="demo-banner" id="demoBanner">
+    <div class="eyebrow">${p.name} / LIVE PREVIEW</div><h1>${p.title}</h1><p>${p.desc}</p>
+    <button class="btn primary" onclick="openRequest('${p.name} portfolio')">Bog‘lanish ↗</button>
+   </section>
+   <section class="detail-section"><div class="eyebrow">FEATURES</div><h2>Asosiy imkoniyatlar.</h2><div class="detail-grid">${p.features.map((f,i)=>`<article class="detail-box"><div class="eyebrow">0${i+1}</div><h3>${f}</h3><p>Ushbu imkoniyat loyiha talabiga mos ishlab chiqiladi.</p></article>`).join("")}</div></section>
+  </div>`;
+  setSafeBackground($("#demoBanner"),p.image,"portfolio");
+ }
+ protectAllImages();
+}
+
+/* ==========================================
+   PRODUCT CART
+========================================== */
+
+function renderProducts(category="Barchasi",query=""){
+ const grid=$("#productGrid");
+ if(!grid)return;
+ const list=products.filter(p=>(category==="Barchasi"||p.cat===category)&&(p.name+" "+p.cat).toLowerCase().includes(query.toLowerCase()));
+ grid.innerHTML=list.map(p=>`
+ <article class="product">
+  ${safeImage(p.img,"product",p.name)}
+  <h3>${p.name}</h3><p>${p.desc}</p>
+  <div class="product-bottom"><b>${money(p.price)}</b><button onclick="addCart(${p.id})">Savatga +</button></div>
+ </article>`).join("")||'<div class="empty">Mahsulot topilmadi.</div>';
+ $("#productFilters")?.querySelectorAll("button").forEach(b=>b.classList.toggle("active",b.dataset.cat===category));
+ protectAllImages();
+}
+
+function addCart(id){
+ const p=products.find(x=>x.id===id);
+ if(!p)return;
+ const old=cart.find(x=>x.id===id);
+ if(old)old.qty++;
+ else cart.push({...p,qty:1});
+ updateCart();
+ toast(p.name+" savatga qo‘shildi");
+}
+
+function updateCart(){
+ const count=cart.reduce((s,x)=>s+x.qty,0);
+ const total=cart.reduce((s,x)=>s+x.price*x.qty,0);
+ if($("#cartCount"))$("#cartCount").textContent=count;
+ if($("#cartTotal"))$("#cartTotal").textContent="Jami: "+money(total);
+}
+
+function checkout(){
+ if(!cart.length){toast("Avval mahsulot tanlang");return}
+ const summary=cart.map(x=>x.name+" × "+x.qty+" — "+money(x.price*x.qty)).join("\n");
+ const total=cart.reduce((s,x)=>s+x.price*x.qty,0);
+ openRequest("Internet do‘kon buyurtmasi",summary+"\nJami: "+money(total));
+}
+
+/* ==========================================
+   FOOD MENU
+========================================== */
+
+function renderDishes(category="Barchasi"){
+ const grid=$("#foodGrid");
+ if(!grid)return;
+ const list=dishes.filter(x=>category==="Barchasi"||x.cat===category);
+ grid.innerHTML=list.map(x=>`
+ <article class="menu-item">
+  ${safeImage(x.img,"food",x.name)}
+  <div><div class="eyebrow">${x.cat}</div><h3>${x.name}</h3><p>${x.desc}</p><b>${money(x.price)}</b></div>
+ </article>`).join("");
+ $("#foodFilters")?.querySelectorAll("button").forEach(b=>b.classList.toggle("active",b.dataset.cat===category));
+ protectAllImages();
+}
+
+/* ==========================================
+   DEMO EVENTS
+========================================== */
+
+document.addEventListener("click",e=>{
+ const productButton=e.target.closest("#productFilters [data-cat]");
+ if(productButton)renderProducts(productButton.dataset.cat,$("#productSearch")?.value||"");
+ const foodButton=e.target.closest("#foodFilters [data-cat]");
+ if(foodButton)renderDishes(foodButton.dataset.cat);
+});
+
+document.addEventListener("input",e=>{
+ if(e.target.id==="productSearch"){
+  const active=$("#productFilters .active")?.dataset.cat||"Barchasi";
+  renderProducts(active,e.target.value);
+ }
+});
+
+/* ==========================================
+   REQUEST MODAL
+========================================== */
+
+function escapeHTML(s){
+ return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+}
+
+function openRequest(subject="",extra=""){
+ $("#modalTitle").textContent=subject||"Loyiha haqida murojaat";
+ $("#dynamicFields").innerHTML=`
+  <div class="field"><label>Ismingiz</label><input name="name" required placeholder="Ism familiya"></div>
+  <div class="field"><label>Telefon raqamingiz</label><input name="phone" placeholder="+998 __ ___ __ __"></div>
+  <div class="field"><label>Murojaat mavzusi</label><input name="subject" required value="${escapeHTML(subject)}"></div>
+  <div class="field"><label>Loyiha haqida batafsil</label><textarea name="message" placeholder="Qanday loyiha kerak?">${escapeHTML(extra)}</textarea></div>`;
+ $("#modal").classList.add("show");
+ document.body.classList.add("lock");
+}
+
+function closeModal(){
+ $("#modal").classList.remove("show");
+ document.body.classList.remove("lock");
+}
+
+$("#modal").addEventListener("click",e=>{
+ if(e.target.id==="modal")closeModal();
+});
+
+$("#modalForm").addEventListener("submit",e=>{
+ e.preventDefault();
+ const data=new FormData(e.target);
+ const message=[
+  "Assalomu alaykum! Yangi loyiha murojaati.","",
+  "Ism: "+data.get("name"),
+  "Telefon: "+(data.get("phone")||"Ko‘rsatilmagan"),
+  "Mavzu: "+data.get("subject"),
+  "Izoh: "+(data.get("message")||"Yo‘q")
+ ].join("\n");
+
+ const url="https://t.me/Muhammad1y_20?text="+encodeURIComponent(message);
+ window.open(url,"_blank","noopener");
+ closeModal();
+ toast("Telegram uchun xabar tayyorlandi");
+});
+
+/* ==========================================
+   IMAGE DIAGNOSTICS
+========================================== */
+
+window.checkSiteImages=async function(){
+ const images=[...document.images];
+ const report=[];
+
+ for(const img of images){
+  const result={
+   alt:img.alt||"Alt matn yo‘q",
+   src:img.currentSrc||img.src,
+   status:"Tekshirilmoqda"
+  };
+
+  if(img.dataset.imageState==="fallback"){
+   result.status="Zaxira SVG";
+  }else if(img.complete&&img.naturalWidth>0){
+   result.status="Yuklandi";
+  }else if(img.complete&&img.naturalWidth===0){
+   result.status="Xatolik / zaxira jarayoni";
+  }else{
+   result.status="Hali yuklanmagan (lazy)";
+  }
+  report.push(result);
+ }
+
+ console.table(report);
+ const loaded=report.filter(x=>x.status==="Yuklandi").length;
+ const fallback=report.filter(x=>x.status==="Zaxira SVG").length;
+ const pending=report.filter(x=>x.status.includes("lazy")).length;
+ console.log("Jami:",report.length,"| Yuklangan:",loaded,"| SVG fallback:",fallback,"| Lazy:",pending);
+ return report;
+};
+
+/* ==========================================
+   INITIALIZATION
+========================================== */
+
+renderCatalog();
+setupFilters();
+protectAllImages();
+routeFromHash();
+
+document.addEventListener("keydown",e=>{
+ if(e.key==="Escape")closeModal();
+});
+
+</script>
+</body>
+</html>
