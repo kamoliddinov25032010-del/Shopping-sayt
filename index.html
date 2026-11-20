@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="uz">
 <head>
@@ -258,7 +257,7 @@ img.image-fallback{object-fit:contain!important;padding:12px;background:radial-g
 </head>
 <body>
 
-<header>
+ <header>
  <div class="container nav">
   <a href="#home" class="brand">MUHAMMADAMIN <span>AI LAB.</span><small>O‘RGAN · QUR · YARAT</small></a>
   <nav class="navlinks" id="navlinks">
@@ -320,8 +319,6 @@ img.image-fallback{object-fit:contain!important;padding:12px;background:radial-g
    <div class="section-head"><div><div class="eyebrow">02 / PORTFOLIO</div><h2>Men yaratgan 12 ta sayt.</h2></div><button class="btn small" onclick="go('portfolio')">Barchasini ko‘rish ↗</button></div>
    <div class="project-grid" id="homePortfolio"></div>
   </section>
-
-  
 
   <section class="section line">
    <div class="section-head"><div><div class="eyebrow">05 / WORK PROCESS</div><h2>G‘oyadan ishga tushirishgacha.</h2></div></div>
@@ -435,7 +432,6 @@ img.image-fallback{object-fit:contain!important;padding:12px;background:radial-g
  </div>
 </section>
 
-
 <section class="page" id="page-contact">
  <div class="container section">
   <div class="contact-panel">
@@ -496,13 +492,144 @@ body.demo-open{overflow:hidden}
 <script>
 "use strict";
 
-/* Previous fictional demo embeds removed. All twelve original sites load from /projects/*.html. */
-
 /* ==========================================
    PROJECT DATA
 ========================================== */
 
-const projects=[{"id":"nomadica","group":"portfolio","category":"nomadica","number":"01","name":"NOMADICA","title":"Sayohat va turizm platformasi","role":"Sayohat va turizm platformasi","desc":"Sayohatni rejalashtirish, yo‘nalishlarni ko‘rish va WhatsApp orqali so‘rov yuborish uchun tayyorlangan sayt.","image":"https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1400&q=85","style":"Travel / Editorial","accent":"#e47d45","features":["Yo‘nalishlar katalogi","Sayohat paketlari","Qidiruv va tanlash","WhatsApp orqali so‘rov","Aloqa bo‘limi"],"pages":["Bosh sahifa","Yo‘nalishlar","Sayohatlar","Biz haqimizda","Aloqa"],"audience":"Sayohat va turizm platformasi","external":true,"file":"projects/nomadica.html"},{"id":"neon-district","group":"portfolio","category":"neon-district","number":"02","name":"NEON DISTRICT","title":"Gaming va esports arena","role":"Gaming va esports arena","desc":"Gaming zonalari, o‘yinlar, turnirlar va joy band qilish imkoniyatlari bilan esports arena sayti.","image":"https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1400&q=85","style":"Gaming / Neon","accent":"#a855f7","features":["Gaming zonalari","O‘yinlar va jamoalar","Turnirlar","Tariflar","WhatsApp orqali bron"],"pages":["Bosh sahifa","Zonalar","O‘yinlar","Turnirlar","Tariflar","Bron qilish"],"audience":"Gaming va esports arena","external":true,"file":"projects/neon-district.html"},{"id":"archon","group":"portfolio","category":"archon","number":"03","name":"ARCHON","title":"Arxitektura va qurilish","role":"Arxitektura va qurilish","desc":"Arxitektura, interyer va qurilish xizmatlarini taqdim etuvchi premium kompaniya sayti.","image":"https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1400&q=85","style":"Architecture / Dark Luxury","accent":"#c5a878","features":["Xizmatlar","Loyihalar galereyasi","Ish jarayoni","Jamoa va yondashuv","Loyiha bo‘yicha murojaat"],"pages":["Bosh sahifa","Kompaniya","Xizmatlar","Loyihalar","Jarayon","Aloqa"],"audience":"Arxitektura va qurilish","external":true,"file":"projects/archon.html"},{"id":"velocity","group":"portfolio","category":"velocity","number":"04","name":"VELOCITY","title":"Avtomobil detailing va servis","role":"Avtomobil detailing va servis","desc":"Avtomobil parvarishi, detailing, keramika qoplama va servis xizmatlari uchun yaratilgan sayt.","image":"https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=1400&q=85","style":"Automotive / Blue Industrial","accent":"#4b9dff","features":["Xizmatlar katalogi","Paketlar va narxlar","Avval / keyin taqqoslash","Narx kalkulyatori","Servisga yozilish"],"pages":["Bosh sahifa","Biz haqimizda","Xizmatlar","Paketlar","Galereya","Aloqa"],"audience":"Avtomobil detailing va servis","external":true,"file":"projects/velocity.html"},{"id":"savora","group":"portfolio","category":"savora","number":"05","name":"SAVORA","title":"Restoran va gastronomiya","role":"Restoran va gastronomiya","desc":"Restoran menyusi, taomlar qidiruvi, savat, yetkazib berish va stol band qilish funksiyalariga ega sayt.","image":"https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1400&q=85","style":"Restaurant / Editorial","accent":"#792e3b","features":["Menyu kategoriyalari","Taom qidiruvi","Savat va buyurtma","Yetkazib berish hisobi","Stol band qilish"],"pages":["Bosh sahifa","Biz haqimizda","Menyu","Galereya","Band qilish","Aloqa"],"audience":"Restoran va gastronomiya","external":true,"file":"projects/savora.html"},{"id":"offgrid","group":"portfolio","category":"offgrid","number":"06","name":"OFFGRID","title":"Konsert va festival platformasi","role":"Konsert va festival platformasi","desc":"Konsertlar va festivallarni ko‘rish, tadbirlarni filtrlash va chipta tanlash uchun yaratilgan platforma.","image":"https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&w=1400&q=85","style":"Brutalist / Lime & Blue","accent":"#304ee8","features":["Tadbirlar katalogi","Kategoriya va qidiruv filtrlari","Tadbir tafsilotlari","Chipta turlari va savat","Dastur va FAQ"],"pages":["Bosh sahifa","Tadbirlar","Festival dasturi","Chiptalar","Savollar","Aloqa"],"audience":"Konsert va festival platformasi","external":true,"file":"projects/offgrid.html"},{"id":"aurora-marketolog","group":"portfolio","category":"marketing","number":"07","name":"AURORA MARKETolog","title":"Marketing va SMM agentligi","role":"Marketing va SMM","desc":"Marketing strategiyasi, SMM, kontent va reklama xizmatlarini taqdim etuvchi agentlik sayti.","image":"https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=1400&q=85","style":"Creative / Marketing","accent":"#e6a23c","features":["Marketing xizmatlari","SMM yo‘nalishlari","Kontent strategiyasi","Mijozlar uchun murojaat"],"pages":["Bosh sahifa","Xizmatlar","Portfolio","Jarayon","Aloqa"],"audience":"Marketing va SMM xizmatlari","external":true,"file":"projects/aurora-marketolog.html"},{"id":"brutal-fotograf","group":"portfolio","category":"photography","number":"08","name":"BRUTAL FOTOGRAF","title":"Fotograf portfolio va galereya","role":"Fotografiya va vizual san’at","desc":"Fotograf ishlari, fotosessiya xizmatlari va vizual galereyani namoyish etuvchi portfolio sayti.","image":"https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=1400&q=85","style":"Brutalist / Editorial","accent":"#ffd600","features":["Fotogalereya","Fotosessiya xizmatlari","Portfolio mozaikasi","Murojaat bo‘limi"],"pages":["Bosh sahifa","Galereya","Xizmatlar","Jarayon","Aloqa"],"audience":"Fotografiya va ijodiy xizmatlar","external":true,"file":"projects/brutal-fotograf.html"},{"id":"demo-dental","group":"portfolio","category":"healthcare","number":"09","name":"DEMO DENTAL","title":"Stomatologiya klinikasi","role":"Tibbiyot va stomatologiya","desc":"Stomatologiya klinikasi xizmatlari, shifokorlar, narx kalkulyatori va qabulga yozilish interfeysi.","image":"https://images.unsplash.com/photo-1606811971618-4486d14f3f99?auto=format&fit=crop&w=1400&q=85","style":"Healthcare / Teal","accent":"#0c8f8f","features":["Xizmatlar katalogi","Shifokorlar profili","Narx kalkulyatori","Qabulga yozilish formasi"],"pages":["Bosh sahifa","Xizmatlar","Shifokorlar","Kalkulyator","Qabulga yozilish"],"audience":"Stomatologiya klinikasi","external":true,"file":"projects/demo-dental.html"},{"id":"neon-dasturchi","group":"portfolio","category":"developer","number":"10","name":"NEON DASTURCHI","title":"Dasturchi shaxsiy portfolio","role":"Dasturlash va shaxsiy brend","desc":"Dasturchi xizmatlari, ko‘nikmalar, loyihalar va bog‘lanish bo‘limlari bilan neon uslubidagi portfolio.","image":"https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1400&q=85","style":"Neon / Developer","accent":"#19f0ff","features":["Shaxsiy profil","Ko‘nikmalar","Loyihalar","Xizmatlar","Bog‘lanish"],"pages":["Bosh sahifa","Men haqimda","Ko‘nikmalar","Loyihalar","Aloqa"],"audience":"Dasturchi portfolio","external":true,"file":"projects/neon-dasturchi.html"},{"id":"swiss-dizayner","group":"portfolio","category":"design","number":"11","name":"SWISS DIZAYNER","title":"Grafik va veb dizayner portfolio","role":"Dizayn va kreativ xizmatlar","desc":"Dizayner ishlari, kreativ xizmatlar va tanlangan loyihalarni namoyish etuvchi portfolio.","image":"https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=1400&q=85","style":"Swiss / Minimal","accent":"#e63946","features":["Dizayn ishlari","Loyiha galereyasi","Xizmatlar","Aloqa formasi"],"pages":["Bosh sahifa","Portfolio","Xizmatlar","Men haqimda","Aloqa"],"audience":"Grafik va veb dizayn","external":true,"file":"projects/swiss-dizayner.html"},{"id":"terminal-xaker","group":"portfolio","category":"technology","number":"12","name":"TERMINAL XAKER","title":"Cybersecurity va texnologiya portfolio","role":"Texnologiya va kiber uslub","desc":"Terminal va cyber estetikadagi shaxsiy sayt, xizmatlar, ko‘nikmalar va loyiha bo‘limlari bilan.","image":"https://images.unsplash.com/photo-1510511459019-5dda7724fd87?auto=format&fit=crop&w=1400&q=85","style":"Cyber / Terminal","accent":"#39ff88","features":["Terminal uslubidagi hero","Ko‘nikmalar","Xizmatlar","Loyihalar","Bog‘lanish"],"pages":["Bosh sahifa","Profil","Ko‘nikmalar","Xizmatlar","Aloqa"],"audience":"Texnologiya portfolio","external":true,"file":"projects/terminal-xaker.html"}];
+const projects = [
+{
+ id:"nomadica",group:"portfolio",category:"nomadica",number:"01",
+ name:"NOMADICA",title:"Sayohat va turizm platformasi",
+ role:"Sayohat va turizm platformasi",
+ desc:"Sayohatni rejalashtirish, yo‘nalishlarni ko‘rish va WhatsApp orqali so‘rov yuborish uchun tayyorlangan sayt.",
+ image:"https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1400&q=85",
+ style:"Travel / Editorial",accent:"#e47d45",
+ features:["Yo‘nalishlar katalogi","Sayohat paketlari","Qidiruv va tanlash","WhatsApp orqali so‘rov","Aloqa bo‘limi"],
+ pages:["Bosh sahifa","Yo‘nalishlar","Sayohatlar","Biz haqimizda","Aloqa"],
+ audience:"Sayohat va turizm platformasi",external:true,file:"projects/nomadica.html"
+},
+{
+ id:"neon-district",group:"portfolio",category:"neon-district",number:"02",
+ name:"NEON DISTRICT",title:"Gaming va esports arena",
+ role:"Gaming va esports arena",
+ desc:"Gaming zonalari, o‘yinlar, turnirlar va joy band qilish imkoniyatlari bilan esports arena sayti.",
+ image:"https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1400&q=85",
+ style:"Gaming / Neon",accent:"#a855f7",
+ features:["Gaming zonalari","O‘yinlar va jamoalar","Turnirlar","Tariflar","WhatsApp orqali bron"],
+ pages:["Bosh sahifa","Zonalar","O‘yinlar","Turnirlar","Tariflar","Bron qilish"],
+ audience:"Gaming va esports arena",external:true,file:"projects/neon-district.html"
+},
+{
+ id:"archon",group:"portfolio",category:"archon",number:"03",
+ name:"ARCHON",title:"Arxitektura va qurilish",
+ role:"Arxitektura va qurilish",
+ desc:"Arxitektura, interyer va qurilish xizmatlarini taqdim etuvchi premium kompaniya sayti.",
+ image:"https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1400&q=85",
+ style:"Architecture / Dark Luxury",accent:"#c5a878",
+ features:["Xizmatlar","Loyihalar galereyasi","Ish jarayoni","Jamoa va yondashuv","Loyiha bo‘yicha murojaat"],
+ pages:["Bosh sahifa","Kompaniya","Xizmatlar","Loyihalar","Jarayon","Aloqa"],
+ audience:"Arxitektura va qurilish",external:true,file:"projects/archon.html"
+},
+{
+ id:"velocity",group:"portfolio",category:"velocity",number:"04",
+ name:"VELOCITY",title:"Avtomobil detailing va servis",
+ role:"Avtomobil detailing va servis",
+ desc:"Avtomobil parvarishi, detailing, keramika qoplama va servis xizmatlari uchun yaratilgan sayt.",
+ image:"https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=1400&q=85",
+ style:"Automotive / Blue Industrial",accent:"#4b9dff",
+ features:["Xizmatlar katalogi","Paketlar va narxlar","Avval / keyin taqqoslash","Narx kalkulyatori","Servisga yozilish"],
+ pages:["Bosh sahifa","Biz haqimizda","Xizmatlar","Paketlar","Galereya","Aloqa"],
+ audience:"Avtomobil detailing va servis",external:true,file:"projects/velocity.html"
+},
+{
+ id:"savora",group:"portfolio",category:"savora",number:"05",
+ name:"SAVORA",title:"Restoran va gastronomiya",
+ role:"Restoran va gastronomiya",
+ desc:"Restoran menyusi, taomlar qidiruvi, savat, yetkazib berish va stol band qilish funksiyalariga ega sayt.",
+ image:"https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1400&q=85",
+ style:"Restaurant / Editorial",accent:"#792e3b",
+ features:["Menyu kategoriyalari","Taom qidiruvi","Savat va buyurtma","Yetkazib berish hisobi","Stol band qilish"],
+ pages:["Bosh sahifa","Biz haqimizda","Menyu","Galereya","Band qilish","Aloqa"],
+ audience:"Restoran va gastronomiya",external:true,file:"projects/savora.html"
+},
+{
+ id:"offgrid",group:"portfolio",category:"offgrid",number:"06",
+ name:"OFFGRID",title:"Konsert va festival platformasi",
+ role:"Konsert va festival platformasi",
+ desc:"Konsertlar va festivallarni ko‘rish, tadbirlarni filtrlash va chipta tanlash uchun yaratilgan platforma.",
+ image:"https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&w=1400&q=85",
+ style:"Brutalist / Lime & Blue",accent:"#304ee8",
+ features:["Tadbirlar katalogi","Kategoriya va qidiruv filtrlari","Tadbir tafsilotlari","Chipta turlari va savat","Dastur va FAQ"],
+ pages:["Bosh sahifa","Tadbirlar","Festival dasturi","Chiptalar","Savollar","Aloqa"],
+ audience:"Konsert va festival platformasi",external:true,file:"projects/offgrid.html"
+},
+{
+ id:"aurora-marketolog",group:"portfolio",category:"marketing",number:"07",
+ name:"AURORA MARKETolog",title:"Marketing va SMM agentligi",
+ role:"Marketing va SMM",
+ desc:"Marketing strategiyasi, SMM, kontent va reklama xizmatlarini taqdim etuvchi agentlik sayti.",
+ image:"https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=1400&q=85",
+ style:"Creative / Marketing",accent:"#e6a23c",
+ features:["Marketing xizmatlari","SMM yo‘nalishlari","Kontent strategiyasi","Mijozlar uchun murojaat"],
+ pages:["Bosh sahifa","Xizmatlar","Portfolio","Jarayon","Aloqa"],
+ audience:"Marketing va SMM xizmatlari",external:true,file:"projects/aurora-marketolog.html"
+},
+{
+ id:"brutal-fotograf",group:"portfolio",category:"photography",number:"08",
+ name:"BRUTAL FOTOGRAF",title:"Fotograf portfolio va galereya",
+ role:"Fotografiya va vizual san’at",
+ desc:"Fotograf ishlari, fotosessiya xizmatlari va vizual galereyani namoyish etuvchi portfolio sayti.",
+ image:"https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=1400&q=85",
+ style:"Brutalist / Editorial",accent:"#ffd600",
+ features:["Fotogalereya","Fotosessiya xizmatlari","Portfolio mozaikasi","Murojaat bo‘limi"],
+ pages:["Bosh sahifa","Galereya","Xizmatlar","Jarayon","Aloqa"],
+ audience:"Fotografiya va ijodiy xizmatlar",external:true,file:"projects/brutal-fotograf.html"
+},
+{
+ id:"demo-dental",group:"portfolio",category:"healthcare",number:"09",
+ name:"DEMO DENTAL",title:"Stomatologiya klinikasi",
+ role:"Tibbiyot va stomatologiya",
+ desc:"Stomatologiya klinikasi xizmatlari, shifokorlar, narx kalkulyatori va qabulga yozilish interfeysi.",
+ image:"https://images.unsplash.com/photo-1606811971618-4486d14f3f99?auto=format&fit=crop&w=1400&q=85",
+ style:"Healthcare / Teal",accent:"#0c8f8f",
+ features:["Xizmatlar katalogi","Shifokorlar profili","Narx kalkulyatori","Qabulga yozilish formasi"],
+ pages:["Bosh sahifa","Xizmatlar","Shifokorlar","Kalkulyator","Qabulga yozilish"],
+ audience:"Stomatologiya klinikasi",external:true,file:"projects/demo-dental.html"
+},
+{
+ id:"neon-dasturchi",group:"portfolio",category:"developer",number:"10",
+ name:"NEON DASTURCHI",title:"Dasturchi shaxsiy portfolio",
+ role:"Dasturlash va shaxsiy brend",
+ desc:"Dasturchi xizmatlari, ko‘nikmalar, loyihalar va bog‘lanish bo‘limlari bilan neon uslubidagi portfolio.",
+ image:"https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1400&q=85",
+ style:"Neon / Developer",accent:"#19f0ff",
+ features:["Shaxsiy profil","Ko‘nikmalar","Loyihalar","Xizmatlar","Bog‘lanish"],
+ pages:["Bosh sahifa","Men haqimda","Ko‘nikmalar","Loyihalar","Aloqa"],
+ audience:"Dasturchi portfolio",external:true,file:"projects/neon-dasturchi.html"
+},
+{
+ id:"swiss-dizayner",group:"portfolio",category:"design",number:"11",
+ name:"SWISS DIZAYNER",title:"Grafik va veb dizayner portfolio",
+ role:"Dizayn va kreativ xizmatlar",
+ desc:"Dizayner ishlari, kreativ xizmatlar va tanlangan loyihalarni namoyish etuvchi portfolio.",
+ image:"https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=1400&q=85",
+ style:"Swiss / Minimal",accent:"#e63946",
+ features:["Dizayn ishlari","Loyiha galereyasi","Xizmatlar","Aloqa formasi"],
+ pages:["Bosh sahifa","Portfolio","Xizmatlar","Men haqimda","Aloqa"],
+ audience:"Grafik va veb dizayn",external:true,file:"projects/swiss-dizayner.html"
+},
+{
+ id:"terminal-xaker",group:"portfolio",category:"technology",number:"12",
+ name:"TERMINAL XAKER",title:"Cybersecurity va texnologiya portfolio",
+ role:"Texnologiya va kiber uslub",
+ desc:"Terminal va cyber estetikadagi shaxsiy sayt, xizmatlar, ko‘nikmalar va loyiha bo‘limlari bilan.",
+ image:"https://images.unsplash.com/photo-1510511459019-5dda7724fd87?auto=format&fit=crop&w=1400&q=85",
+ style:"Cyber / Terminal",accent:"#39ff88",
+ features:["Terminal uslubidagi hero","Ko‘nikmalar","Xizmatlar","Loyihalar","Bog‘lanish"],
+ pages:["Bosh sahifa","Profil","Ko‘nikmalar","Xizmatlar","Aloqa"],
+ audience:"Texnologiya portfolio",external:true,file:"projects/terminal-xaker.html"
+}
+];
 
 /* ==========================================
    IMAGE RELIABILITY SYSTEM
@@ -540,6 +667,22 @@ const IMAGE_BACKUPS={
   "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=900&q=80"
  ]
 };
+
+/* ==========================================
+   HTML ESCAPE — FIX
+========================================== */
+
+function escapeHTML(value){
+ const entities={
+  "&":"&amp;",
+  "<":"&lt;",
+  ">":"&gt;",
+  '"':"&quot;",
+  "'":"&#39;"
+ };
+
+ return String(value??"").replace(/[&<>"']/g,char=>entities[char]);
+}
 
 function getFallbacks(img){
  const group=img.dataset.fallbackGroup||"portfolio";
@@ -589,7 +732,8 @@ function protectAllImages(root=document){
 
 function safeImage(src,group="portfolio",alt=""){
  const safeSrc=String(src||"").replace(/&/g,"&amp;").replace(/"/g,"&quot;");
- return `<img src="${safeSrc}" alt="${escapeHTML(alt)}" data-fallback-group="${group}" loading="lazy" decoding="async">`;
+ const safeGroup=escapeHTML(group);
+ return `<img src="${safeSrc}" alt="${escapeHTML(alt)}" data-fallback-group="${safeGroup}" loading="lazy" decoding="async">`;
 }
 
 /* Capture phase catches errors from images created anywhere in the app. */
@@ -642,10 +786,13 @@ const $$=s=>document.querySelectorAll(s);
 let cart=[];
 let toastTimer;
 
-function money(n){return new Intl.NumberFormat("uz-UZ").format(n)+" so‘m"}
+function money(n){
+ return new Intl.NumberFormat("uz-UZ").format(n)+" so‘m";
+}
 
 function toast(message){
  const el=$("#toast");
+ if(!el)return;
  el.textContent=message;
  el.classList.add("show");
  clearTimeout(toastTimer);
@@ -672,7 +819,79 @@ async function copyPhone(){
  }
 }
 
-function toggleMenu(){$("#navlinks").classList.toggle("open")}
+function toggleMenu(){
+ $("#navlinks").classList.toggle("open");
+}
+
+/* ==========================================
+   REQUEST MODAL — MISSING FUNCTIONS FIXED
+========================================== */
+
+function openRequest(requestType="Yangi loyiha"){
+ const modal=$("#modal");
+ const title=$("#modalTitle");
+ const fields=$("#dynamicFields");
+
+ if(!modal||!fields)return;
+
+ title.textContent=requestType;
+
+ fields.innerHTML=`
+  <div class="field">
+   <label for="requestName">Ismingiz</label>
+   <input id="requestName" name="name" type="text" placeholder="Ismingizni kiriting" required>
+  </div>
+  <div class="field">
+   <label for="requestContact">Bog‘lanish uchun Telegram yoki telefon</label>
+   <input id="requestContact" name="contact" type="text" placeholder="@username yoki telefon raqam" required>
+  </div>
+  <div class="field">
+   <label for="requestDetails">Loyiha haqida qisqacha</label>
+   <textarea id="requestDetails" name="details" placeholder="Qanday sayt, bot yoki tizim kerak?"></textarea>
+  </div>
+ `;
+
+ modal.classList.add("show");
+ document.body.classList.add("lock");
+
+ setTimeout(()=>$("#requestName")?.focus(),100);
+}
+
+function closeModal(){
+ const modal=$("#modal");
+ if(!modal)return;
+ modal.classList.remove("show");
+ document.body.classList.remove("lock");
+}
+
+$("#modalForm").addEventListener("submit",event=>{
+ event.preventDefault();
+
+ const name=$("#requestName")?.value.trim()||"";
+ const contact=$("#requestContact")?.value.trim()||"";
+ const details=$("#requestDetails")?.value.trim()||"";
+ const project=$("#modalTitle")?.textContent||"Yangi loyiha";
+
+ if(!name||!contact){
+  toast("Ism va aloqa ma’lumotlarini kiriting");
+  return;
+ }
+
+ const message=[
+  "Yangi loyiha so‘rovi",
+  "",
+  "Loyiha: "+project,
+  "Ism: "+name,
+  "Aloqa: "+contact,
+  "Tafsilotlar: "+(details||"Hozircha kiritilmagan")
+ ].join("\n");
+
+ const telegramUrl="https://t.me/share/url?url=&text="+encodeURIComponent(message);
+ window.open(telegramUrl,"_blank","noopener,noreferrer");
+
+ closeModal();
+ toast("Telegram orqali yuborish oynasi ochildi");
+});
 
 /* ==========================================
    ROUTING
@@ -690,7 +909,6 @@ function go(page,id){
  const active=[...$("#navlinks").children].find(b=>b.getAttribute("onclick")?.includes("'"+page+"'"));
  active?.classList.add("active");
 
-
  const hash="#"+page+(id?"/"+id:"");
  if(location.hash!==hash)history.pushState({page,id},"",hash);
 
@@ -700,13 +918,12 @@ function go(page,id){
 function routeFromHash(){
  const parts=location.hash.replace("#","").split("/");
  const page=parts[0]||"home";
- const id=parts[1];
  const valid=["home","portfolio","about","contact"];
 
  if(valid.includes(page)){
   $$(".page").forEach(x=>x.classList.remove("active"));
   $("#page-"+page).classList.add("active");
-  }else{
+ }else{
   $("#page-home").classList.add("active");
  }
 }
@@ -724,19 +941,31 @@ function card(p){
  const group="portfolio";
  const content=`
  <div class="project-image">
- ${safeImage(p.image,group,p.name)}
- <span class="project-number">${p.number} / ${p.group==="portfolio"?"PORTFOLIO":"BIZNES"}</span>
- <span class="project-open">↗</span>
+  ${safeImage(p.image,group,p.name)}
+  <span class="project-number">${p.number} / ${p.group==="portfolio"?"PORTFOLIO":"BIZNES"}</span>
+  <span class="project-open">↗</span>
  </div>
  <div class="project-body">
- <div class="eyebrow">${p.role}</div><h3>${p.name}</h3><p>${p.desc}</p>
- <div class="tags"><span class="tag">${p.style}</span><span class="tag">${p.pages.length} ta bo‘lim</span>${p.external?'<span class="tag">Asl sayt shu yerda ochiladi</span>':""}</div>
+  <div class="eyebrow">${escapeHTML(p.role)}</div>
+  <h3>${escapeHTML(p.name)}</h3>
+  <p>${escapeHTML(p.desc)}</p>
+  <div class="tags">
+   <span class="tag">${escapeHTML(p.style)}</span>
+   <span class="tag">${p.pages.length} ta bo‘lim</span>
+   ${p.external?'<span class="tag">Asl sayt shu yerda ochiladi</span>':""}
+  </div>
  </div>`;
+
  if(p.external){
-  return `<article class="project-card" role="button" tabindex="0" onclick="openEmbeddedDemo('${p.id}')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openEmbeddedDemo('${p.id}')}" aria-label="${p.name} demo saytini shu sahifada ochish">${content}</article>`;
+  return `<article class="project-card" role="button" tabindex="0"
+   onclick="openEmbeddedDemo('${p.id}')"
+   onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openEmbeddedDemo('${p.id}')}"
+   aria-label="${escapeHTML(p.name)} demo saytini shu sahifada ochish">${content}</article>`;
  }
+
  return `<article class="project-card" onclick="go('detail','${p.id}')">${content}</article>`;
 }
+
 function renderCatalog(){
  const cards=projects.map(card).join("");
  $("#homePortfolio").innerHTML=cards;
@@ -746,14 +975,23 @@ function renderCatalog(){
 
 function filterCatalog(group,category){
  const list=projects;
- $("#portfolioGrid").innerHTML=list.length?list.map(card).join(""):'<div class="empty">Loyiha topilmadi.</div>';
+ $("#portfolioGrid").innerHTML=list.length
+  ?list.map(card).join("")
+  :'<div class="empty">Loyiha topilmadi.</div>';
  protectAllImages();
 }
 
 function searchCatalog(group,value){
  const q=value.trim().toLowerCase();
- const list=projects.filter(p=>[p.name,p.title,p.role,p.desc,p.audience||""].join(" ").toLowerCase().includes(q));
- $("#portfolioGrid").innerHTML=list.length?list.map(card).join(""):'<div class="empty">Qidiruv bo‘yicha natija topilmadi.</div>';
+ const list=projects.filter(p=>
+  [p.name,p.title,p.role,p.desc,p.audience||""]
+   .join(" ").toLowerCase().includes(q)
+ );
+
+ $("#portfolioGrid").innerHTML=list.length
+  ?list.map(card).join("")
+  :'<div class="empty">Qidiruv bo‘yicha natija topilmadi.</div>';
+
  protectAllImages();
 }
 
@@ -761,31 +999,56 @@ function setupFilters(){
  $("#portfolioFilters").addEventListener("click",e=>{
   const b=e.target.closest("[data-filter]");
   if(!b)return;
-  $("#portfolioFilters").querySelectorAll(".filter").forEach(x=>x.classList.remove("active"));
+
+  $("#portfolioFilters").querySelectorAll(".filter")
+   .forEach(x=>x.classList.remove("active"));
+
   b.classList.add("active");
   filterCatalog("portfolio","all");
  });
- $("#portfolioSearch").addEventListener("input",e=>searchCatalog("portfolio",e.target.value));
+
+ $("#portfolioSearch").addEventListener("input",e=>
+  searchCatalog("portfolio",e.target.value)
+ );
 }
+
+/* ==========================================
+   EMBEDDED PROJECT VIEWER
+========================================== */
 
 function openEmbeddedDemo(id){
  const project=projects.find(x=>x.id===id);
- if(!project||!project.file){toast("Loyiha fayli topilmadi");return}
+
+ if(!project||!project.file){
+  toast("Loyiha fayli topilmadi");
+  return;
+ }
+
  const viewer=document.getElementById("embeddedDemoViewer");
  const frame=document.getElementById("embeddedDemoFrame");
- document.getElementById("embeddedDemoName").textContent=project.name+" — ORIGINAL SITE";
+
+ document.getElementById("embeddedDemoName").textContent=
+  project.name+" — ORIGINAL SITE";
+
  frame.src=project.file;
  viewer.classList.add("open");
  viewer.setAttribute("aria-hidden","false");
  document.body.classList.add("demo-open");
 }
+
 function closeEmbeddedDemo(){
  const viewer=document.getElementById("embeddedDemoViewer");
  const frame=document.getElementById("embeddedDemoFrame");
+
  viewer.classList.remove("open");
  viewer.setAttribute("aria-hidden","true");
  document.body.classList.remove("demo-open");
- setTimeout(()=>{if(!viewer.classList.contains("open"))frame.src="about:blank"},240);
+
+ setTimeout(()=>{
+  if(!viewer.classList.contains("open")){
+   frame.src="about:blank";
+  }
+ },240);
 }
 
 /* ==========================================
@@ -812,14 +1075,23 @@ window.checkSiteImages=async function(){
   }else{
    result.status="Hali yuklanmagan (lazy)";
   }
+
   report.push(result);
  }
 
  console.table(report);
+
  const loaded=report.filter(x=>x.status==="Yuklandi").length;
  const fallback=report.filter(x=>x.status==="Zaxira SVG").length;
  const pending=report.filter(x=>x.status.includes("lazy")).length;
- console.log("Jami:",report.length,"| Yuklangan:",loaded,"| SVG fallback:",fallback,"| Lazy:",pending);
+
+ console.log(
+  "Jami:",report.length,
+  "| Yuklangan:",loaded,
+  "| SVG fallback:",fallback,
+  "| Lazy:",pending
+ );
+
  return report;
 };
 
@@ -834,9 +1106,16 @@ routeFromHash();
 
 document.addEventListener("keydown",e=>{
  if(e.key==="Escape"){
-  if(document.getElementById("embeddedDemoViewer")?.classList.contains("open"))closeEmbeddedDemo();
-  else closeModal();
+  if(document.getElementById("embeddedDemoViewer")?.classList.contains("open")){
+   closeEmbeddedDemo();
+  }else{
+   closeModal();
+  }
  }
+});
+
+$("#modal").addEventListener("click",e=>{
+ if(e.target.id==="modal")closeModal();
 });
 
 </script>
