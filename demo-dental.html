@@ -1,0 +1,485 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Demo Dental</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Figtree:wght@400;500;600&display=swap">
+<style>
+/* Layout: yumshoq, keng nafasli bo'limlar; teal aksent, katta yumaloq kartalar, markazlashgan bo'limlar sarlavhasi */
+:root{
+  --bg:#f7fbfb; --surface:#ffffff; --fg:#0f2a2e; --mute:#547074; --line:#d8e8e8; --teal:#0c8f8f; --teal-d:#096b6b; --teal-l:#e0f3f2; --on-teal:#ffffff; --warn:#c2410c; --ok:#0f7a4f;
+  --head:"Manrope","Segoe UI",system-ui,sans-serif; --body:"Figtree","Segoe UI",system-ui,sans-serif;
+  --shadow:0 10px 30px rgba(12,100,100,.09);
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#0b1819;--surface:#112426;--fg:#e6f3f3;--mute:#93b0b2;--line:#1f3a3c;--teal:#2bb8b3;--teal-d:#5fd0cb;--teal-l:#12383a;--on-teal:#062022;--warn:#fb923c;--ok:#4ade80;--shadow:0 10px 30px rgba(0,0,0,.35);color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0b1819;--surface:#112426;--fg:#e6f3f3;--mute:#93b0b2;--line:#1f3a3c;--teal:#2bb8b3;--teal-d:#5fd0cb;--teal-l:#12383a;--on-teal:#062022;--warn:#fb923c;--ok:#4ade80;--shadow:0 10px 30px rgba(0,0,0,.35);color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.6;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--surface);z-index:40}
+.wrap{max-width:1160px;margin:0 auto}
+h1,h2,h3,h4{font-family:var(--head);margin:0;line-height:1.15;letter-spacing:-.02em;text-wrap:balance}
+p{margin:0}
+a{color:var(--teal-d)}
+:focus-visible{outline:3px solid var(--teal);outline-offset:3px;border-radius:6px}
+section{padding-block:76px}
+.eyebrow{font-family:var(--head);font-weight:700;font-size:13px;color:var(--teal-d);letter-spacing:.08em;text-transform:uppercase}
+.sh{max-width:680px;margin:0 auto 44px;text-align:center;display:flex;flex-direction:column;gap:12px;align-items:center}
+.sh h2{font-size:clamp(28px,4vw,42px);font-weight:800}
+.sh p{color:var(--mute)}
+.btn{font:inherit;font-family:var(--head);font-weight:700;background:var(--teal);color:var(--on-teal);border:0;border-radius:14px;padding:15px 26px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:8px;transition:transform .2s,background .2s}
+.btn:hover{background:var(--teal-d);transform:translateY(-2px)}
+.btn.ghost{background:transparent;color:var(--teal-d);border:2px solid var(--teal)}
+.btn.ghost:hover{background:var(--teal-l)}
+.btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow)}
+
+/* header */
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;background:var(--surface);border-bottom:1px solid var(--line);margin-inline:calc(-1 * max(16px,env(safe-area-inset-left,0px)));padding-inline:max(16px,env(safe-area-inset-left,0px))}
+.nav{display:flex;justify-content:space-between;align-items:center;gap:14px;padding-block:12px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--head);font-weight:800;font-size:20px;text-decoration:none;color:var(--fg)}
+.brand svg{width:34px;height:34px}
+.nav ul{display:flex;gap:22px;list-style:none;margin:0;padding:0;flex-wrap:wrap;font-weight:500}
+.nav ul a{text-decoration:none;color:var(--mute)}
+.nav ul a:hover{color:var(--teal-d)}
+.demo-bar{background:var(--teal-l);color:var(--teal-d);text-align:center;padding:8px 16px;font-size:14px;font-weight:600;margin-inline:calc(-1 * max(16px,env(safe-area-inset-left,0px)))}
+
+/* hero */
+.hero{padding-block:64px 40px;display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
+.hero h1{font-size:clamp(34px,5.2vw,60px);font-weight:800}
+.hero h1 em{font-style:normal;color:var(--teal)}
+.hero .lead{color:var(--mute);font-size:18px;margin-block:18px 28px;max-width:52ch}
+.hero .cta-row{display:flex;gap:12px;flex-wrap:wrap}
+.trust{display:flex;gap:28px;margin-top:34px;flex-wrap:wrap}
+.trust div{display:flex;flex-direction:column}
+.trust b{font-family:var(--head);font-size:28px;font-weight:800;color:var(--teal-d)}
+.trust span{font-size:14px;color:var(--mute)}
+.hero-art{aspect-ratio:1/1;max-width:100%;border-radius:36px;background:linear-gradient(160deg,var(--teal-l),var(--surface));border:1px solid var(--line);position:relative;overflow:hidden;box-shadow:var(--shadow)}
+.hero-art svg{position:absolute;inset:0;width:100%;height:100%}
+.float{position:absolute;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:12px 16px;box-shadow:var(--shadow);font-size:14px;display:flex;flex-direction:column}
+.float b{font-family:var(--head)}
+.float.f1{left:6%;bottom:10%}
+.float.f2{right:6%;top:9%}
+
+/* services */
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.svc{padding:26px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.svc .ic{width:50px;height:50px;border-radius:14px;background:var(--teal-l);display:grid;place-items:center}
+.svc .ic svg{width:26px;height:26px;stroke:var(--teal-d);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.svc h3{font-size:19px}
+.svc p{color:var(--mute);font-size:15px}
+.svc .pr{margin-top:auto;font-family:var(--head);font-weight:700;color:var(--teal-d)}
+
+/* calculator */
+.calc{display:grid;grid-template-columns:1.4fr 1fr;gap:24px;align-items:start}
+.calc-list{padding:10px 24px;display:flex;flex-direction:column}
+.opt{display:flex;align-items:center;gap:14px;padding:16px 4px;border-bottom:1px solid var(--line);cursor:pointer}
+.opt:last-child{border-bottom:0}
+.opt input{width:22px;height:22px;accent-color:var(--teal);flex:none}
+.opt .t{flex:1;min-width:0;display:flex;flex-direction:column}
+.opt .t b{font-family:var(--head);font-weight:600}
+.opt .t small{color:var(--mute)}
+.opt .p{font-family:var(--head);font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap}
+.qty{width:64px;padding:8px;border:1px solid var(--line);background:var(--bg);color:var(--fg);border-radius:10px;font:inherit}
+.total{padding:28px;position:sticky;top:calc(80px + env(safe-area-inset-top,0px));display:flex;flex-direction:column;gap:14px}
+.total .sum{font-family:var(--head);font-size:44px;font-weight:800;color:var(--teal-d);font-variant-numeric:tabular-nums;line-height:1}
+.total ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px;font-size:14px;color:var(--mute);min-height:24px}
+.total li{display:flex;justify-content:space-between;gap:10px}
+.disc{background:var(--teal-l);color:var(--teal-d);border-radius:12px;padding:10px 14px;font-size:14px;font-weight:600}
+
+/* doctors */
+.doc{padding:24px;display:flex;flex-direction:column;gap:12px;align-items:flex-start;min-width:0}
+.avatar{width:84px;height:84px;border-radius:50%;background:var(--teal-l);overflow:hidden;border:1px solid var(--line)}
+.avatar svg{width:100%;height:100%;display:block}
+.doc .role{color:var(--teal-d);font-weight:600;font-size:14px}
+.doc p.d{color:var(--mute);font-size:15px}
+.tags{display:flex;gap:6px;flex-wrap:wrap}
+.tags span{background:var(--teal-l);color:var(--teal-d);font-size:13px;padding:4px 10px;border-radius:999px;font-weight:500}
+
+/* booking */
+.book{display:grid;grid-template-columns:1fr 1fr;gap:0;overflow:hidden}
+.book .side{background:var(--teal);color:var(--on-teal);padding:36px;display:flex;flex-direction:column;gap:16px}
+.book .side h3{font-size:28px}
+.book .side ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px}
+.book .side li{display:flex;gap:10px;align-items:flex-start}
+.book .side li::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--on-teal);margin-top:9px;flex:none}
+.book form{padding:32px;display:flex;flex-direction:column;gap:16px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.field{display:flex;flex-direction:column;gap:6px;min-width:0}
+label,.lab{font-weight:600;font-size:14px;font-family:var(--head)}
+input[type=text],input[type=tel],input[type=date],select{font:inherit;color:var(--fg);background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:12px 14px;width:100%;min-width:0}
+input:focus,select:focus{border-color:var(--teal)}
+.slots{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.slot{font:inherit;font-variant-numeric:tabular-nums;padding:10px 0;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--fg);cursor:pointer}
+.slot:hover{border-color:var(--teal)}
+.slot[aria-pressed="true"]{background:var(--teal);color:var(--on-teal);border-color:var(--teal)}
+.slot:disabled{opacity:.4;text-decoration:line-through;cursor:not-allowed}
+.err{color:var(--warn);font-size:14px;min-height:1.2em}
+.confirm{padding:36px;display:flex;flex-direction:column;gap:14px;align-items:flex-start;justify-content:center}
+.confirm .ok{width:56px;height:56px;border-radius:50%;background:var(--teal-l);display:grid;place-items:center}
+.confirm .ok svg{width:28px;height:28px;stroke:var(--ok);fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.confirm dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:6px 18px}
+.confirm dt{color:var(--mute)}
+.confirm dd{margin:0;font-weight:600}
+
+/* before-after */
+.ba{max-width:820px;margin:0 auto;padding:18px}
+.ba-box{--p:50%;position:relative;aspect-ratio:16/9;max-width:100%;border-radius:16px;overflow:hidden;background:#cbd5d5}
+.ba-layer{position:absolute;inset:0}
+.ba-layer svg{width:100%;height:100%;display:block}
+.ba-after{clip-path:inset(0 0 0 var(--p))}
+.ba-line{position:absolute;top:0;bottom:0;left:var(--p);width:3px;background:#fff;transform:translateX(-1.5px);box-shadow:0 0 0 1px rgba(0,0,0,.15)}
+.ba-line::after{content:"\2194";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:44px;height:44px;border-radius:50%;background:#fff;color:#096b6b;display:grid;place-items:center;font-size:20px;box-shadow:0 4px 14px rgba(0,0,0,.25)}
+.ba-lab{position:absolute;top:12px;padding:5px 12px;border-radius:999px;font-size:13px;font-weight:700;background:rgba(0,0,0,.55);color:#fff;font-family:var(--head)}
+.ba-lab.l{left:12px}.ba-lab.r{right:12px}
+.ba input[type=range]{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0}
+.ba-box:focus-within{outline:3px solid var(--teal);outline-offset:3px}
+.ba-note{text-align:center;color:var(--mute);font-size:14px;margin-top:12px}
+
+/* reviews */
+.rev{padding:26px;display:flex;flex-direction:column;gap:14px;min-width:0}
+.stars{display:flex;gap:3px}
+.stars svg{width:18px;height:18px;fill:#f5a524}
+.rev p{font-size:15.5px}
+.who{display:flex;align-items:center;gap:12px;margin-top:auto}
+.who i{width:40px;height:40px;border-radius:50%;background:var(--teal-l);color:var(--teal-d);display:grid;place-items:center;font-style:normal;font-family:var(--head);font-weight:800}
+.who small{color:var(--mute);display:block;line-height:1.2}
+.rating-big{display:flex;gap:14px;align-items:center;justify-content:center;margin-bottom:28px;flex-wrap:wrap}
+.rating-big b{font-family:var(--head);font-size:44px;font-weight:800;color:var(--teal-d);line-height:1}
+
+/* faq */
+.faq{max-width:780px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
+details{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:0 22px}
+summary{cursor:pointer;list-style:none;padding:18px 0;font-family:var(--head);font-weight:700;display:flex;justify-content:space-between;gap:14px;align-items:center}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:24px;color:var(--teal-d);line-height:1;transition:transform .2s}
+details[open] summary::after{transform:rotate(45deg)}
+details p{color:var(--mute);padding-bottom:18px}
+
+/* benefits */
+.ben{background:var(--teal-l);border-radius:36px;padding:64px 32px;margin-inline:0}
+.ben .card{padding:26px;display:flex;flex-direction:column;gap:10px;box-shadow:none}
+.ben .num{font-family:var(--head);font-weight:800;font-size:36px;color:var(--teal);line-height:1}
+.ben h3{font-size:19px}
+.ben p{color:var(--mute);font-size:15px}
+.feat{columns:3;column-gap:24px;list-style:none;margin:0;padding:0;max-width:960px;margin-inline:auto}
+.feat li{break-inside:avoid;padding:10px 0 10px 32px;position:relative;border-bottom:1px solid var(--line)}
+.feat li::before{content:"";position:absolute;left:4px;top:17px;width:14px;height:8px;border-left:2.5px solid var(--teal);border-bottom:2.5px solid var(--teal);transform:rotate(-45deg)}
+
+/* pricing */
+.plan{padding:32px 28px;display:flex;flex-direction:column;gap:16px;position:relative;min-width:0}
+.plan.hot{border:2px solid var(--teal)}
+.plan .badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--teal);color:var(--on-teal);font-size:12px;font-weight:700;padding:4px 14px;border-radius:999px;font-family:var(--head);white-space:nowrap}
+.plan .pp{font-family:var(--head);font-size:36px;font-weight:800;color:var(--teal-d)}
+.plan .pp small{font-size:15px;font-weight:500;color:var(--mute)}
+.plan ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:9px;font-size:15px}
+.plan li{padding-left:24px;position:relative}
+.plan li::before{content:"";position:absolute;left:2px;top:7px;width:11px;height:6px;border-left:2px solid var(--teal);border-bottom:2px solid var(--teal);transform:rotate(-45deg)}
+.plan .btn{margin-top:auto}
+.plan p.d{color:var(--mute);font-size:15px}
+
+/* final cta */
+.final{background:linear-gradient(135deg,var(--teal-d),var(--teal));color:#fff;border-radius:36px;padding:64px 32px;text-align:center;display:flex;flex-direction:column;gap:18px;align-items:center}
+.final h2{font-size:clamp(28px,4.4vw,48px);font-weight:800;max-width:20ch}
+.final p{max-width:56ch;opacity:.92}
+.final .btn{background:#fff;color:#075858}
+.final .btn:hover{background:#e0f3f2}
+footer{padding-block:36px;text-align:center;color:var(--mute);font-size:14px}
+
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translate(-50%,30px);background:var(--fg);color:var(--bg);padding:13px 22px;border-radius:14px;opacity:0;pointer-events:none;transition:.3s;z-index:60;max-width:calc(100vw - 32px);text-align:center}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+@media (max-width:900px){
+  .hero{grid-template-columns:1fr;gap:32px}
+  .grid3{grid-template-columns:repeat(2,1fr)}
+  .calc{grid-template-columns:1fr}
+  .total{position:static}
+  .book{grid-template-columns:1fr}
+  .feat{columns:2}
+}
+@media (max-width:600px){
+  section{padding-block:52px}
+  .grid3{grid-template-columns:1fr}
+  .row2{grid-template-columns:1fr}
+  .slots{grid-template-columns:repeat(3,1fr)}
+  .feat{columns:1}
+  .ben,.final{padding:44px 20px;border-radius:26px}
+  .book .side,.book form,.confirm{padding:24px}
+  .nav ul{gap:14px;font-size:14px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+
+<div class="demo-bar">Bu demo sayt: barcha ism, narx va sharhlar namunaviy.</div>
+<header class="top"><div class="wrap nav">
+  <a class="brand" href="#top"><svg viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="12" fill="var(--teal)"/><path d="M12 12c3-2 5 0 8 0s5-2 8 0c2 4-1 8-1 13-.5 4-2 5-3 0-.5-2-1-3-4-3s-3.500 1-4 3c-1 5-2.500 4-3 0 0-5-3-9-1-13z" fill="var(--on-teal)"/></svg>Demo Dental</a>
+  <ul>
+    <li><a href="#xizmatlar">Xizmatlar</a></li>
+    <li><a href="#narxlar">Narxlar</a></li>
+    <li><a href="#shifokorlar">Shifokorlar</a></li>
+    <li><a href="#yozilish">Qabul</a></li>
+    <li><a href="#faq">Savollar</a></li>
+  </ul>
+  <a class="btn" href="#yozilish">Qabulga yozilish</a>
+</div></header>
+
+<main id="top"><div class="wrap">
+<div class="hero">
+  <div>
+    <span class="eyebrow">Toshkent · Chilonzor · 2012 yildan</span>
+    <h1>Tish davolash <em>og'riqsiz</em> va aniq narxda</h1>
+    <p class="lead">Demo Dental klinikasida davolash rejasi va narxi qabuldan oldin kelishiladi. Zamonaviy asboblar, steril muhit, shoshirmaydigan shifokorlar.</p>
+    <div class="cta-row"><a class="btn" href="#yozilish">Qabulga yozilish</a><a class="btn ghost" href="#kalkulyator">Narxni hisoblash</a></div>
+    <div class="trust">
+      <div><b>12 000+</b><span>davolangan bemor</span></div>
+      <div><b>4.9</b><span>o'rtacha baho</span></div>
+      <div><b>5 yil</b><span>kafolat implantga</span></div>
+    </div>
+  </div>
+  <div class="hero-art">
+    <svg viewBox="0 0 400 400" aria-hidden="true">
+      <circle cx="200" cy="200" r="150" fill="var(--teal-l)"/>
+      <circle cx="200" cy="200" r="104" fill="var(--surface)" stroke="var(--line)" stroke-width="2"/>
+      <path d="M150 150c18-14 34 0 50 0s32-14 50 0c14 26-6 52-6 84-3 30-14 34-20 0-3-12-6-18-24-18s-21 6-24 18c-6 34-17 30-20 0 0-32-20-58-6-84z" fill="var(--teal)"/>
+      <path d="M168 164c8-4 14 2 22 2" stroke="var(--on-teal)" stroke-width="5" stroke-linecap="round" fill="none" opacity=".6"/>
+      <circle cx="318" cy="96" r="10" fill="var(--teal)" opacity=".5"/><circle cx="84" cy="318" r="14" fill="var(--teal)" opacity=".3"/>
+    </svg>
+    <div class="float f2"><b>Bugun bo'sh vaqt</b><span>14:30, 16:00, 17:30</span></div>
+    <div class="float f1"><b>Steril asboblar</b><span>Har bemorga alohida paket</span></div>
+  </div>
+</div>
+
+<section id="xizmatlar">
+  <div class="sh"><span class="eyebrow">Xizmatlar</span><h2>Davolashdan estetikagacha, bitta klinikada</h2><p>Murakkab holatlarda shifokorlar birgalikda yagona reja tuzadi.</p></div>
+  <div class="grid3">
+    <article class="card svc"><div class="ic"><svg viewBox="0 0 24 24"><path d="M7 4c2-1 3 1 5 1s3-2 5-1c2 3 0 6 0 9-.3 3-1 5-2 1-.4-1.500-.8-2-3-2s-2.600.5-3 2c-1 4-1.700 2-2-1 0-3-2-6 0-9z"/></svg></div><h3>Karies davolash</h3><p>Zamonaviy plomba materiallari, mikroskopsiz ham aniq ish, anesteziya bilan.</p><span class="pr">180 000 so'mdan</span></article>
+    <article class="card svc"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3v6M9 9h6M10 9l1 12M14 9l-1 12M8 14h8"/></svg></div><h3>Implantatsiya</h3><p>Premium implantlar, 3D tomografiya bilan rejalashtirish va 5 yillik kafolat.</p><span class="pr">4 500 000 so'mdan</span></article>
+    <article class="card svc"><div class="ic"><svg viewBox="0 0 24 24"><path d="M4 12c0-4 3-7 8-7s8 3 8 7-3 7-8 7-8-3-8-7z"/><path d="M8 12h8"/></svg></div><h3>Tishlarni oqartirish</h3><p>Bir seansda 6–8 ton yengillashish, tish emalini saqlagan holda.</p><span class="pr">1 200 000 so'mdan</span></article>
+    <article class="card svc"><div class="ic"><svg viewBox="0 0 24 24"><path d="M3 9h18M3 15h18M6 7v10M10 7v10M14 7v10M18 7v10"/></svg></div><h3>Breket va alaynerlar</h3><p>Tishlarni tekislash: metall, keramik breketlar yoki shaffof alaynerlar.</p><span class="pr">6 000 000 so'mdan</span></article>
+    <article class="card svc"><div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M5 21c0-4 3-7 7-7s7 3 7 7"/></svg></div><h3>Bolalar stomatologiyasi</h3><p>Qo'rqmasdan davolash: o'yin usulida tanishuv, kumush va kumushsiz variantlar.</p><span class="pr">120 000 so'mdan</span></article>
+    <article class="card svc"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3l8 4v5c0 5-3.500 8-8 9-4.500-1-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg></div><h3>Professional tozalash</h3><p>Ultratovush bilan tosh olish, Air Flow va ftorlash. Yilda ikki marta tavsiya.</p><span class="pr">250 000 so'mdan</span></article>
+  </div>
+</section>
+
+<section id="kalkulyator">
+  <div class="sh"><span class="eyebrow">Narxlar kalkulyatori</span><h2>Davolash narxini oldindan biling</h2><p>Kerakli xizmatni belgilang, jami summa darhol hisoblanadi.</p></div>
+  <div class="calc">
+    <div class="card calc-list" id="calcList"></div>
+    <aside class="card total" aria-live="polite">
+      <span class="eyebrow">Taxminiy jami</span>
+      <div class="sum" id="sum">0 so'm</div>
+      <ul id="lines"><li><span>Xizmat tanlanmagan</span></li></ul>
+      <div class="disc" id="disc" hidden></div>
+      <p class="mute" style="color:var(--mute);font-size:13px">Yakuniy narx ko'rikdan keyin aniqlanadi. 3 va undan ko'p xizmatda 5% chegirma.</p>
+      <a class="btn" href="#yozilish" id="toBook">Shu reja bilan yozilish</a>
+    </aside>
+  </div>
+</section>
+
+<section id="shifokorlar">
+  <div class="sh"><span class="eyebrow">Shifokorlar</span><h2>Sizni davolaydigan mutaxassislar</h2><p>Har biri kamida 8 yillik amaliyotga ega va yiliga ikki marta malaka oshiradi.</p></div>
+  <div class="grid3">
+    <article class="card doc"><div class="avatar"><svg viewBox="0 0 84 84" aria-hidden="true"><rect width="84" height="84" fill="var(--teal-l)"/><circle cx="42" cy="34" r="15" fill="var(--teal)"/><path d="M12 84c2-20 15-28 30-28s28 8 30 28z" fill="var(--teal-d)"/></svg></div><div><h3>Dilnoza Rahimova</h3><span class="role">Bosh shifokor, terapevt</span></div><p class="d">14 yillik tajriba. Murakkab kariesni bir tashrifda davolashga ixtisoslashgan.</p><div class="tags"><span>Davolash</span><span>Estetik plomba</span></div></article>
+    <article class="card doc"><div class="avatar"><svg viewBox="0 0 84 84" aria-hidden="true"><rect width="84" height="84" fill="var(--teal-l)"/><circle cx="42" cy="34" r="15" fill="var(--teal-d)"/><path d="M12 84c2-20 15-28 30-28s28 8 30 28z" fill="var(--teal)"/></svg></div><div><h3>Jasur Ergashev</h3><span class="role">Jarroh-implantolog</span></div><p class="d">900 dan ortiq implant o'rnatgan. Suyak o'stirish va sinus-lifting bo'yicha mutaxassis.</p><div class="tags"><span>Implant</span><span>Jarrohlik</span></div></article>
+    <article class="card doc"><div class="avatar"><svg viewBox="0 0 84 84" aria-hidden="true"><rect width="84" height="84" fill="var(--teal-l)"/><circle cx="42" cy="34" r="15" fill="var(--teal)"/><path d="M12 84c2-20 15-28 30-28s28 8 30 28z" fill="var(--teal-d)"/><path d="M27 30c0-12 30-12 30 0-6-6-24-6-30 0z" fill="var(--teal-d)"/></svg></div><div><h3>Malika Yusupova</h3><span class="role">Ortodont, bolalar shifokori</span></div><p class="d">Alaynerlar va breketlar bilan 9 yillik ish. Bolalar bilan til topishadi.</p><div class="tags"><span>Ortodontiya</span><span>Bolalar</span></div></article>
+  </div>
+</section>
+
+<section id="yozilish">
+  <div class="sh"><span class="eyebrow">Onlayn qabul</span><h2>Qabulga yozilish 1 daqiqa oladi</h2><p>Sana va vaqtni o'zingiz tanlaysiz. Tasdiq shu sahifaning o'zida chiqadi.</p></div>
+  <div class="card book">
+    <div class="side">
+      <h3>Birinchi ko'rik bepul</h3>
+      <p>Tashxis, rentgen va davolash rejasi narxi bilan birga beriladi.</p>
+      <ul><li>Ish vaqti: du–sha, 09:00–19:00</li><li>Manzil: Chilonzor, 12-kvartal (namunaviy)</li><li>Telefon: +998 88 982 22 27</li><li>Qabuldan 2 soat oldin eslatma yuboramiz</li></ul>
+    </div>
+    <form id="bf" novalidate>
+      <div class="row2">
+        <div class="field"><label for="bn">Ismingiz</label><input id="bn" type="text" placeholder="Aziza Karimova" autocomplete="name"></div>
+        <div class="field"><label for="bp">Telefon</label><input id="bp" type="tel" placeholder="+998 88 982 22 27" autocomplete="tel"></div>
+      </div>
+      <div class="row2">
+        <div class="field"><label for="bs">Xizmat</label><select id="bs"></select></div>
+        <div class="field"><label for="bdoc">Shifokor</label><select id="bdoc"><option>Dilnoza Rahimova</option><option>Jasur Ergashev</option><option>Malika Yusupova</option></select></div>
+      </div>
+      <div class="field"><label for="bdate">Sana</label><input id="bdate" type="date"></div>
+      <div class="field"><span class="lab" id="tl">Vaqt</span><div class="slots" id="slots" role="group" aria-labelledby="tl"></div></div>
+      <span class="err" id="berr" role="alert"></span>
+      <button class="btn" type="submit">Qabulni tasdiqlash</button>
+    </form>
+    <div class="confirm" id="conf" hidden>
+      <div class="ok"><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-10"/></svg></div>
+      <h3>Qabul tasdiqlandi</h3>
+      <dl id="cdl"></dl>
+      <p style="color:var(--mute)">Bu demo: haqiqiy sayt shu ma'lumotni klinika jadvaliga va Telegram'ga yuboradi.</p>
+      <button class="btn ghost" type="button" id="again">Yana yozilish</button>
+    </div>
+  </div>
+</section>
+
+<section id="natija">
+  <div class="sh"><span class="eyebrow">Oldin va keyin</span><h2>Natijani o'zingiz ko'ring</h2><p>Chiziqni suring: chapda davolashdan oldin, o'ngda keyin.</p></div>
+  <div class="card ba">
+    <div class="ba-box" id="ba">
+      <div class="ba-layer"><svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="320" height="180" fill="#7d4b4b"/><path d="M0 70c40-30 80-40 160-40s120 10 160 40v110H0z" fill="#e8a4a4"/>
+        <g fill="#cfc08a" stroke="#8a7b45" stroke-width="2"><rect x="50" y="70" width="34" height="56" rx="12"/><rect x="88" y="66" width="34" height="62" rx="12" fill="#b8a05a"/><rect x="126" y="64" width="34" height="64" rx="12"/><rect x="164" y="64" width="34" height="64" rx="12" fill="#a98f4a"/><rect x="202" y="66" width="34" height="62" rx="12"/><rect x="240" y="70" width="30" height="56" rx="12" fill="#b8a05a"/></g>
+        <circle cx="105" cy="100" r="5" fill="#5a4620"/><circle cx="181" cy="96" r="6" fill="#4a3a18"/></svg><span class="ba-lab l">Oldin</span></div>
+      <div class="ba-layer ba-after"><svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="320" height="180" fill="#7d4b4b"/><path d="M0 70c40-30 80-40 160-40s120 10 160 40v110H0z" fill="#f0b6b6"/>
+        <g fill="#ffffff" stroke="#dfe9e9" stroke-width="2"><rect x="50" y="70" width="34" height="56" rx="12"/><rect x="88" y="66" width="34" height="62" rx="12"/><rect x="126" y="64" width="34" height="64" rx="12"/><rect x="164" y="64" width="34" height="64" rx="12"/><rect x="202" y="66" width="34" height="62" rx="12"/><rect x="240" y="70" width="30" height="56" rx="12"/></g></svg><span class="ba-lab r">Keyin</span></div>
+      <div class="ba-line"></div>
+      <input type="range" min="0" max="100" value="50" id="baR" aria-label="Oldin va keyin taqqoslash chizig'i">
+    </div>
+    <p class="ba-note">Namunaviy tasvir. Haqiqiy saytda sizning bemorlaringiz natijalari bo'ladi.</p>
+  </div>
+</section>
+
+<section id="sharhlar">
+  <div class="sh"><span class="eyebrow">Sharhlar</span><h2>Bemorlar nima deydi</h2></div>
+  <div class="rating-big"><b>4.9</b><div><div class="stars" id="bigStars"></div><span style="color:var(--mute)">312 ta sharh asosida (namunaviy)</span></div></div>
+  <div class="grid3">
+    <article class="card rev"><div class="stars" data-s="5"></div><p>Ikki yildan beri tishimni davolatmay yurgandim. Shifokor avval hammasini tushuntirdi, narxni oldindan aytdi va hech narsa og'rimadi.</p><div class="who"><i>N</i><div><b>Nigora S.</b><small>Karies davolash</small></div></div></article>
+    <article class="card rev"><div class="stars" data-s="5"></div><p>Implantdan keyin ikkinchi kuni ishga chiqdim. Eslatma xabarlari kelib turdi, nazorat vaqtini unutmadim.</p><div class="who"><i>B</i><div><b>Bobur T.</b><small>Implantatsiya</small></div></div></article>
+    <article class="card rev"><div class="stars" data-s="5"></div><p>Qizim stomatologdan qo'rqardi. Bu yerda o'yin qilib, tishini ko'rishdi. Endi o'zi so'rab keladi.</p><div class="who"><i>S</i><div><b>Sevara M.</b><small>Bolalar stomatologiyasi</small></div></div></article>
+    <article class="card rev"><div class="stars" data-s="4"></div><p>Alaynerlar 11 oyda ishini tugatdi. Kutish ba'zan 10 daqiqagacha cho'zildi, lekin natijadan xursandman.</p><div class="who"><i>R</i><div><b>Rustam A.</b><small>Ortodontiya</small></div></div></article>
+    <article class="card rev"><div class="stars" data-s="5"></div><p>Onlayn yozildim, to'lov kvitansiyasi ham Telegramga keldi. Hammasi tartibli ishlaydi.</p><div class="who"><i>D</i><div><b>Dilshod Q.</b><small>Tozalash</small></div></div></article>
+    <article class="card rev"><div class="stars" data-s="5"></div><p>Oqartirishdan keyin tishlar sezgir bo'lmadi, shifokor maxsus gel berdi. Tavsiya qilaman.</p><div class="who"><i>Z</i><div><b>Zilola H.</b><small>Oqartirish</small></div></div></article>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="sh"><span class="eyebrow">Savollar</span><h2>Ko'p so'raladigan savollar</h2></div>
+  <div class="faq">
+    <details open><summary>Davolash og'riqlimi?</summary><p>Barcha muolajalar mahalliy yoki kerak bo'lsa chuqurroq og'riqsizlantirish bilan bajariladi. Anesteziyadan oldin gel qo'yiladi, shuning uchun inyeksiya deyarli sezilmaydi.</p></details>
+    <details><summary>Narx qabuldan keyin oshib ketmaydimi?</summary><p>Ko'rikdan so'ng yozma davolash rejasi beriladi. Reja o'zgarsa, shifokor avval sizga aytadi va roziligingizsiz qo'shimcha ish qilinmaydi.</p></details>
+    <details><summary>Bolani nechi yoshdan olib kelish mumkin?</summary><p>Birinchi tashrif uchun eng yaxshi yosh 2–3 yosh. Bu paytda faqat tanishuv va profilaktika bo'ladi.</p></details>
+    <details><summary>Implantga kafolat bormi?</summary><p>Ha, implant tizimiga 5 yil kafolat beriladi. Shart: yilda ikki marta profilaktik ko'rikdan o'tish.</p></details>
+    <details><summary>Qabulni qanday bekor qilsa bo'ladi?</summary><p>Eslatma xabaridagi tugma orqali yoki telefon qilib bekor qilasiz. Kamida 3 soat oldin xabar bersangiz, jarima yo'q.</p></details>
+    <details><summary>To'lovni bo'lib to'lash mumkinmi?</summary><p>Implant va ortodontiya uchun 6 oygacha muddatli to'lov mavjud. Shartlar davolash rejasida ko'rsatiladi.</p></details>
+  </div>
+</section>
+
+<section id="foyda">
+  <div class="ben">
+    <div class="sh"><span class="eyebrow">Biznes uchun</span><h2>Bu sayt klinikangizga qanday foyda keltiradi</h2><p>Chiroyli sahifa emas, bemor oqimini boshqaradigan ish quroli.</p></div>
+    <div class="grid3">
+      <article class="card"><div class="num" style="padding:26px 26px 0">1</div><div style="padding:10px 26px 26px"><h3>Onlayn yozilish</h3><p>Bemor kechasi ham yozila oladi. Administrator telefonga bog'lanib qolmaydi, bo'sh vaqtlar avtomatik to'ladi.</p></div></article>
+      <article class="card"><div class="num" style="padding:26px 26px 0">2</div><div style="padding:10px 26px 26px"><h3>No-show kamayishi</h3><p>Tasdiq va bekor qilish tugmasi kelmay qolishni odatda 30–40 foizga kamaytiradi. Bo'shagan vaqt boshqaga beriladi.</p></div></article>
+      <article class="card"><div class="num" style="padding:26px 26px 0">3</div><div style="padding:10px 26px 26px"><h3>SMS va Telegram eslatma</h3><p>Qabuldan 1 kun va 2 soat oldin avtomatik xabar ketadi. Qayta tashrif va nazorat ham eslatiladi.</p></div></article>
+      <article class="card"><div class="num" style="padding:26px 26px 0">4</div><div style="padding:10px 26px 26px"><h3>Ishonch va reyting</h3><p>Sharhlar, shifokor diplomlari va oldin-keyin natijalari yangi bemorning qaror qilishini osonlashtiradi.</p></div></article>
+      <article class="card"><div class="num" style="padding:26px 26px 0">5</div><div style="padding:10px 26px 26px"><h3>Mijozlar bazasi</h3><p>Har bir murojaat yig'iladi: ism, xizmat, oxirgi tashrif. Qaytmagan bemorlarga qayta murojaat qilasiz.</p></div></article>
+      <article class="card"><div class="num" style="padding:26px 26px 0">6</div><div style="padding:10px 26px 26px"><h3>Reklama natijasi</h3><p>Qaysi reklama nechta qabul keltirganini ko'rasiz. Samarasiz kanalga pul sarflamaysiz.</p></div></article>
+    </div>
+  </div>
+</section>
+
+<section id="funksiyalar">
+  <div class="sh"><span class="eyebrow">Funksiyalar</span><h2>Sayt bilan nimalar keladi</h2></div>
+  <ul class="feat">
+    <li>Onlayn yozilish formasi</li><li>Narxlar kalkulyatori</li><li>Shifokorlar sahifalari</li>
+    <li>Oldin/keyin galereyasi</li><li>Sharhlar bloki</li><li>FAQ bo'limi</li>
+    <li>Telegram bot ulanishi</li><li>SMS eslatmalar</li><li>Telefonda qulay ko'rinish</li>
+    <li>Tez yuklanish</li><li>Google'da topilish (SEO)</li><li>Xarita va manzil</li>
+    <li>Admin panel (jadval)</li><li>Mijozlar bazasi</li><li>Reklama statistikasi</li>
+  </ul>
+</section>
+
+<section id="narxlar">
+  <div class="sh"><span class="eyebrow">Sayt paketlari</span><h2>Klinikangiz uchun qulay paket</h2><p>Narxlar namunaviy, bir martalik to'lov va oylik qo'llab-quvvatlash.</p></div>
+  <div class="grid3">
+    <article class="card plan"><h3>Start</h3><p class="d">Bitta shifokor yoki kichik klinika uchun.</p><div class="pp">3 500 000 <small>so'm</small></div><ul><li>5 bo'limli bir sahifali sayt</li><li>Qabul formasi (Telegramga)</li><li>Xizmatlar va narxlar</li><li>Telefonga moslashgan</li></ul><a class="btn ghost" href="#yozilish" data-plan="Start">Start'ni tanlash</a></article>
+    <article class="card plan hot"><span class="badge">Eng ko'p tanlanadi</span><h3>Biznes</h3><p class="d">O'sib borayotgan klinika uchun.</p><div class="pp">7 900 000 <small>so'm</small></div><ul><li>Start paketidagi hammasi</li><li>Narxlar kalkulyatori</li><li>Onlayn yozilish jadvali</li><li>SMS va Telegram eslatma</li><li>Sharhlar va oldin/keyin</li></ul><a class="btn" href="#yozilish" data-plan="Biznes">Biznes'ni tanlash</a></article>
+    <article class="card plan"><h3>Premium</h3><p class="d">Tarmoq yoki yirik klinika uchun.</p><div class="pp">14 500 000 <small>so'm</small></div><ul><li>Biznes paketidagi hammasi</li><li>Admin panel va mijozlar bazasi</li><li>Reklama statistikasi</li><li>Ko'p filial va shifokorlar</li><li>6 oy qo'llab-quvvatlash</li></ul><a class="btn ghost" href="#yozilish" data-plan="Premium">Premium'ni tanlash</a></article>
+  </div>
+</section>
+
+<section>
+  <div class="final">
+    <h2>Bu demo sayt. Xohlasangiz buni haqiqiy biznes loyihangizga aylantiramiz</h2>
+    <p>Klinikangiz nomi, shifokorlari, narxlari va ranglari bilan tayyor sayt 7–14 kunda ishga tushadi.</p>
+    <a class="btn" href="#yozilish" id="order">Buyurtma berish</a>
+  </div>
+</section>
+</div></main>
+<footer>Demo Dental · namunaviy sayt · Barcha ma'lumotlar xayoliy</footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+  var $=function(i){return document.getElementById(i)};
+  var toast=$('toast'),tt;
+  function say(m){toast.textContent=m;toast.classList.add('show');clearTimeout(tt);tt=setTimeout(function(){toast.classList.remove('show')},3200)}
+  function fmt(n){return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g,' ')+" so'm"}
+  var star='<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.500l2.600 5.400 5.900.8-4.300 4.100 1.100 5.800L10 14.800 4.700 17.600l1.100-5.800L1.500 7.700l5.900-.8z"/></svg>';
+  document.querySelectorAll('.stars[data-s]').forEach(function(e){var n=+e.dataset.s,h='';for(var i=0;i<5;i++)h+=i<n?star:star.replace('<svg','<svg style="opacity:.25"');e.innerHTML=h;e.setAttribute('role','img');e.setAttribute('aria-label',n+' yulduz')});
+  $('bigStars').innerHTML=star+star+star+star+star;
+
+  var S=[
+    {n:'Professional tozalash',d:'Ultratovush + Air Flow',p:250000},
+    {n:'Karies davolash',d:'Bir tish, plomba bilan',p:180000,q:1},
+    {n:'Tishlarni oqartirish',d:'Bir seans',p:1200000},
+    {n:'Implantatsiya',d:'Bir implant, qalpoqchasiz',p:4500000,q:1},
+    {n:'Keramik qalpoqcha',d:'Bir birlik',p:1800000,q:1},
+    {n:'Tish olish',d:'Oddiy olish',p:200000,q:1},
+    {n:'Alaynerlar',d:'Bir jag uchun',p:6000000}
+  ];
+  var list=$('calcList'),state=S.map(function(s,i){return {on:i===0,q:1}});
+  S.forEach(function(s,i){
+    var l=document.createElement('label');l.className='opt';
+    l.innerHTML='<input type="checkbox" id="c'+i+'"'+(i===0?' checked':'')+'><span class="t"><b>'+s.n+'</b><small>'+s.d+'</small></span>'+(s.q?'<input class="qty" type="number" min="1" max="12" value="1" id="q'+i+'" aria-label="'+s.n+' soni">':'')+'<span class="p">'+fmt(s.p)+'</span>';
+    list.appendChild(l);
+  });
+  function calc(){
+    var tot=0,cnt=0,h='';
+    S.forEach(function(s,i){
+      var on=$('c'+i).checked,q=s.q?Math.max(1,Math.min(12,+$('q'+i).value||1)):1;
+      if(on){var sub=s.p*q;tot+=sub;cnt++;h+='<li><span>'+s.n+(q>1?' × '+q:'')+'</span><span>'+fmt(sub)+'</span></li>'}
+    });
+    var d=$('disc');
+    if(cnt>=3){var off=Math.round(tot*.05);tot-=off;d.hidden=false;d.textContent='5% chegirma: '+fmt(off)+' tejaladi'}else d.hidden=true;
+    $('lines').innerHTML=h||'<li><span>Xizmat tanlanmagan</span></li>';
+    $('sum').textContent=fmt(tot);
+  }
+  list.addEventListener('input',calc);calc();
+
+  var bs=$('bs');S.forEach(function(s){var o=document.createElement('option');o.textContent=s.n;bs.appendChild(o)});
+  $('toBook').addEventListener('click',function(){var first=S.findIndex(function(_,i){return $('c'+i).checked});if(first>-1)bs.selectedIndex=first});
+
+  var d=new Date();d.setDate(d.getDate()+1);
+  var iso=function(x){return x.getFullYear()+'-'+String(x.getMonth()+1).padStart(2,'0')+'-'+String(x.getDate()).padStart(2,'0')};
+  var bd=$('bdate');bd.min=iso(new Date());bd.value=iso(d);
+  var times=['09:00','10:00','11:00','12:00','14:00','15:00','16:00','17:00','18:00'],sel='',slots=$('slots');
+  function drawSlots(){
+    slots.innerHTML='';var seed=(bd.value||'').split('-').reduce(function(a,b){return a+ +b},0);
+    times.forEach(function(t,i){
+      var b=document.createElement('button');b.type='button';b.className='slot';b.textContent=t;b.setAttribute('aria-pressed','false');
+      if((seed+i*3)%5===0)b.disabled=true;
+      b.addEventListener('click',function(){sel=t;slots.querySelectorAll('.slot').forEach(function(x){x.setAttribute('aria-pressed',String(x===b))})});
+      slots.appendChild(b);
+    });sel='';
+  }
+  bd.addEventListener('change',drawSlots);drawSlots();
+  $('bf').addEventListener('submit',function(e){
+    e.preventDefault();
+    var n=$('bn').value.trim(),p=$('bp').value.trim(),er=$('berr');
+    if(n.length<2){er.textContent='Ismingizni kiriting.';$('bn').focus();return}
+    if(p.replace(/\D/g,'').length<9){er.textContent="Telefon raqamini to'liq kiriting.";$('bp').focus();return}
+    if(!bd.value){er.textContent='Sanani tanlang.';return}
+    if(!sel){er.textContent='Qulay vaqtni tanlang.';return}
+    er.textContent='';
+    var dt=new Date(bd.value+'T00:00:00').toLocaleDateString('uz-UZ',{day:'numeric',month:'long',weekday:'long'});
+    $('cdl').innerHTML='<dt>Bemor</dt><dd></dd><dt>Xizmat</dt><dd></dd><dt>Shifokor</dt><dd></dd><dt>Sana</dt><dd></dd><dt>Vaqt</dt><dd></dd>';
+    var dd=$('cdl').querySelectorAll('dd');
+    dd[0].textContent=n;dd[1].textContent=bs.value;dd[2].textContent=$('bdoc').value;dd[3].textContent=dt;dd[4].textContent=sel;
+    $('bf').hidden=true;document.querySelector('.book .side').hidden=true;$('conf').hidden=false;
+    $('conf').parentNode.style.gridTemplateColumns='1fr';
+    say('Qabul tasdiqlandi');
+  });
+  $('again').addEventListener('click',function(){$('conf').hidden=true;$('bf').hidden=false;document.querySelector('.book .side').hidden=false;$('conf').parentNode.style.gridTemplateColumns='';$('bf').reset();bd.value=iso(d);drawSlots()});
+
+  var ba=$('ba');$('baR').addEventListener('input',function(e){ba.style.setProperty('--p',e.target.value+'%')});
+  document.querySelectorAll('[data-plan]').forEach(function(a){a.addEventListener('click',function(){say(a.dataset.plan+" paketi tanlandi. Formani to'ldiring.")})});
+  $('order').addEventListener('click',function(){say("Buyurtma uchun formani to'ldiring")});
+})();
+</script>
+
+<div class="portfolio-credit" style="padding:12px 18px;text-align:center;font:11px/1.7 system-ui,sans-serif;color:#8b98a8;background:#080b10;border-top:1px solid #ffffff18">Demo loyiha · Ishlab chiquvchi: <a href="../index.html" style="color:inherit;text-decoration:underline">Muhammadamin AI Lab</a> · <a href="https://t.me/Muhammad1y_20" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">@Muhammad1y_20</a> · +998 88 982 22 27</div>
+</body></html>

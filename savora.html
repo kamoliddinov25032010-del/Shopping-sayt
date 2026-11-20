@@ -1,0 +1,1081 @@
+
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#f7f3eb">
+<meta name="description" content="SAVORA — ta'm, atmosfera va unutilmas taassurotlar.">
+<title>SAVORA — Taste Beyond Ordinary</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --cream:#f7f3eb;
+  --paper:#fffdf8;
+  --ink:#25251f;
+  --muted:#858276;
+  --wine:#792e3b;
+  --wine-dark:#54202b;
+  --olive:#66704c;
+  --gold:#c4a36a;
+  --line:#e8e1d5;
+  --shadow:0 20px 60px rgba(53,39,24,.09);
+  --serif:'Playfair Display',serif;
+  --sans:'DM Sans',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--cream);
+  color:var(--ink);
+  font-family:var(--sans);
+  overflow-x:hidden;
+}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+a{color:inherit;text-decoration:none}
+img{display:block;width:100%;object-fit:cover}
+::selection{background:var(--wine);color:white}
+.container{width:min(1240px,90%);margin:auto}
+.eyebrow{
+  color:var(--wine);
+  text-transform:uppercase;
+  letter-spacing:3px;
+  font-size:10px;
+  font-weight:800;
+}
+.serif{font-family:var(--serif)}
+.topline{
+  background:var(--wine-dark);
+  color:#f8eee3;
+  text-align:center;
+  padding:10px;
+  font-size:10px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+}
+.nav{
+  height:86px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  border-bottom:1px solid var(--line);
+  position:relative;
+  z-index:20;
+}
+.logo{
+  font-family:var(--serif);
+  font-size:34px;
+  font-weight:800;
+  letter-spacing:3px;
+}
+.logo span{color:var(--wine)}
+.nav-links{display:flex;gap:34px;align-items:center}
+.nav-links a{
+  font-size:12px;
+  color:#666256;
+  transition:.3s;
+}
+.nav-links a:hover{color:var(--wine)}
+.nav-actions{display:flex;gap:12px;align-items:center}
+.icon-btn{
+  width:42px;height:42px;border:1px solid var(--line);
+  border-radius:50%;background:transparent;
+  position:relative;display:grid;place-items:center;
+  color:var(--ink);font-size:17px;
+}
+.cart-count{
+  position:absolute;right:-4px;top:-5px;
+  background:var(--wine);color:white;
+  width:18px;height:18px;border-radius:50%;
+  font-size:10px;display:grid;place-items:center;
+}
+.book-btn{
+  background:var(--wine);color:white;border:0;
+  padding:14px 22px;font-size:11px;
+  letter-spacing:1px;text-transform:uppercase;
+  transition:.3s;
+}
+.book-btn:hover{background:var(--wine-dark);transform:translateY(-2px)}
+.menu-toggle{display:none}
+
+/* HERO */
+.hero{
+  min-height:690px;
+  display:grid;grid-template-columns:1fr 1fr;
+  align-items:center;gap:50px;
+  padding:65px 0 85px;
+}
+.hero-copy{padding:20px 0}
+.hero-label{
+  display:flex;align-items:center;gap:12px;
+  margin-bottom:28px;
+}
+.hero-label:before{content:"";width:38px;height:1px;background:var(--gold)}
+.hero h1{
+  font:500 clamp(54px,6.5vw,91px)/1.04 var(--serif);
+  letter-spacing:-3px;
+  max-width:650px;
+}
+.hero h1 em{color:var(--wine);font-weight:400}
+.hero-desc{
+  color:var(--muted);font-size:14px;
+  line-height:1.9;max-width:440px;margin:28px 0 34px;
+}
+.hero-buttons{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.primary-btn{
+  background:var(--wine);color:white;border:0;
+  padding:17px 27px;font-size:11px;
+  letter-spacing:1.3px;text-transform:uppercase;
+  transition:.3s;
+}
+.primary-btn:hover{background:var(--wine-dark);transform:translateY(-3px)}
+.secondary-btn{
+  border:1px solid var(--line);background:transparent;
+  padding:16px 25px;font-size:11px;
+  text-transform:uppercase;letter-spacing:1px;
+}
+.hero-meta{
+  display:flex;gap:28px;margin-top:50px;
+  padding-top:24px;border-top:1px solid var(--line);
+}
+.meta strong{display:block;font:26px var(--serif)}
+.meta span{font-size:10px;color:var(--muted);letter-spacing:1px}
+.hero-visual{position:relative;height:540px}
+.hero-photo{
+  width:85%;height:100%;margin-left:auto;
+  border-radius:220px 220px 8px 8px;
+  overflow:hidden;
+}
+.hero-photo img{height:100%;transition:transform 1s}
+.hero-photo:hover img{transform:scale(1.04)}
+.hero-stamp{
+  position:absolute;left:0;bottom:38px;
+  width:145px;height:145px;border-radius:50%;
+  background:var(--olive);color:white;
+  display:flex;flex-direction:column;justify-content:center;
+  align-items:center;text-align:center;
+  border:8px solid var(--cream);
+  transform:rotate(-10deg);
+}
+.hero-stamp strong{font:32px var(--serif)}
+.hero-stamp span{font-size:9px;letter-spacing:2px}
+.hero-number{
+  position:absolute;right:-20px;top:40px;
+  writing-mode:vertical-rl;font:13px var(--serif);
+  letter-spacing:4px;color:var(--wine);
+}
+
+/* MARQUEE */
+.marquee{
+  background:var(--wine);color:#f8eee3;
+  overflow:hidden;padding:21px 0;
+}
+.marquee-track{
+  display:flex;width:max-content;
+  animation:marquee 32s linear infinite;
+}
+.marquee span{
+  font:22px var(--serif);letter-spacing:2px;
+  padding:0 35px;white-space:nowrap;
+}
+.marquee i{color:var(--gold);font-style:normal}
+@keyframes marquee{to{transform:translateX(-50%)}}
+
+/* INTRO */
+.section{padding:115px 0}
+.section-head{
+  display:flex;justify-content:space-between;
+  align-items:end;gap:30px;margin-bottom:48px;
+}
+.section-title{
+  font:500 clamp(38px,5vw,61px)/1.1 var(--serif);
+  margin-top:14px;
+}
+.section-sub{
+  max-width:360px;color:var(--muted);
+  font-size:13px;line-height:1.9;
+}
+.story-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:80px;align-items:center;
+}
+.story-image{height:490px;position:relative}
+.story-image img{height:100%;border-radius:4px}
+.story-note{
+  position:absolute;right:-28px;bottom:30px;
+  background:var(--paper);padding:25px;
+  width:190px;box-shadow:var(--shadow);
+}
+.story-note strong{font:30px var(--serif);color:var(--wine)}
+.story-note p{font-size:11px;line-height:1.7;color:var(--muted);margin-top:5px}
+.story-copy p{
+  font-size:14px;line-height:2;color:var(--muted);
+  margin:24px 0;
+}
+.signature{font:italic 24px var(--serif);color:var(--wine)}
+
+/* MENU */
+.menu-section{background:var(--paper)}
+.menu-tools{
+  display:flex;justify-content:space-between;
+  gap:20px;align-items:center;flex-wrap:wrap;
+  margin-bottom:30px;
+}
+.filters{display:flex;gap:8px;flex-wrap:wrap}
+.filter-btn{
+  border:1px solid var(--line);background:transparent;
+  padding:11px 17px;font-size:10px;
+  letter-spacing:.7px;color:var(--muted);
+  transition:.25s;
+}
+.filter-btn.active,.filter-btn:hover{
+  background:var(--wine);border-color:var(--wine);color:white;
+}
+.search{
+  width:230px;padding:12px 15px;
+  border:1px solid var(--line);outline:none;
+  background:var(--cream);font-size:11px;
+}
+.search:focus{border-color:var(--wine)}
+.food-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:24px;
+}
+.food-card{
+  background:var(--cream);position:relative;
+  transition:.35s;overflow:hidden;
+}
+.food-card:hover{transform:translateY(-7px);box-shadow:var(--shadow)}
+.food-img{height:235px;overflow:hidden;position:relative}
+.food-img img{height:100%;transition:transform .7s}
+.food-card:hover .food-img img{transform:scale(1.07)}
+.food-tag{
+  position:absolute;left:15px;top:15px;
+  background:var(--paper);color:var(--wine);
+  padding:7px 11px;font-size:9px;
+  letter-spacing:1px;text-transform:uppercase;
+}
+.food-info{padding:22px}
+.food-top{display:flex;justify-content:space-between;gap:10px}
+.food-name{font:23px var(--serif)}
+.food-price{font-weight:800;color:var(--wine);font-size:13px;white-space:nowrap}
+.food-desc{font-size:11px;line-height:1.8;color:var(--muted);margin:12px 0 18px;min-height:40px}
+.food-bottom{display:flex;justify-content:space-between;align-items:center}
+.food-rating{font-size:10px;color:var(--olive)}
+.add-btn{
+  border:1px solid var(--wine);background:transparent;
+  color:var(--wine);padding:10px 15px;
+  font-size:10px;transition:.25s;
+}
+.add-btn:hover{background:var(--wine);color:white}
+.empty-menu{grid-column:1/-1;text-align:center;padding:60px;color:var(--muted)}
+
+/* FEATURE */
+.feature{
+  background:var(--olive);color:white;
+  display:grid;grid-template-columns:1fr 1fr;
+  min-height:470px;
+}
+.feature-image{min-height:470px}
+.feature-image img{height:100%}
+.feature-content{
+  padding:80px clamp(30px,7vw,110px);
+  display:flex;flex-direction:column;justify-content:center;
+}
+.feature-content .eyebrow{color:#e7d4a8}
+.feature-content h2{
+  font:500 clamp(38px,5vw,58px)/1.15 var(--serif);
+  margin:22px 0;
+}
+.feature-content p{font-size:13px;line-height:2;color:#e0e4d7;max-width:410px}
+.feature-content a{
+  margin-top:28px;display:inline-block;
+  border-bottom:1px solid #d6cba9;padding-bottom:9px;
+  width:max-content;font-size:10px;letter-spacing:2px;
+}
+
+/* EXPERIENCE */
+.experience-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:40px;margin-top:50px;
+}
+.experience-item{border-top:1px solid var(--line);padding-top:24px}
+.experience-item .num{font:38px var(--serif);color:var(--gold)}
+.experience-item h3{font:25px var(--serif);margin:17px 0 10px}
+.experience-item p{font-size:12px;color:var(--muted);line-height:1.9}
+
+/* GALLERY */
+.gallery-grid{
+  display:grid;grid-template-columns:1.2fr .8fr .8fr;
+  grid-template-rows:220px 220px;gap:14px;
+}
+.gallery-grid img{height:100%;border-radius:3px;transition:.4s}
+.gallery-grid img:hover{filter:brightness(.8)}
+.gallery-grid img:first-child{grid-row:span 2}
+.gallery-grid img:last-child{grid-column:span 2}
+
+/* BOOKING */
+.booking{
+  background:var(--wine-dark);color:#fff8ee;
+  padding:100px 0;
+}
+.booking-grid{
+  display:grid;grid-template-columns:.8fr 1.2fr;
+  gap:90px;align-items:center;
+}
+.booking h2{font:500 clamp(42px,5vw,64px)/1.1 var(--serif);margin:20px 0}
+.booking-copy p{font-size:13px;color:#d9c4bc;line-height:2}
+.booking-form{
+  background:#fffaf2;color:var(--ink);
+  padding:38px;display:grid;grid-template-columns:1fr 1fr;gap:18px;
+}
+.field{display:flex;flex-direction:column;gap:8px}
+.field.full{grid-column:1/-1}
+.field label{font-size:10px;color:var(--muted);letter-spacing:1px;text-transform:uppercase}
+.field input,.field select,.field textarea{
+  border:1px solid var(--line);background:transparent;
+  padding:14px;outline:none;color:var(--ink);
+  font-size:12px;width:100%;
+}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--wine)}
+.field textarea{resize:vertical;min-height:75px}
+.booking-form button{grid-column:1/-1;width:100%;padding:17px}
+.booking-message{grid-column:1/-1;color:var(--wine);font-size:12px;line-height:1.7}
+
+/* FOOTER */
+footer{background:#211f1b;color:#f8eee3;padding:70px 0 25px}
+.footer-grid{
+  display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;
+  gap:45px;padding-bottom:55px;
+}
+.footer-brand .logo{font-size:37px}
+.footer-brand p{font-size:12px;line-height:2;color:#aaa59a;max-width:270px;margin-top:20px}
+.footer-col h4{font:20px var(--serif);margin-bottom:20px}
+.footer-col a,.footer-col p{
+  display:block;font-size:11px;color:#aaa59a;
+  margin:13px 0;line-height:1.8;
+}
+.footer-col a:hover{color:white}
+.footer-bottom{
+  border-top:1px solid #403d35;padding-top:22px;
+  display:flex;justify-content:space-between;gap:15px;
+  color:#888477;font-size:10px;
+}
+
+/* CART DRAWER */
+.overlay{
+  position:fixed;inset:0;background:rgba(22,19,16,.55);
+  z-index:50;opacity:0;visibility:hidden;transition:.3s;
+}
+.overlay.open{opacity:1;visibility:visible}
+.cart-panel{
+  position:fixed;right:0;top:0;height:100%;
+  width:min(440px,100%);background:var(--paper);
+  z-index:51;padding:30px;transform:translateX(100%);
+  transition:.35s;display:flex;flex-direction:column;
+}
+.cart-panel.open{transform:translateX(0)}
+.cart-head{display:flex;justify-content:space-between;align-items:center;padding-bottom:20px;border-bottom:1px solid var(--line)}
+.cart-head h3{font:29px var(--serif)}
+.close-cart{border:0;background:none;font-size:25px}
+.cart-items{flex:1;overflow:auto;padding:15px 0}
+.cart-item{
+  display:flex;gap:13px;padding:15px 0;
+  border-bottom:1px solid var(--line);
+}
+.cart-item img{width:75px;height:75px}
+.cart-item-info{flex:1}
+.cart-item-info strong{font:17px var(--serif)}
+.cart-item-info small{display:block;color:var(--wine);margin:5px 0}
+.qty{display:flex;gap:10px;align-items:center;margin-top:7px}
+.qty button{width:24px;height:24px;border:1px solid var(--line);background:transparent}
+.remove{border:0;background:none;color:var(--muted);font-size:10px}
+.cart-total{border-top:1px solid var(--line);padding-top:20px}
+.total-line{display:flex;justify-content:space-between;margin:9px 0;font-size:13px}
+.total-line.final{font-size:19px;font-weight:800;color:var(--wine)}
+.cart-checkout{width:100%;margin-top:17px}
+.cart-empty{text-align:center;padding:65px 10px;color:var(--muted);font:23px var(--serif)}
+.toast{
+  position:fixed;bottom:25px;left:50%;transform:translate(-50%,20px);
+  background:var(--wine-dark);color:white;padding:14px 23px;
+  z-index:80;font-size:11px;opacity:0;transition:.3s;
+  pointer-events:none;
+}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+.reveal{opacity:0;transform:translateY(25px);transition:opacity .8s,transform .8s}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:900px){
+  .nav-links{gap:15px}
+  .nav-links a{font-size:10px}
+  .hero{gap:20px}
+  .hero-visual{height:440px}
+  .food-grid{grid-template-columns:repeat(2,1fr)}
+  .booking-grid{gap:35px}
+  .footer-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:650px){
+  .topline{font-size:8px}
+  .nav{height:72px}
+  .logo{font-size:27px}
+  .nav-links{
+    display:none;position:absolute;top:72px;left:0;right:0;
+    background:var(--paper);padding:25px;
+    flex-direction:column;align-items:flex-start;
+    border-bottom:1px solid var(--line);
+  }
+  .nav-links.open{display:flex}
+  .menu-toggle{display:grid}
+  .nav-actions .book-btn{display:none}
+  .hero{grid-template-columns:1fr;padding:55px 0 65px}
+  .hero h1{font-size:59px}
+  .hero-visual{height:400px;margin-top:10px}
+  .hero-photo{width:88%}
+  .hero-stamp{width:115px;height:115px}
+  .hero-stamp strong{font-size:25px}
+  .hero-meta{gap:17px}
+  .meta strong{font-size:22px}
+  .section{padding:75px 0}
+  .section-head{display:block}
+  .section-sub{margin-top:18px}
+  .story-grid{grid-template-columns:1fr;gap:45px}
+  .story-image{height:360px;margin-right:15px}
+  .story-note{right:-10px;width:155px;padding:17px}
+  .food-grid{grid-template-columns:1fr}
+  .food-img{height:260px}
+  .menu-tools{align-items:stretch}
+  .filters{gap:6px}
+  .filter-btn{padding:9px 11px;font-size:9px}
+  .search{width:100%}
+  .feature{grid-template-columns:1fr}
+  .feature-image{min-height:300px;height:300px}
+  .feature-content{padding:55px 8%}
+  .experience-grid{grid-template-columns:1fr;gap:30px}
+  .gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:180px 180px 180px}
+  .gallery-grid img:first-child{grid-row:span 2}
+  .gallery-grid img:last-child{grid-column:span 2}
+  .booking{padding:75px 0}
+  .booking-grid{grid-template-columns:1fr;gap:35px}
+  .booking-form{padding:23px;grid-template-columns:1fr}
+  .field.full,.booking-form button,.booking-message{grid-column:1}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:30px}
+  .footer-brand{grid-column:1/-1}
+  .footer-bottom{flex-direction:column}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{scroll-behavior:auto!important;animation:none!important;transition:none!important}
+}
+</style>
+</head>
+
+<body>
+<div class="topline">A special place for extraordinary taste · Every day 10:00 — 23:00</div>
+
+<header class="container nav">
+  <a href="#" class="logo">SAV<span>O</span>RA.</a>
+
+  <nav class="nav-links" id="navLinks">
+    <a href="#story">Biz haqimizda</a>
+    <a href="#menu">Menyu</a>
+    <a href="#experience">Atmosfera</a>
+    <a href="#gallery">Galereya</a>
+    <a href="#booking">Aloqa</a>
+  </nav>
+
+  <div class="nav-actions">
+    <button class="icon-btn" onclick="openCart()" aria-label="Savatcha">
+      ♧ <span class="cart-count" id="cartCount">0</span>
+    </button>
+    <a class="book-btn" href="#booking">Stol band qilish</a>
+    <button class="icon-btn menu-toggle" onclick="toggleMenu()" aria-label="Menyu">☰</button>
+  </div>
+</header>
+
+<main>
+<section class="container hero">
+  <div class="hero-copy reveal">
+    <div class="hero-label eyebrow">The art of dining</div>
+    <h1>Ta'mning <em>yangi</em> san'ati.</h1>
+    <p class="hero-desc">
+      Har bir taom — alohida hikoya. Eng sara masalliqlar,
+      mahoratli oshpazlar va har bir lahzaga mos atmosfera.
+      SAVORA'da oddiy kechki ovqat unutilmas taassurotga aylanadi.
+    </p>
+    <div class="hero-buttons">
+      <a href="#menu" class="primary-btn">Menyuni ko'rish ↗</a>
+      <a href="#story" class="secondary-btn">Bizning hikoyamiz</a>
+    </div>
+    <div class="hero-meta">
+      <div class="meta"><strong>4.9/5</strong><span>MEHMONLAR BAHOSI</span></div>
+      <div class="meta"><strong>35+</strong><span>MAXSUS TAOMLAR</span></div>
+      <div class="meta"><strong>100%</strong><span>YANGI MASALLIQ</span></div>
+    </div>
+  </div>
+
+  <div class="hero-visual reveal">
+    <div class="hero-photo">
+      <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1100&q=90" alt="Elegant restaurant dining table">
+    </div>
+    <div class="hero-stamp"><strong>Since</strong><span>THE ART OF TASTE</span><strong>2024</strong></div>
+    <div class="hero-number">SAVORA · SIGNATURE EXPERIENCE</div>
+  </div>
+</section>
+
+<div class="marquee">
+  <div class="marquee-track">
+    <span>GOOD FOOD <i>✦</i> GOOD MOOD</span><span>MADE WITH PASSION <i>✦</i></span>
+    <span>THE ART OF TASTE <i>✦</i></span><span>FRESH INGREDIENTS <i>✦</i></span>
+    <span>GOOD FOOD <i>✦</i> GOOD MOOD</span><span>MADE WITH PASSION <i>✦</i></span>
+    <span>THE ART OF TASTE <i>✦</i></span><span>FRESH INGREDIENTS <i>✦</i></span>
+  </div>
+</div>
+
+<section class="section container" id="story">
+  <div class="story-grid">
+    <div class="story-image reveal">
+      <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1000&q=85" alt="Restaurant interior">
+      <div class="story-note">
+        <strong>More than food.</strong>
+        <p>Bu yerda ta'm, muhit va insonlar birlashadi.</p>
+      </div>
+    </div>
+    <div class="story-copy reveal">
+      <div class="eyebrow">Our philosophy · 01</div>
+      <h2 class="section-title">Biz uchun taom — bu san'at.</h2>
+      <p>
+        SAVORA oddiy restoran bo'lishni istamaydi. Biz har bir detalga
+        e'tibor beramiz: masalliqning tanlanishidan tortib, dasturxonga
+        tortilishigacha.
+      </p>
+      <p>
+        Bizning oshxonamizda an'anaviy ta'mlar zamonaviy yondashuv bilan
+        uchrashadi. Natijada har bir mehmon o'ziga xos tajribaga ega bo'ladi.
+      </p>
+      <div class="signature">With love, SAVORA kitchen.</div>
+    </div>
+  </div>
+</section>
+
+<section class="section menu-section" id="menu">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Discover our menu · 02</div>
+        <h2 class="section-title">Oshxonamizdan tanlang.</h2>
+      </div>
+      <p class="section-sub">Har bir taom yangi masalliqlar va alohida e'tibor bilan tayyorlanadi.</p>
+    </div>
+
+    <div class="menu-tools">
+      <div class="filters" id="filters">
+        <button class="filter-btn active" data-filter="all">Barchasi</button>
+        <button class="filter-btn" data-filter="main">Asosiy taomlar</button>
+        <button class="filter-btn" data-filter="pasta">Pasta</button>
+        <button class="filter-btn" data-filter="salad">Salatlar</button>
+        <button class="filter-btn" data-filter="dessert">Desertlar</button>
+        <button class="filter-btn" data-filter="drink">Ichimliklar</button>
+      </div>
+      <input class="search" type="search" id="foodSearch" placeholder="Taom nomini qidiring...">
+    </div>
+
+    <div class="food-grid" id="foodGrid"></div>
+  </div>
+</section>
+
+<section class="feature">
+  <div class="feature-image">
+    <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1200&q=90" alt="Restaurant chef preparing food">
+  </div>
+  <div class="feature-content">
+    <div class="eyebrow">The chef's selection</div>
+    <h2>Oddiy emas. Esda qolarli.</h2>
+    <p>
+      Oshpazlarimizning maxsus tanlovi — mavsumiy masalliqlar,
+      noodatiy kombinatsiyalar va nafis taqdimot.
+      Har tashrifda yangi kashfiyot.
+    </p>
+    <a href="#menu">SIGNATURE MENU ↗</a>
+  </div>
+</section>
+
+<section class="section container" id="experience">
+  <div class="section-head">
+    <div>
+      <div class="eyebrow">Why SAVORA · 03</div>
+      <h2 class="section-title">Tafsilotlarda farq bor.</h2>
+    </div>
+    <p class="section-sub">Biz mehmonlarimizga faqat taom emas, to'liq taassurot taqdim etamiz.</p>
+  </div>
+
+  <div class="experience-grid">
+    <div class="experience-item reveal">
+      <div class="num">01</div>
+      <h3>Fresh ingredients</h3>
+      <p>Har kuni tanlangan yangi masalliqlar va sifatga qat'iy e'tibor.</p>
+    </div>
+    <div class="experience-item reveal">
+      <div class="num">02</div>
+      <h3>Creative kitchen</h3>
+      <p>An'anaviy retseptlar va zamonaviy gastronomik g'oyalarning uyg'unligi.</p>
+    </div>
+    <div class="experience-item reveal">
+      <div class="num">03</div>
+      <h3>Warm atmosphere</h3>
+      <p>Do'stlar, oila va muhim uchrashuvlar uchun qulay muhit.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section container" id="gallery">
+  <div class="section-head">
+    <div>
+      <div class="eyebrow">Visual diary · 04</div>
+      <h2 class="section-title">SAVORA lahzalari.</h2>
+    </div>
+    <p class="section-sub">Ta'mni so'z bilan ifodalash qiyin. Uni his qilish kerak.</p>
+  </div>
+  <div class="gallery-grid">
+    <img src="https://images.unsplash.com/photo-1515003197210-e0cd7184f8b5?auto=format&fit=crop&w=900&q=85" alt="Gourmet dish">
+    <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=700&q=85" alt="Grilled food">
+    <img src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=700&q=85" alt="Fresh salad">
+    <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=900&q=85" alt="Dessert">
+  </div>
+</section>
+
+<section class="booking" id="booking">
+  <div class="container booking-grid">
+    <div class="booking-copy">
+      <div class="eyebrow" style="color:#e4c994">Your table awaits</div>
+      <h2>Yaxshi lahzalar uchun joy band qiling.</h2>
+      <p>
+        Maxsus kecha, oilaviy uchrashuv yoki shunchaki yoqimli tushlik.
+        Sizni kutib qolamiz.
+      </p>
+    </div>
+
+    <form class="booking-form" id="bookingForm">
+      <div class="field">
+        <label for="guestName">Ismingiz</label>
+        <input id="guestName" required maxlength="60" placeholder="Ismingiz">
+      </div>
+      <div class="field">
+        <label for="guestPhone">Telefon raqamingiz</label>
+        <input id="guestPhone" required type="tel" placeholder="+998 88 982 22 27">
+      </div>
+      <div class="field">
+        <label for="bookingDate">Sana</label>
+        <input id="bookingDate" type="date" required>
+      </div>
+      <div class="field">
+        <label for="bookingTime">Vaqt</label>
+        <select id="bookingTime" required>
+          <option value="">Vaqtni tanlang</option>
+          <option>10:00</option><option>11:00</option>
+          <option>12:00</option><option>13:00</option>
+          <option>14:00</option><option>15:00</option>
+          <option>16:00</option><option>17:00</option>
+          <option>18:00</option><option>19:00</option>
+          <option>20:00</option><option>21:00</option>
+          <option>22:00</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="guestCount">Mehmonlar soni</label>
+        <select id="guestCount">
+          <option>1 kishi</option><option>2 kishi</option>
+          <option>3 kishi</option><option>4 kishi</option>
+          <option>5 kishi</option><option>6 kishi</option>
+          <option>7+ kishi</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="bookingType">Uchrashuv turi</label>
+        <select id="bookingType">
+          <option>Oddiy tashrif</option>
+          <option>Oilaviy kecha</option>
+          <option>Tug'ilgan kun</option>
+          <option>Biznes uchrashuv</option>
+          <option>Boshqa</option>
+        </select>
+      </div>
+      <div class="field full">
+        <label for="bookingNote">Qo'shimcha izoh</label>
+        <textarea id="bookingNote" placeholder="Maxsus istaklaringiz bo'lsa yozing..."></textarea>
+      </div>
+      <button class="primary-btn" type="submit">Stolni band qilish ↗</button>
+      <div class="booking-message" id="bookingMessage"></div>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="logo">SAV<span>O</span>RA.</a>
+        <p>Ta'm, atmosfera va mehmondo'stlik. Har bir lahzani alohida qadrlaymiz.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <a href="#story">Biz haqimizda</a>
+        <a href="#menu">Menyu</a>
+        <a href="#gallery">Galereya</a>
+        <a href="#booking">Band qilish</a>
+      </div>
+      <div class="footer-col">
+        <h4>Visit us</h4>
+        <p>Manzil: Toshkent, O'zbekiston</p>
+        <p>Har kuni: 10:00 — 23:00</p>
+        <p>Telefon: +998 88 982 22 27</p>
+      </div>
+      <div class="footer-col">
+        <h4>Follow us</h4>
+        <a href="#">Instagram ↗</a>
+        <a href="#">Telegram ↗</a>
+        <a href="#">Facebook ↗</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> SAVORA. All rights reserved.</span>
+      <span>CRAFTED WITH PASSION · TASTE WITH PURPOSE</span>
+    </div>
+  </div>
+</footer>
+
+<div class="overlay" id="overlay" onclick="closeCart()"></div>
+
+<aside class="cart-panel" id="cartPanel">
+  <div class="cart-head">
+    <h3>Savatchangiz</h3>
+    <button class="close-cart" onclick="closeCart()">×</button>
+  </div>
+  <div class="cart-items" id="cartItems"></div>
+  <div class="cart-total">
+    <div class="total-line"><span>Taomlar</span><strong id="subtotal">0 so'm</strong></div>
+    <div class="total-line"><span>Yetkazib berish</span><strong id="delivery">0 so'm</strong></div>
+    <div class="total-line final"><span>Jami</span><strong id="total">0 so'm</strong></div>
+    <button class="primary-btn cart-checkout" onclick="checkout()">Buyurtma berish ↗</button>
+  </div>
+</aside>
+
+<div class="toast" id="toast">Savatchaga qo'shildi!</div>
+
+<script>
+/* SAVORA DEMO CONFIGURATION */
+const CONFIG = {
+  whatsappNumber: "998889822227",
+  currency: "so'm",
+  deliveryFee: 15000
+};
+
+/* Demo menu data — real restaurant ma'lumotlari bilan almashtiring. */
+const foods = [
+  {
+    id:1,name:"Truffle Pasta",category:"pasta",price:89000,
+    desc:"Kremli sous, parmesan va truffle aromati.",
+    tag:"Chef's choice",rating:"★ 4.9",
+    image:"https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&w=800&q=85"
+  },
+  {
+    id:2,name:"Grilled Steak",category:"main",price:185000,
+    desc:"Maxsus marinadlangan go'sht va sabzavotlar.",
+    tag:"Signature",rating:"★ 5.0",
+    image:"https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=800&q=85"
+  },
+  {
+    id:3,name:"Burrata Salad",category:"salad",price:72000,
+    desc:"Yangi pomidor, burrata va zaytun moyi.",
+    tag:"Fresh",rating:"★ 4.8",
+    image:"https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=800&q=85"
+  },
+  {
+    id:4,name:"Creamy Risotto",category:"main",price:96000,
+    desc:"Mayin risotto, parmesan va yangi ko'katlar.",
+    tag:"Popular",rating:"★ 4.9",
+    image:"https://images.unsplash.com/photo-1476124369491-e7addf5db371?auto=format&fit=crop&w=800&q=85"
+  },
+  {
+    id:5,name:"Pesto Linguine",category:"pasta",price:85000,
+    desc:"Basil pesto, parmesan va yengil zaytun moyi.",
+    tag:"Italian",rating:"★ 4.8",
+    image:"https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=800&q=85"
+  },
+  {
+    id:6,name:"Chocolate Fondant",category:"dessert",price:55000,
+    desc:"Iliq shokoladli desert va vanilli muzqaymoq.",
+    tag:"Sweet",rating:"★ 5.0",
+    image:"https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=800&q=85"
+  },
+  {
+    id:7,name:"Berry Cheesecake",category:"dessert",price:49000,
+    desc:"Yumshoq cheesecake va mavsumiy rezavorlar.",
+    tag:"Favorite",rating:"★ 4.9",
+    image:"https://images.unsplash.com/photo-1533134242443-d4fd215305ad?auto=format&fit=crop&w=800&q=85"
+  },
+  {
+    id:8,name:"Green Garden",category:"salad",price:62000,
+    desc:"Avokado, bodring, ko'katlar va yengil sous.",
+    tag:"Healthy",rating:"★ 4.7",
+    image:"https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=800&q=85"
+  },
+  {
+    id:9,name:"Fresh Lemonade",category:"drink",price:25000,
+    desc:"Yangi limon, yalpiz va muz bilan.",
+    tag:"Refreshing",rating:"★ 4.9",
+    image:"https://images.unsplash.com/photo-1513558161293-cdaf765edfd4?auto=format&fit=crop&w=800&q=85"
+  }
+];
+
+let cart = [];
+let activeFilter = "all";
+
+const formatMoney = amount =>
+  new Intl.NumberFormat("uz-UZ").format(amount) + " " + CONFIG.currency;
+
+function renderFoods(){
+  const query = document.getElementById("foodSearch").value.trim().toLowerCase();
+  const filtered = foods.filter(food =>
+    (activeFilter === "all" || food.category === activeFilter) &&
+    food.name.toLowerCase().includes(query)
+  );
+
+  const grid = document.getElementById("foodGrid");
+
+  if(!filtered.length){
+    grid.innerHTML = '<div class="empty-menu">Bu qidiruv bo‘yicha taom topilmadi.</div>';
+    return;
+  }
+
+  grid.innerHTML = filtered.map(food => `
+    <article class="food-card">
+      <div class="food-img">
+        <img src="${food.image}" alt="${food.name}" loading="lazy">
+        <span class="food-tag">${food.tag}</span>
+      </div>
+      <div class="food-info">
+        <div class="food-top">
+          <h3 class="food-name">${food.name}</h3>
+          <span class="food-price">${formatMoney(food.price)}</span>
+        </div>
+        <p class="food-desc">${food.desc}</p>
+        <div class="food-bottom">
+          <span class="food-rating">${food.rating}</span>
+          <button class="add-btn" onclick="addToCart(${food.id})">+ Savatchaga</button>
+        </div>
+      </div>
+    </article>
+  `).join("");
+}
+
+document.getElementById("filters").addEventListener("click",event=>{
+  const button = event.target.closest("[data-filter]");
+  if(!button)return;
+
+  activeFilter = button.dataset.filter;
+  document.querySelectorAll(".filter-btn").forEach(item =>
+    item.classList.toggle("active",item === button)
+  );
+  renderFoods();
+});
+
+document.getElementById("foodSearch").addEventListener("input",renderFoods);
+
+function addToCart(id){
+  const food = foods.find(item => item.id === id);
+  if(!food)return;
+
+  const existing = cart.find(item => item.id === id);
+  if(existing)existing.qty++;
+  else cart.push({...food,qty:1});
+
+  renderCart();
+  showToast(food.name + " savatchaga qo'shildi");
+}
+
+function changeQty(id,change){
+  const item = cart.find(product => product.id === id);
+  if(!item)return;
+  item.qty += change;
+  if(item.qty <= 0)cart = cart.filter(product => product.id !== id);
+  renderCart();
+}
+
+function removeItem(id){
+  cart = cart.filter(item => item.id !== id);
+  renderCart();
+}
+
+function renderCart(){
+  const count = cart.reduce((sum,item)=>sum+item.qty,0);
+  const subtotal = cart.reduce((sum,item)=>sum+item.price*item.qty,0);
+  const delivery = subtotal > 0 ? CONFIG.deliveryFee : 0;
+
+  document.getElementById("cartCount").textContent = count;
+  document.getElementById("subtotal").textContent = formatMoney(subtotal);
+  document.getElementById("delivery").textContent = formatMoney(delivery);
+  document.getElementById("total").textContent = formatMoney(subtotal+delivery);
+
+  const container = document.getElementById("cartItems");
+
+  if(!cart.length){
+    container.innerHTML = '<div class="cart-empty">Savatchangiz hozircha bo‘sh.</div>';
+    return;
+  }
+
+  container.innerHTML = cart.map(item => `
+    <div class="cart-item">
+      <img src="${item.image}" alt="${item.name}">
+      <div class="cart-item-info">
+        <strong>${item.name}</strong>
+        <small>${formatMoney(item.price*item.qty)}</small>
+        <div class="qty">
+          <button onclick="changeQty(${item.id},-1)">−</button>
+          <span>${item.qty}</span>
+          <button onclick="changeQty(${item.id},1)">+</button>
+          <button class="remove" onclick="removeItem(${item.id})">O'chirish</button>
+        </div>
+      </div>
+    </div>
+  `).join("");
+}
+
+function openCart(){
+  document.getElementById("cartPanel").classList.add("open");
+  document.getElementById("overlay").classList.add("open");
+}
+function closeCart(){
+  document.getElementById("cartPanel").classList.remove("open");
+  document.getElementById("overlay").classList.remove("open");
+}
+
+function checkout(){
+  if(!cart.length){
+    showToast("Avval savatchaga taom qo'shing");
+    return;
+  }
+
+  const subtotal = cart.reduce((sum,item)=>sum+item.price*item.qty,0);
+  const total = subtotal + CONFIG.deliveryFee;
+
+  const lines = cart.map(item =>
+    `• ${item.name} x ${item.qty} — ${formatMoney(item.price*item.qty)}`
+  ).join("\n");
+
+  const message =
+`SAVORA — YANGI BUYURTMA
+
+${lines}
+
+Taomlar: ${formatMoney(subtotal)}
+Yetkazib berish: ${formatMoney(CONFIG.deliveryFee)}
+JAMI: ${formatMoney(total)}
+
+Iltimos, buyurtmamni tasdiqlang.`;
+
+  window.open(
+    "https://wa.me/" + CONFIG.whatsappNumber + "?text=" + encodeURIComponent(message),
+    "_blank",
+    "noopener,noreferrer"
+  );
+}
+
+function showToast(message){
+  const toast = document.getElementById("toast");
+  toast.textContent = message;
+  toast.classList.add("show");
+  clearTimeout(showToast.timer);
+  showToast.timer = setTimeout(()=>toast.classList.remove("show"),2300);
+}
+
+function toggleMenu(){
+  document.getElementById("navLinks").classList.toggle("open");
+}
+document.querySelectorAll(".nav-links a").forEach(link=>{
+  link.addEventListener("click",()=>{
+    document.getElementById("navLinks").classList.remove("open");
+  });
+});
+
+/* Booking form */
+const dateInput = document.getElementById("bookingDate");
+const today = new Date();
+const localDate = new Date(today.getTime()-today.getTimezoneOffset()*60000)
+  .toISOString().split("T")[0];
+dateInput.min = localDate;
+
+document.getElementById("bookingForm").addEventListener("submit",event=>{
+  event.preventDefault();
+
+  const name = document.getElementById("guestName").value.trim();
+  const phone = document.getElementById("guestPhone").value.trim();
+  const date = dateInput.value;
+  const time = document.getElementById("bookingTime").value;
+  const guests = document.getElementById("guestCount").value;
+  const type = document.getElementById("bookingType").value;
+  const note = document.getElementById("bookingNote").value.trim();
+
+  if(!name || !phone || !date || !time){
+    document.getElementById("bookingMessage").textContent =
+      "Iltimos, barcha majburiy maydonlarni to'ldiring.";
+    return;
+  }
+
+  const message =
+`SAVORA — STOL BAND QILISH
+
+Ism: ${name}
+Telefon: ${phone}
+Sana: ${date}
+Vaqt: ${time}
+Mehmonlar: ${guests}
+Uchrashuv: ${type}
+Izoh: ${note || "Yo'q"}
+
+Iltimos, band qilishni tasdiqlang.`;
+
+  document.getElementById("bookingMessage").textContent =
+    "WhatsApp orqali band qilish so'rovi yuborilmoqda...";
+
+  window.open(
+    "https://wa.me/" + CONFIG.whatsappNumber + "?text=" + encodeURIComponent(message),
+    "_blank",
+    "noopener,noreferrer"
+  );
+});
+
+document.getElementById("year").textContent = new Date().getFullYear();
+
+/* Scroll reveal */
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add("visible");
+      observer.unobserve(entry.target);
+    }
+  });
+},{threshold:.12});
+
+document.querySelectorAll(".reveal,.experience-item").forEach(element=>{
+  observer.observe(element);
+});
+
+renderFoods();
+renderCart();
+</script>
+
+<div class="mal-credit" style="padding:16px 22px;text-align:center;background:#080b10;color:#d8e0e8;border-top:1px solid #ffffff22;font:12px/1.8 system-ui,sans-serif">
+  <strong style="letter-spacing:1px">MUHAMMADAMIN AI LAB</strong>
+  <span style="display:block;color:#aab5c2">Ushbu sayt Muhammadamin tomonidan yaratilgan portfolio loyihasidir.</span>
+  <a href="https://t.me/Muhammad1y_20" target="_blank" rel="noopener" style="color:#c5ff76;margin:0 8px">Telegram: @Muhammad1y_20</a>
+  <a href="https://instagram.com/kamoliddinov._010" target="_blank" rel="noopener" style="color:#c5ff76;margin:0 8px">Instagram: @kamoliddinov._010</a>
+  <a href="tel:+998889822227" style="color:#c5ff76;margin:0 8px">+998 88 982 22 27</a>
+</div>
+
+</body>
+</html>

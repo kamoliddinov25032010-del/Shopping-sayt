@@ -1,0 +1,928 @@
+
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#090812">
+<meta name="description" content="NEON DISTRICT — Premium Gaming & Esports Arena">
+<title>NEON DISTRICT — Enter The Arena</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg:#090812;
+  --surface:#11101d;
+  --surface2:#171526;
+  --purple:#a855f7;
+  --pink:#ec4899;
+  --cyan:#22d3ee;
+  --white:#f5f3ff;
+  --muted:#9995ad;
+  --line:rgba(255,255,255,.09);
+  --font:'Rajdhani',sans-serif;
+  --display:'Orbitron',sans-serif;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--white);
+  font-family:var(--font);
+  overflow-x:hidden;
+}
+button,input,select{font:inherit}
+button{cursor:pointer}
+a{text-decoration:none;color:inherit}
+::selection{background:var(--purple);color:white}
+
+.noise{
+  position:fixed;inset:0;pointer-events:none;z-index:50;
+  opacity:.035;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+}
+.cursor-glow{
+  position:fixed;width:300px;height:300px;border-radius:50%;
+  background:radial-gradient(circle,rgba(168,85,247,.09),transparent 70%);
+  pointer-events:none;transform:translate(-50%,-50%);z-index:0;
+}
+.container{width:min(1180px,calc(100% - 44px));margin:auto}
+.section{padding:110px 0;position:relative}
+.section-label{
+  display:inline-flex;align-items:center;gap:10px;
+  color:var(--cyan);font-size:14px;font-weight:700;
+  letter-spacing:3px;text-transform:uppercase;margin-bottom:18px
+}
+.section-label:before{content:"";width:25px;height:1px;background:var(--cyan)}
+.section-title{
+  font-family:var(--display);font-size:clamp(27px,4vw,48px);
+  line-height:1.2;letter-spacing:-1.5px;
+}
+.section-title span{
+  color:transparent;
+  -webkit-text-stroke:1px var(--purple);
+}
+.section-desc{color:var(--muted);font-size:19px;max-width:590px;margin-top:15px;line-height:1.6}
+
+.btn{
+  border:0;padding:15px 25px;font-weight:700;font-size:17px;
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  transition:.3s;position:relative;overflow:hidden;
+}
+.btn-primary{
+  color:white;background:linear-gradient(110deg,#9333ea,#6d28d9);
+  box-shadow:0 0 30px rgba(168,85,247,.23);
+  clip-path:polygon(0 0,92% 0,100% 25%,100% 100%,8% 100%,0 75%);
+}
+.btn-primary:hover{transform:translateY(-4px);box-shadow:0 0 40px rgba(168,85,247,.5)}
+.btn-outline{background:transparent;border:1px solid var(--line);color:white}
+.btn-outline:hover{border-color:var(--cyan);color:var(--cyan)}
+.btn-small{padding:10px 17px;font-size:15px}
+
+/* NAVIGATION */
+.navbar{
+  height:82px;position:fixed;top:0;left:0;width:100%;z-index:100;
+  display:flex;align-items:center;border-bottom:1px solid transparent;
+  transition:.3s;
+}
+.navbar.scrolled{background:rgba(9,8,18,.92);backdrop-filter:blur(18px);border-color:var(--line)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:12px}
+.logo-mark{
+  width:38px;height:38px;background:linear-gradient(135deg,var(--purple),var(--cyan));
+  clip-path:polygon(0 0,100% 0,100% 72%,72% 100%,0 100%);
+  display:grid;place-items:center;color:#090812;font-size:22px;font-weight:900
+}
+.logo-name{font-family:var(--display);font-size:17px;font-weight:800;letter-spacing:1px}
+.logo-name span{color:var(--purple)}
+.nav-links{display:flex;align-items:center;gap:30px}
+.nav-links a{color:#c5c1d2;font-size:17px;font-weight:600;transition:.2s}
+.nav-links a:hover{color:var(--cyan)}
+.nav-right{display:flex;align-items:center;gap:16px}
+.menu-toggle{display:none;background:none;border:0;color:white;font-size:26px}
+
+/* HERO */
+.hero{
+  min-height:790px;display:flex;align-items:center;position:relative;
+  padding:135px 0 85px;overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:
+    linear-gradient(90deg,#090812 0%,rgba(9,8,18,.95) 36%,rgba(9,8,18,.32) 100%),
+    linear-gradient(0deg,#090812 0%,transparent 35%),
+    url('https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=2000&q=90') center/cover;
+  opacity:.8;
+}
+.hero-grid{
+  position:absolute;inset:0;opacity:.15;pointer-events:none;
+  background-image:linear-gradient(rgba(168,85,247,.3) 1px,transparent 1px),linear-gradient(90deg,rgba(168,85,247,.3) 1px,transparent 1px);
+  background-size:65px 65px;
+  mask-image:linear-gradient(to bottom,black,transparent 85%);
+}
+.hero-content{position:relative;z-index:2;max-width:750px}
+.hero-tag{
+  display:inline-flex;align-items:center;gap:10px;padding:9px 15px;
+  border:1px solid rgba(168,85,247,.35);background:rgba(168,85,247,.09);
+  color:#d8b4fe;font-size:14px;letter-spacing:2px;margin-bottom:28px
+}
+.live-dot{width:8px;height:8px;border-radius:50%;background:#4ade80;box-shadow:0 0 12px #4ade80}
+.hero h1{
+  font-family:var(--display);font-size:clamp(42px,7.5vw,88px);
+  font-weight:900;line-height:1.04;letter-spacing:-4px;
+}
+.hero h1 .outline{
+  color:transparent;-webkit-text-stroke:1.5px var(--purple);
+}
+.hero h1 .cyan{color:var(--cyan)}
+.hero-desc{color:#c1bdce;font-size:21px;line-height:1.6;max-width:550px;margin:25px 0 33px}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+.hero-stats{
+  display:flex;gap:45px;margin-top:65px;padding-top:28px;
+  border-top:1px solid var(--line);max-width:600px
+}
+.stat strong{font-family:var(--display);font-size:27px;display:block}
+.stat span{color:var(--muted);font-size:15px}
+.hero-side{
+  position:absolute;right:5%;bottom:100px;z-index:2;
+  border-left:2px solid var(--cyan);padding:15px 20px;
+  background:rgba(9,8,18,.75);backdrop-filter:blur(12px);
+}
+.hero-side small{color:var(--cyan);letter-spacing:2px}
+.hero-side strong{display:block;font-family:var(--display);font-size:20px;margin-top:6px}
+
+/* TICKER */
+.ticker{overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#100e1b}
+.ticker-track{display:flex;width:max-content;animation:ticker 35s linear infinite;padding:17px 0}
+.ticker-item{font-family:var(--display);font-size:13px;letter-spacing:3px;color:#b8b2c8;padding:0 32px}
+.ticker-item span{color:var(--purple);padding-right:35px}
+@keyframes ticker{to{transform:translateX(-50%)}}
+
+/* ZONES */
+.zones-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:48px}
+.zone-card{
+  background:var(--surface);border:1px solid var(--line);
+  position:relative;overflow:hidden;transition:.35s;
+}
+.zone-card:hover{transform:translateY(-8px);border-color:var(--purple);box-shadow:0 15px 50px rgba(168,85,247,.12)}
+.zone-image{height:220px;position:relative;overflow:hidden}
+.zone-image img{width:100%;height:100%;object-fit:cover;transition:.6s;filter:saturate(.8)}
+.zone-card:hover .zone-image img{transform:scale(1.08);filter:saturate(1.2)}
+.zone-tag{position:absolute;top:15px;left:15px;background:rgba(9,8,18,.85);padding:7px 12px;font-size:13px;color:var(--cyan);letter-spacing:1px}
+.zone-body{padding:23px}
+.zone-body h3{font-family:var(--display);font-size:18px;margin-bottom:9px}
+.zone-body p{color:var(--muted);font-size:16px;line-height:1.5;min-height:48px}
+.zone-bottom{display:flex;align-items:center;justify-content:space-between;margin-top:22px;padding-top:17px;border-top:1px solid var(--line)}
+.zone-price strong{font-family:var(--display);font-size:22px;color:var(--cyan)}
+.zone-price small{display:block;color:var(--muted)}
+
+/* GAMES */
+.games-section{background:linear-gradient(180deg,transparent,rgba(168,85,247,.035),transparent)}
+.games-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px;margin-top:45px}
+.game-card{height:250px;position:relative;overflow:hidden;border:1px solid var(--line);background:var(--surface)}
+.game-card img{width:100%;height:100%;object-fit:cover;transition:.5s;filter:brightness(.65)}
+.game-card:hover img{transform:scale(1.1);filter:brightness(.85)}
+.game-card:after{content:"";position:absolute;inset:30% 0 0;background:linear-gradient(transparent,#090812)}
+.game-info{position:absolute;bottom:18px;left:18px;z-index:2}
+.game-info h3{font-family:var(--display);font-size:16px}
+.game-info span{font-size:13px;color:var(--cyan)}
+
+/* TOURNAMENT */
+.tournament-layout{display:grid;grid-template-columns:1fr .8fr;gap:50px;align-items:center;margin-top:50px}
+.tournament-feature{
+  min-height:390px;position:relative;overflow:hidden;
+  background:linear-gradient(0deg,rgba(9,8,18,.95),rgba(9,8,18,.1)),url('https://images.unsplash.com/photo-1547394765-185e1e68f34e?auto=format&fit=crop&w=1200&q=85') center/cover;
+  border:1px solid var(--line);display:flex;align-items:flex-end;padding:35px;
+}
+.tournament-feature h3{font-family:var(--display);font-size:32px;margin:12px 0}
+.tournament-feature p{color:#c8c3d4;font-size:17px}
+.tournament-list{display:flex;flex-direction:column;gap:14px}
+.event{
+  padding:19px;background:var(--surface);border:1px solid var(--line);
+  display:grid;grid-template-columns:65px 1fr auto;gap:15px;align-items:center;
+  transition:.25s
+}
+.event:hover{border-color:var(--cyan);transform:translateX(5px)}
+.event-date{background:rgba(34,211,238,.08);padding:9px;text-align:center;color:var(--cyan)}
+.event-date strong{display:block;font-family:var(--display);font-size:20px}
+.event-date small{font-size:12px}
+.event h4{font-size:18px}
+.event p{color:var(--muted);font-size:14px}
+.event-status{font-size:12px;color:#4ade80}
+
+/* BOOKING */
+.booking-section{
+  background:
+    radial-gradient(ellipse at 10% 50%,rgba(168,85,247,.13),transparent 45%),
+    radial-gradient(ellipse at 90% 30%,rgba(34,211,238,.08),transparent 35%);
+}
+.booking-layout{display:grid;grid-template-columns:1fr 1fr;gap:50px;margin-top:50px;align-items:start}
+.booking-form{
+  background:rgba(17,16,29,.9);border:1px solid rgba(168,85,247,.25);
+  padding:30px;box-shadow:0 20px 70px rgba(0,0,0,.2)
+}
+.form-title{font-family:var(--display);font-size:21px;margin-bottom:25px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:17px}
+.field{display:flex;flex-direction:column;gap:8px}
+.field.full{grid-column:1/-1}
+.field label{color:#c8c3d4;font-size:15px;font-weight:600}
+.field input,.field select{
+  width:100%;padding:13px 14px;background:#0b0a14;color:white;
+  border:1px solid var(--line);outline:none;border-radius:0;
+}
+.field input:focus,.field select:focus{border-color:var(--purple)}
+.field select option{background:#11101d}
+.booking-form .btn{width:100%;margin-top:23px}
+.booking-info{padding-top:12px}
+.booking-info h3{font-family:var(--display);font-size:29px;line-height:1.35;margin-bottom:20px}
+.booking-info>p{color:var(--muted);font-size:18px;line-height:1.6}
+.summary{
+  background:var(--surface);border:1px solid var(--line);
+  margin-top:30px;padding:25px;
+}
+.summary-row{display:flex;justify-content:space-between;padding:10px 0;color:var(--muted);font-size:17px}
+.summary-row.total{border-top:1px solid var(--line);margin-top:8px;padding-top:18px;color:white}
+.summary-row.total strong{font-family:var(--display);font-size:25px;color:var(--cyan)}
+.summary-row strong{color:white}
+.summary-note{color:var(--muted);font-size:13px;margin-top:13px}
+
+/* FEATURES */
+.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:45px}
+.feature{
+  padding:27px;background:var(--surface);border:1px solid var(--line);transition:.3s
+}
+.feature:hover{border-color:var(--purple);background:var(--surface2)}
+.feature-icon{
+  width:49px;height:49px;display:grid;place-items:center;
+  background:rgba(168,85,247,.12);color:#d8b4fe;font-size:24px;margin-bottom:20px
+}
+.feature h3{font-size:20px;margin-bottom:9px}
+.feature p{color:var(--muted);font-size:16px;line-height:1.55}
+
+/* CTA */
+.cta{padding:80px 0}
+.cta-box{
+  position:relative;overflow:hidden;text-align:center;padding:75px 25px;
+  background:linear-gradient(120deg,#25113d,#111a30);
+  border:1px solid rgba(168,85,247,.35)
+}
+.cta-box:before,.cta-box:after{
+  content:"";position:absolute;width:250px;height:250px;border-radius:50%;
+  background:rgba(168,85,247,.15);filter:blur(70px)
+}
+.cta-box:before{top:-100px;left:-80px}
+.cta-box:after{right:-80px;bottom:-120px;background:rgba(34,211,238,.13)}
+.cta-box h2{position:relative;z-index:1;font-family:var(--display);font-size:clamp(28px,5vw,48px)}
+.cta-box p{position:relative;z-index:1;color:#c5c1d2;font-size:19px;margin:18px 0 28px}
+.cta-box .btn{position:relative;z-index:1}
+
+/* FOOTER */
+footer{border-top:1px solid var(--line);padding:55px 0 25px;background:#07060e}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px}
+.footer-about p{color:var(--muted);font-size:16px;line-height:1.6;max-width:270px;margin-top:18px}
+.footer-col h4{font-family:var(--display);font-size:13px;letter-spacing:1px;margin-bottom:19px}
+.footer-col a{display:block;color:var(--muted);margin:10px 0;font-size:16px;transition:.2s}
+.footer-col a:hover{color:var(--cyan)}
+.footer-bottom{border-top:1px solid var(--line);margin-top:45px;padding-top:22px;display:flex;justify-content:space-between;color:#777286;font-size:14px}
+
+/* MODAL */
+.modal-backdrop{
+  position:fixed;inset:0;background:rgba(0,0,0,.8);backdrop-filter:blur(8px);
+  z-index:200;display:none;align-items:center;justify-content:center;padding:20px
+}
+.modal-backdrop.active{display:flex}
+.modal{
+  width:min(450px,100%);background:#11101d;border:1px solid var(--purple);
+  padding:30px;position:relative;box-shadow:0 0 60px rgba(168,85,247,.15)
+}
+.modal-close{position:absolute;right:18px;top:15px;background:none;border:0;color:white;font-size:25px}
+.modal h3{font-family:var(--display);font-size:22px;margin-bottom:12px}
+.modal p{color:var(--muted);margin-bottom:22px;line-height:1.5}
+.modal .btn{width:100%}
+
+.reveal{opacity:0;transform:translateY(25px);transition:opacity .7s,transform .7s}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:950px){
+  .nav-links{gap:16px}
+  .nav-links a{font-size:15px}
+  .nav-right .btn{display:none}
+  .zones-grid{grid-template-columns:repeat(2,1fr)}
+  .games-grid{grid-template-columns:repeat(2,1fr)}
+  .tournament-layout{grid-template-columns:1fr}
+  .booking-layout{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:700px){
+  .container{width:calc(100% - 32px)}
+  .section{padding:78px 0}
+  .navbar{height:70px}
+  .menu-toggle{display:block}
+  .nav-links{
+    display:none;position:absolute;top:70px;left:0;width:100%;
+    background:#100e1b;padding:25px 22px;flex-direction:column;align-items:flex-start;
+    border-bottom:1px solid var(--line)
+  }
+  .nav-links.open{display:flex}
+  .nav-links a{font-size:19px}
+  .hero{min-height:760px;padding-top:120px}
+  .hero-bg{
+    background:
+    linear-gradient(90deg,rgba(9,8,18,.96),rgba(9,8,18,.65)),
+    linear-gradient(0deg,#090812,transparent),
+    url('https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1000&q=80') center/cover;
+  }
+  .hero h1{letter-spacing:-2px}
+  .hero-desc{font-size:18px}
+  .hero-stats{gap:23px;margin-top:45px}
+  .stat strong{font-size:21px}
+  .hero-side{display:none}
+  .zones-grid{grid-template-columns:1fr}
+  .zone-image{height:230px}
+  .games-grid{gap:10px}
+  .game-card{height:190px}
+  .event{grid-template-columns:55px 1fr}
+  .event-status{grid-column:2}
+  .booking-form{padding:20px}
+  .form-grid{grid-template-columns:1fr}
+  .field.full{grid-column:auto}
+  .features-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:30px 20px}
+  .footer-bottom{gap:12px;flex-direction:column}
+  .cta-box{padding:55px 20px}
+}
+@media(max-width:390px){
+  .hero h1{font-size:39px}
+  .hero-stats{gap:14px}
+  .stat strong{font-size:18px}
+  .games-grid{grid-template-columns:1fr 1fr}
+  .game-card{height:165px}
+}
+</style>
+</head>
+
+<body>
+<div class="noise"></div>
+<div class="cursor-glow" id="cursorGlow"></div>
+
+<header class="navbar" id="navbar">
+  <div class="container nav-inner">
+    <a href="#home" class="logo">
+      <div class="logo-mark">N</div>
+      <div class="logo-name">NEON<span>DISTRICT</span></div>
+    </a>
+
+    <nav class="nav-links" id="navLinks">
+      <a href="#zones">Gaming zonalar</a>
+      <a href="#games">O‘yinlar</a>
+      <a href="#tournaments">Turnirlar</a>
+      <a href="#features">Imkoniyatlar</a>
+      <a href="#booking">Bron qilish</a>
+    </nav>
+
+    <div class="nav-right">
+      <a href="#booking" class="btn btn-primary btn-small">JOY BAND QILISH ↗</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Menyuni ochish">☰</button>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-tag"><span class="live-dot"></span> THE NEXT LEVEL OF GAMING</div>
+      <h1>
+        ENTER THE<br>
+        <span class="outline">DIGITAL</span><br>
+        <span class="cyan">ARENA.</span>
+      </h1>
+      <p class="hero-desc">
+        Oddiy o‘yin emas. Bu — raqobat, tezlik va haqiqiy gaming atmosferasi.
+        O‘z darajangni ko‘rsatish vaqti keldi.
+      </p>
+      <div class="hero-actions">
+        <a href="#booking" class="btn btn-primary">ARENA'GA KIRISH ↗</a>
+        <a href="#zones" class="btn btn-outline">ZONALARNI KO‘RISH</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><strong>24/7</strong><span>Gaming muhit</span></div>
+        <div class="stat"><strong>RTX</strong><span>Gaming tizimlar</span></div>
+        <div class="stat"><strong>1v1</strong><span>Raqobat maydoni</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-side">
+    <small>YOUR GAME. YOUR RULES.</small>
+    <strong>LEVEL UP NOW.</strong>
+  </div>
+</section>
+
+<div class="ticker">
+  <div class="ticker-track">
+    <div class="ticker-item">GAMING EXPERIENCE <span>✦</span></div>
+    <div class="ticker-item">ESPORTS COMMUNITY <span>✦</span></div>
+    <div class="ticker-item">NEXT LEVEL HARDWARE <span>✦</span></div>
+    <div class="ticker-item">COMPETE. WIN. REPEAT. <span>✦</span></div>
+    <div class="ticker-item">GAMING EXPERIENCE <span>✦</span></div>
+    <div class="ticker-item">ESPORTS COMMUNITY <span>✦</span></div>
+    <div class="ticker-item">NEXT LEVEL HARDWARE <span>✦</span></div>
+    <div class="ticker-item">COMPETE. WIN. REPEAT. <span>✦</span></div>
+  </div>
+</div>
+
+<section class="section" id="zones">
+  <div class="container">
+    <div class="section-label">OUR GAMING ZONES</div>
+    <h2 class="section-title">O‘Z MAYDONINGNI <span>TANLA.</span></h2>
+    <p class="section-desc">Har bir zona o‘ziga xos tajriba uchun yaratilgan. Qulay joyni tanla va o‘yinni boshlagin.</p>
+
+    <div class="zones-grid">
+      <article class="zone-card reveal">
+        <div class="zone-image">
+          <img src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?auto=format&fit=crop&w=900&q=85" alt="Pro gaming zone" loading="lazy">
+          <span class="zone-tag">01 / PRO LEVEL</span>
+        </div>
+        <div class="zone-body">
+          <h3>PRO GAMING</h3>
+          <p>Yuqori darajadagi gaming qurilmalari va raqobat uchun tayyorlangan muhit.</p>
+          <div class="zone-bottom">
+            <div class="zone-price"><strong>25 000 so‘m</strong><small>1 soat / demo narx</small></div>
+            <button class="btn btn-outline btn-small choose-zone" data-zone="pro">TANLASH ↗</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="zone-card reveal">
+        <div class="zone-image">
+          <img src="https://images.unsplash.com/photo-1547394765-185e1e68f34e?auto=format&fit=crop&w=900&q=85" alt="VIP gaming zone" loading="lazy">
+          <span class="zone-tag">02 / VIP EXPERIENCE</span>
+        </div>
+        <div class="zone-body">
+          <h3>VIP EXPERIENCE</h3>
+          <p>Maxsus qulaylik, individual joy va premium gaming tajribasi.</p>
+          <div class="zone-bottom">
+            <div class="zone-price"><strong>40 000 so‘m</strong><small>1 soat / demo narx</small></div>
+            <button class="btn btn-outline btn-small choose-zone" data-zone="vip">TANLASH ↗</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="zone-card reveal">
+        <div class="zone-image">
+          <img src="https://images.unsplash.com/photo-1598550476439-6847785fcea6?auto=format&fit=crop&w=900&q=85" alt="Team gaming zone" loading="lazy">
+          <span class="zone-tag">03 / TEAM MODE</span>
+        </div>
+        <div class="zone-body">
+          <h3>TEAM ARENA</h3>
+          <p>Do‘stlar bilan jamoaviy o‘yinlar va musobaqalar uchun maxsus zona.</p>
+          <div class="zone-bottom">
+            <div class="zone-price"><strong>30 000 so‘m</strong><small>1 soat / demo narx</small></div>
+            <button class="btn btn-outline btn-small choose-zone" data-zone="team">TANLASH ↗</button>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section games-section" id="games">
+  <div class="container">
+    <div class="section-label">CHOOSE YOUR GAME</div>
+    <h2 class="section-title">QAYSI O‘YINDA <span>USTASAN?</span></h2>
+    <p class="section-desc">Sevimli o‘yinlaring, yangi raqiblar va unutilmas gaming sessiyalari.</p>
+
+    <div class="games-grid">
+      <article class="game-card reveal">
+        <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=700&q=80" alt="Esports game" loading="lazy">
+        <div class="game-info"><h3>CS2</h3><span>TACTICAL FPS</span></div>
+      </article>
+      <article class="game-card reveal">
+        <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=700&q=80" alt="Gaming" loading="lazy">
+        <div class="game-info"><h3>DOTA 2</h3><span>MOBA</span></div>
+      </article>
+      <article class="game-card reveal">
+        <img src="https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?auto=format&fit=crop&w=700&q=80" alt="Gaming console" loading="lazy">
+        <div class="game-info"><h3>VALORANT</h3><span>TACTICAL FPS</span></div>
+      </article>
+      <article class="game-card reveal">
+        <img src="https://images.unsplash.com/photo-1603481546238-487240415921?auto=format&fit=crop&w=700&q=80" alt="Gaming setup" loading="lazy">
+        <div class="game-info"><h3>FC 26</h3><span>SPORTS</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="tournaments">
+  <div class="container">
+    <div class="section-label">COMPETE WITH THE BEST</div>
+    <h2 class="section-title">ARENA <span>TOURNAMENTS.</span></h2>
+    <p class="section-desc">Turnirlar, jamoalar va raqobat. O‘z mahoratingni namoyish et.</p>
+
+    <div class="tournament-layout">
+      <div class="tournament-feature reveal">
+        <div>
+          <span class="section-label">SPECIAL EVENT</span>
+          <h3>NEON CHAMPIONSHIP</h3>
+          <p>Eng kuchli jamoalar bir maydonda. G‘alaba uchun kurash boshlanadi.</p>
+        </div>
+      </div>
+
+      <div class="tournament-list">
+        <div class="event reveal">
+          <div class="event-date"><strong>01</strong><small>EVENT</small></div>
+          <div><h4>CS2 Tournament</h4><p>5 vs 5 · Jamoaviy musobaqa</p></div>
+          <span class="event-status">REJADA</span>
+        </div>
+        <div class="event reveal">
+          <div class="event-date"><strong>02</strong><small>EVENT</small></div>
+          <div><h4>FC Challenge</h4><p>1 vs 1 · Individual bahs</p></div>
+          <span class="event-status">REJADA</span>
+        </div>
+        <div class="event reveal">
+          <div class="event-date"><strong>03</strong><small>EVENT</small></div>
+          <div><h4>Valorant Clash</h4><p>5 vs 5 · Tactical battle</p></div>
+          <span class="event-status">REJADA</span>
+        </div>
+        <a href="#booking" class="btn btn-outline">ARENA'GA YOZILISH ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section booking-section" id="booking">
+  <div class="container">
+    <div class="section-label">RESERVE YOUR SESSION</div>
+    <h2 class="section-title">O‘YINNI <span>BAND QIL.</span></h2>
+    <p class="section-desc">Kerakli zonani, vaqtni va sessiya davomiyligini tanla. Narx avtomatik hisoblanadi.</p>
+
+    <div class="booking-layout">
+      <form class="booking-form" id="bookingForm">
+        <h3 class="form-title">SESSION BOOKING / 01</h3>
+        <div class="form-grid">
+          <div class="field full">
+            <label for="customerName">Ismingiz</label>
+            <input id="customerName" type="text" placeholder="Ismingizni kiriting" required>
+          </div>
+          <div class="field full">
+            <label for="customerPhone">Telefon raqamingiz</label>
+            <input id="customerPhone" type="tel" placeholder="+998 88 982 22 27" required>
+          </div>
+          <div class="field">
+            <label for="zoneSelect">Gaming zona</label>
+            <select id="zoneSelect">
+              <option value="pro">PRO GAMING</option>
+              <option value="vip">VIP EXPERIENCE</option>
+              <option value="team">TEAM ARENA</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="duration">Davomiyligi</label>
+            <select id="duration">
+              <option value="1">1 soat</option>
+              <option value="2">2 soat</option>
+              <option value="3">3 soat</option>
+              <option value="4">4 soat</option>
+              <option value="5">5 soat</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="bookingDate">Sana</label>
+            <input type="date" id="bookingDate" required>
+          </div>
+          <div class="field">
+            <label for="bookingTime">Boshlanish vaqti</label>
+            <select id="bookingTime" required>
+              <option value="">Vaqtni tanlang</option>
+              <option>09:00</option><option>10:00</option>
+              <option>11:00</option><option>12:00</option>
+              <option>13:00</option><option>14:00</option>
+              <option>15:00</option><option>16:00</option>
+              <option>17:00</option><option>18:00</option>
+              <option>19:00</option><option>20:00</option>
+              <option>21:00</option><option>22:00</option>
+            </select>
+          </div>
+          <div class="field full">
+            <label for="gameSelect">O‘ynaladigan o‘yin</label>
+            <select id="gameSelect">
+              <option>CS2</option>
+              <option>Dota 2</option>
+              <option>Valorant</option>
+              <option>FC 26</option>
+              <option>Boshqa</option>
+            </select>
+          </div>
+        </div>
+        <button class="btn btn-primary" type="submit">WHATSAPP ORQALI BRON QILISH ↗</button>
+      </form>
+
+      <div class="booking-info">
+        <h3>YOUR SESSION.<br><span style="color:var(--cyan)">YOUR EXPERIENCE.</span></h3>
+        <p>Bron ma'lumotlarini kiriting. Tizim tanlangan zona va vaqtga qarab taxminiy narxni hisoblaydi.</p>
+
+        <div class="summary">
+          <div class="summary-row"><span>Tanlangan zona</span><strong id="summaryZone">PRO GAMING</strong></div>
+          <div class="summary-row"><span>Bir soat narxi</span><strong id="summaryRate">25 000 so‘m</strong></div>
+          <div class="summary-row"><span>Davomiyligi</span><strong id="summaryDuration">1 soat</strong></div>
+          <div class="summary-row total"><span>Jami</span><strong id="summaryTotal">25 000 so‘m</strong></div>
+          <p class="summary-note">* Narxlar namuna uchun kiritilgan. Haqiqiy biznes narxlariga moslab o‘zgartiring.</p>
+        </div>
+
+        <div style="display:flex;gap:15px;align-items:center;margin-top:25px;color:var(--muted)">
+          <span style="font-size:25px;color:var(--cyan)">◈</span>
+          <span>Bron so‘rovi WhatsApp orqali yuboriladi. Joy mavjudligi administrator tomonidan tasdiqlanadi.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="features">
+  <div class="container">
+    <div class="section-label">WHY NEON DISTRICT</div>
+    <h2 class="section-title">BU YERDA HAMMASI <span>BOSHQA.</span></h2>
+    <p class="section-desc">Gaming tajribasini yuqori darajaga olib chiqadigan imkoniyatlar.</p>
+
+    <div class="features-grid">
+      <div class="feature reveal">
+        <div class="feature-icon">⌘</div>
+        <h3>POWERFUL HARDWARE</h3>
+        <p>Gaming uchun mo‘ljallangan kuchli kompyuterlar va zamonaviy qurilmalar.</p>
+      </div>
+      <div class="feature reveal">
+        <div class="feature-icon">◉</div>
+        <h3>LOW LATENCY</h3>
+        <p>Raqobatbardosh o‘yinlar uchun tezkor va barqaror tarmoq tajribasi.</p>
+      </div>
+      <div class="feature reveal">
+        <div class="feature-icon">♜</div>
+        <h3>ESPORTS EVENTS</h3>
+        <p>Turnirlar va jamoaviy o‘yinlar orqali yangi raqiblar bilan tanishish.</p>
+      </div>
+      <div class="feature reveal">
+        <div class="feature-icon">✦</div>
+        <h3>PREMIUM ATMOSPHERE</h3>
+        <p>Yorug‘lik, dizayn va gaming muhitining o‘ziga xos uyg‘unligi.</p>
+      </div>
+      <div class="feature reveal">
+        <div class="feature-icon">⌖</div>
+        <h3>EASY BOOKING</h3>
+        <p>Kerakli zonani tanlab, bron so‘rovini bir necha qadamda yuborish.</p>
+      </div>
+      <div class="feature reveal">
+        <div class="feature-icon">⚡</div>
+        <h3>TEAM EXPERIENCE</h3>
+        <p>Do‘stlaring bilan birga o‘ynash va jamoaviy tajribadan bahramand bo‘lish.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="container">
+    <div class="cta-box">
+      <h2>READY TO LEVEL UP?</h2>
+      <p>Keyingi gaming sessiyang shu yerdan boshlanadi.</p>
+      <a href="#booking" class="btn btn-primary">BAND QILISHNI BOSHLASH ↗</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-about">
+        <a href="#home" class="logo">
+          <div class="logo-mark">N</div>
+          <div class="logo-name">NEON<span>DISTRICT</span></div>
+        </a>
+        <p>Gaming madaniyati, raqobat va yangi avlod esports tajribasi birlashgan maskan.</p>
+      </div>
+      <div class="footer-col">
+        <h4>DISCOVER</h4>
+        <a href="#zones">Gaming zonalar</a>
+        <a href="#games">O‘yinlar</a>
+        <a href="#tournaments">Turnirlar</a>
+      </div>
+      <div class="footer-col">
+        <h4>EXPERIENCE</h4>
+        <a href="#features">Imkoniyatlar</a>
+        <a href="#booking">Bron qilish</a>
+        <a href="#home">Bosh sahifa</a>
+      </div>
+      <div class="footer-col">
+        <h4>CONTACT</h4>
+        <a href="#booking">Bog‘lanish</a>
+        <a href="#booking">Bron so‘rovi</a>
+        <a href="#home">NEON DISTRICT</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> NEON DISTRICT. ALL RIGHTS RESERVED.</span>
+      <span>DESIGNED FOR THE NEXT GENERATION.</span>
+    </div>
+  </div>
+</footer>
+
+<div class="modal-backdrop" id="modal">
+  <div class="modal">
+    <button class="modal-close" id="modalClose" aria-label="Yopish">×</button>
+    <h3>ZONE SELECTED</h3>
+    <p id="modalText">Gaming zonangiz tanlandi. Endi bron formasini to‘ldiring.</p>
+    <button class="btn btn-primary" id="modalContinue">BRON QILISHGA O‘TISH ↗</button>
+  </div>
+</div>
+
+<script>
+/* =========================================
+   NEON DISTRICT — CONFIGURATION
+   Haqiqiy biznes ma'lumotlarini shu yerda sozlang.
+========================================= */
+const CONFIG = {
+  whatsappNumber: "998889822227",
+  currency: "so‘m",
+  prices: {
+    pro: 25000,
+    vip: 40000,
+    team: 30000
+  }
+};
+
+const zoneNames = {
+  pro: "PRO GAMING",
+  vip: "VIP EXPERIENCE",
+  team: "TEAM ARENA"
+};
+
+const $ = (selector) => document.querySelector(selector);
+const $$ = (selector) => document.querySelectorAll(selector);
+
+const navbar = $("#navbar");
+const navLinks = $("#navLinks");
+const menuToggle = $("#menuToggle");
+
+window.addEventListener("scroll", () => {
+  navbar.classList.toggle("scrolled", window.scrollY > 30);
+});
+
+menuToggle.addEventListener("click", () => {
+  navLinks.classList.toggle("open");
+  menuToggle.textContent = navLinks.classList.contains("open") ? "×" : "☰";
+});
+
+$$(".nav-links a").forEach(link => {
+  link.addEventListener("click", () => {
+    navLinks.classList.remove("open");
+    menuToggle.textContent = "☰";
+  });
+});
+
+/* Cursor glow */
+const glow = $("#cursorGlow");
+window.addEventListener("mousemove", e => {
+  glow.style.left = e.clientX + "px";
+  glow.style.top = e.clientY + "px";
+});
+
+/* Reveal animation */
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add("visible");
+      observer.unobserve(entry.target);
+    }
+  });
+},{threshold:.12});
+
+$$(".reveal").forEach(el => observer.observe(el));
+
+/* Date restriction */
+const dateInput = $("#bookingDate");
+const today = new Date();
+const localDate = [
+  today.getFullYear(),
+  String(today.getMonth()+1).padStart(2,"0"),
+  String(today.getDate()).padStart(2,"0")
+].join("-");
+
+dateInput.min = localDate;
+
+/* Price calculator */
+const zoneSelect = $("#zoneSelect");
+const durationSelect = $("#duration");
+
+function formatMoney(value){
+  return new Intl.NumberFormat("uz-UZ").format(value) + " " + CONFIG.currency;
+}
+
+function updateSummary(){
+  const zone = zoneSelect.value;
+  const duration = Number(durationSelect.value);
+  const rate = CONFIG.prices[zone];
+  const total = rate * duration;
+
+  $("#summaryZone").textContent = zoneNames[zone];
+  $("#summaryRate").textContent = formatMoney(rate);
+  $("#summaryDuration").textContent = duration + " soat";
+  $("#summaryTotal").textContent = formatMoney(total);
+}
+
+zoneSelect.addEventListener("change",updateSummary);
+durationSelect.addEventListener("change",updateSummary);
+updateSummary();
+
+/* Zone quick selection */
+const modal = $("#modal");
+
+$$(".choose-zone").forEach(button => {
+  button.addEventListener("click", () => {
+    const zone = button.dataset.zone;
+    zoneSelect.value = zone;
+    updateSummary();
+
+    $("#modalText").textContent =
+      zoneNames[zone] + " zonasi tanlandi. Bron formasida sana va vaqtni belgilang.";
+
+    modal.classList.add("active");
+  });
+});
+
+$("#modalClose").addEventListener("click", () => modal.classList.remove("active"));
+
+modal.addEventListener("click", e => {
+  if(e.target === modal) modal.classList.remove("active");
+});
+
+$("#modalContinue").addEventListener("click", () => {
+  modal.classList.remove("active");
+  $("#booking").scrollIntoView({behavior:"smooth"});
+});
+
+/* Booking submission */
+$("#bookingForm").addEventListener("submit", e => {
+  e.preventDefault();
+
+  const name = $("#customerName").value.trim();
+  const phone = $("#customerPhone").value.trim();
+  const zone = zoneSelect.value;
+  const duration = Number(durationSelect.value);
+  const date = dateInput.value;
+  const time = $("#bookingTime").value;
+  const game = $("#gameSelect").value;
+
+  if(!name || !phone || !date || !time){
+    alert("Iltimos, barcha kerakli maydonlarni to‘ldiring.");
+    return;
+  }
+
+  if(date < localDate){
+    alert("O‘tgan sanani tanlab bo‘lmaydi.");
+    return;
+  }
+
+  const rate = CONFIG.prices[zone];
+  const total = rate * duration;
+
+  const message = [
+    "🎮 NEON DISTRICT — BOOKING REQUEST",
+    "",
+    "👤 Ism: " + name,
+    "📞 Telefon: " + phone,
+    "🖥 Zona: " + zoneNames[zone],
+    "🎯 O‘yin: " + game,
+    "📅 Sana: " + date,
+    "🕒 Vaqt: " + time,
+    "⏱ Davomiyligi: " + duration + " soat",
+    "💰 Jami: " + formatMoney(total),
+    "",
+    "Iltimos, bron mavjudligini tasdiqlang."
+  ].join("\n");
+
+  const url = "https://wa.me/" + CONFIG.whatsappNumber +
+    "?text=" + encodeURIComponent(message);
+
+  window.open(url,"_blank","noopener,noreferrer");
+});
+
+/* Footer year */
+$("#year").textContent = new Date().getFullYear();
+</script>
+
+<div class="mal-credit" style="padding:16px 22px;text-align:center;background:#080b10;color:#d8e0e8;border-top:1px solid #ffffff22;font:12px/1.8 system-ui,sans-serif">
+  <strong style="letter-spacing:1px">MUHAMMADAMIN AI LAB</strong>
+  <span style="display:block;color:#aab5c2">Ushbu sayt Muhammadamin tomonidan yaratilgan portfolio loyihasidir.</span>
+  <a href="https://t.me/Muhammad1y_20" target="_blank" rel="noopener" style="color:#c5ff76;margin:0 8px">Telegram: @Muhammad1y_20</a>
+  <a href="https://instagram.com/kamoliddinov._010" target="_blank" rel="noopener" style="color:#c5ff76;margin:0 8px">Instagram: @kamoliddinov._010</a>
+  <a href="tel:+998889822227" style="color:#c5ff76;margin:0 8px">+998 88 982 22 27</a>
+</div>
+
+</body>
+</html>

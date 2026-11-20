@@ -1,0 +1,925 @@
+
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#f5f2e9">
+<meta name="description" content="NOMADICA — dunyoni boshqacha kashf eting. Premium sayohatlar va unutilmas taassurotlar.">
+<title>NOMADICA — Find Your Somewhere</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --paper:#f5f2e9;
+  --white:#fffdf7;
+  --green:#234b3c;
+  --deep:#172f27;
+  --orange:#e47d45;
+  --yellow:#e8bc69;
+  --ink:#252d27;
+  --muted:#777b70;
+  --line:rgba(35,75,60,.15);
+  --serif:'Playfair Display',serif;
+  --sans:'DM Sans',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans)}
+button,input,select{font:inherit}
+button{cursor:pointer}
+a{color:inherit;text-decoration:none}
+img{display:block;width:100%;object-fit:cover}
+.container{width:min(1200px,calc(100% - 48px));margin:auto}
+.section{padding:110px 0}
+.eyebrow{font-size:11px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(--orange)}
+.heading{font-family:var(--serif);font-size:clamp(35px,5vw,65px);font-weight:500;line-height:1.12;letter-spacing:-1.8px}
+.heading em{color:var(--green);font-weight:400}
+.subheading{color:var(--muted);font-size:16px;line-height:1.8;max-width:560px;margin-top:18px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;padding:15px 24px;border:0;font-size:13px;font-weight:800;letter-spacing:.5px;transition:.3s}
+.btn-dark{background:var(--green);color:white}
+.btn-dark:hover{background:var(--orange);transform:translateY(-3px)}
+.btn-light{border:1px solid var(--line);color:var(--green);background:transparent}
+.btn-light:hover{background:var(--green);color:white}
+.btn-orange{background:var(--orange);color:white}
+.btn-orange:hover{background:var(--green)}
+.reveal{opacity:0;transform:translateY(25px);transition:.7s}
+.reveal.show{opacity:1;transform:none}
+
+/* HEADER */
+.header{height:86px;display:flex;align-items:center;position:absolute;top:0;width:100%;z-index:20;border-bottom:1px solid rgba(255,255,255,.25);color:white}
+.header-inner{display:flex;justify-content:space-between;align-items:center}
+.brand{display:flex;align-items:center;gap:11px}
+.brand-symbol{width:37px;height:37px;border:1px solid rgba(255,255,255,.8);border-radius:50%;display:grid;place-items:center;font-family:var(--serif);font-size:23px}
+.brand-name{font-family:var(--serif);font-size:22px;letter-spacing:2px}
+.brand-name span{font-family:var(--sans);font-size:9px;letter-spacing:4px;display:block;margin-top:2px}
+.nav{display:flex;align-items:center;gap:30px}
+.nav a{font-size:13px;font-weight:600;color:rgba(255,255,255,.85);transition:.2s}
+.nav a:hover{color:var(--yellow)}
+.header-right{display:flex;align-items:center;gap:15px}
+.header .btn{border:1px solid rgba(255,255,255,.6);color:white;padding:11px 16px;font-size:11px;background:transparent}
+.header .btn:hover{background:white;color:var(--green)}
+.menu{display:none;background:none;border:0;color:white;font-size:27px}
+
+/* HERO */
+.hero{min-height:790px;position:relative;color:white;display:flex;align-items:center;background:#334c40;overflow:hidden}
+.hero-image{position:absolute;inset:0;background:
+linear-gradient(90deg,rgba(13,35,27,.78),rgba(13,35,27,.15)),
+linear-gradient(0deg,rgba(13,35,27,.45),transparent 45%),
+url('https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=2000&q=90') center 55%/cover}
+.hero-content{position:relative;z-index:2;padding-top:85px;max-width:780px}
+.hero .eyebrow{color:var(--yellow);margin-bottom:28px}
+.hero h1{font-family:var(--serif);font-weight:400;font-size:clamp(55px,9vw,110px);line-height:.99;letter-spacing:-4px}
+.hero h1 i{color:var(--yellow);font-weight:400}
+.hero-desc{max-width:500px;font-size:17px;line-height:1.8;color:rgba(255,255,255,.8);margin:27px 0 32px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+.hero .btn-light{border-color:rgba(255,255,255,.55);color:white}
+.hero-bottom{position:absolute;bottom:38px;left:0;width:100%;z-index:2}
+.hero-bottom-inner{display:flex;justify-content:space-between;align-items:end}
+.hero-caption{font-size:11px;letter-spacing:2px;color:rgba(255,255,255,.7)}
+.hero-index{font-family:var(--serif);font-size:28px}
+.hero-index span{font-family:var(--sans);font-size:11px;color:rgba(255,255,255,.6)}
+
+/* SEARCH */
+.search-wrap{position:relative;z-index:4;margin-top:-1px}
+.search-box{background:var(--white);padding:23px 28px;display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr auto;gap:20px;align-items:end;box-shadow:0 20px 60px rgba(25,40,28,.08)}
+.search-field{display:flex;flex-direction:column;gap:8px;border-right:1px solid var(--line);padding-right:18px}
+.search-field label{font-size:10px;font-weight:800;letter-spacing:1.8px;color:var(--muted);text-transform:uppercase}
+.search-field select,.search-field input{border:0;background:transparent;color:var(--green);outline:none;font-weight:700;font-size:15px;width:100%;min-width:0}
+.search-field select option{background:white}
+.search-box .btn{white-space:nowrap}
+
+/* INTRO */
+.intro-grid{display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:center}
+.intro-visual{height:570px;position:relative}
+.intro-main{height:100%;width:82%;object-fit:cover}
+.intro-small{position:absolute;width:48%;height:245px;right:0;bottom:-35px;border:9px solid var(--paper);object-fit:cover}
+.round-stamp{position:absolute;top:28px;right:0;width:110px;height:110px;background:var(--orange);border-radius:50%;display:grid;place-items:center;color:white;text-align:center;font-family:var(--serif);font-size:15px;transform:rotate(10deg)}
+.intro-copy .heading{margin-top:20px}
+.intro-copy .btn{margin-top:30px}
+.intro-note{margin-top:32px;padding-top:22px;border-top:1px solid var(--line);display:flex;gap:20px;align-items:center}
+.intro-note strong{font-family:var(--serif);font-size:34px;color:var(--green)}
+.intro-note span{color:var(--muted);font-size:12px;line-height:1.5}
+
+/* DESTINATIONS */
+.destinations{background:var(--white)}
+.section-top{display:flex;justify-content:space-between;align-items:end;gap:30px}
+.destinations-grid{display:grid;grid-template-columns:1.25fr 1fr 1fr;gap:20px;margin-top:50px}
+.destination{position:relative;height:440px;overflow:hidden;background:#ddd}
+.destination img{height:100%;transition:.7s}
+.destination:hover img{transform:scale(1.07)}
+.destination:after{content:"";position:absolute;inset:35% 0 0;background:linear-gradient(transparent,rgba(10,28,20,.8))}
+.destination-content{position:absolute;bottom:25px;left:25px;right:25px;color:white;z-index:2}
+.destination-content .eyebrow{color:var(--yellow)}
+.destination-content h3{font-family:var(--serif);font-size:32px;font-weight:500;margin:8px 0}
+.destination-content p{font-size:13px;color:rgba(255,255,255,.8)}
+.destination-price{position:absolute;top:18px;right:18px;background:var(--white);color:var(--green);padding:10px 13px;font-size:12px;font-weight:800;z-index:2}
+
+/* ALL TRIPS */
+.trips-header{display:flex;justify-content:space-between;align-items:end;gap:25px}
+.filters{display:flex;gap:8px;flex-wrap:wrap}
+.filter-btn{background:transparent;border:1px solid var(--line);padding:10px 15px;color:var(--muted);font-size:12px;font-weight:700}
+.filter-btn.active,.filter-btn:hover{background:var(--green);border-color:var(--green);color:white}
+.trips-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:38px}
+.trip-card{background:var(--white);border:1px solid rgba(35,75,60,.08);transition:.3s}
+.trip-card:hover{transform:translateY(-7px);box-shadow:0 20px 45px rgba(35,75,60,.1)}
+.trip-image{height:245px;position:relative;overflow:hidden}
+.trip-image img{height:100%;transition:.5s}
+.trip-card:hover .trip-image img{transform:scale(1.06)}
+.trip-label{position:absolute;left:15px;top:15px;background:var(--paper);color:var(--green);padding:8px 11px;font-size:10px;font-weight:800;letter-spacing:1px}
+.trip-body{padding:22px}
+.trip-meta{display:flex;justify-content:space-between;color:var(--muted);font-size:12px}
+.trip-body h3{font-family:var(--serif);font-size:26px;font-weight:500;margin:14px 0 8px}
+.trip-body p{color:var(--muted);font-size:13px;line-height:1.7;min-height:45px}
+.trip-footer{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--line);margin-top:18px;padding-top:17px}
+.trip-price small{display:block;color:var(--muted);font-size:10px}
+.trip-price strong{font-family:var(--serif);font-size:24px;color:var(--green)}
+.trip-open{border:0;background:transparent;color:var(--orange);font-weight:800;font-size:12px}
+.no-results{grid-column:1/-1;text-align:center;padding:50px;color:var(--muted);display:none}
+
+/* EXPERIENCE */
+.experience{background:var(--green);color:white}
+.experience-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:80px;align-items:center}
+.experience .heading em{color:var(--yellow)}
+.experience .subheading{color:rgba(255,255,255,.65)}
+.experience-list{margin-top:35px}
+.experience-item{display:flex;gap:18px;padding:19px 0;border-bottom:1px solid rgba(255,255,255,.15)}
+.experience-number{font-family:var(--serif);font-size:24px;color:var(--yellow)}
+.experience-item h4{font-size:15px;margin-bottom:6px}
+.experience-item p{font-size:13px;color:rgba(255,255,255,.58);line-height:1.6}
+.experience-image{height:560px;position:relative}
+.experience-image img{height:100%}
+.experience-image:after{content:"A DIFFERENT WAY TO SEE THE WORLD";position:absolute;bottom:20px;left:20px;color:white;font-size:10px;letter-spacing:3px}
+
+/* QUOTE */
+.quote-section{text-align:center;padding:120px 0}
+.quote-mark{font-family:var(--serif);font-size:90px;color:var(--orange);line-height:1}
+.quote-section blockquote{font-family:var(--serif);font-size:clamp(27px,4vw,47px);max-width:850px;margin:auto;line-height:1.35;color:var(--green)}
+.quote-section p{font-size:11px;letter-spacing:3px;color:var(--muted);margin-top:25px}
+
+/* BUDGET */
+.budget{background:#eae6da}
+.budget-grid{display:grid;grid-template-columns:1fr .8fr;gap:65px;align-items:center}
+.budget-panel{background:var(--white);padding:34px}
+.budget-panel .field{margin-bottom:23px}
+.field label{display:block;font-size:11px;letter-spacing:1px;font-weight:800;color:var(--muted);margin-bottom:9px}
+.field input,.field select{width:100%;padding:14px;background:transparent;border:1px solid var(--line);color:var(--green);outline:none}
+.field input:focus,.field select:focus{border-color:var(--orange)}
+.range-row{display:flex;justify-content:space-between;align-items:center}
+.range-row strong{color:var(--green)}
+input[type=range]{accent-color:var(--orange);padding:0}
+.budget-result{background:var(--green);color:white;padding:35px}
+.budget-result small{color:rgba(255,255,255,.6);letter-spacing:2px;font-size:10px}
+.budget-result strong{display:block;font-family:var(--serif);font-size:clamp(35px,5vw,52px);color:var(--yellow);margin:18px 0}
+.budget-result p{color:rgba(255,255,255,.65);font-size:13px;line-height:1.7}
+
+/* JOURNAL */
+.journal-grid{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:20px;margin-top:45px}
+.article img{height:220px;margin-bottom:18px}
+.article .eyebrow{font-size:9px}
+.article h3{font-family:var(--serif);font-size:22px;font-weight:500;margin:10px 0;line-height:1.35}
+.article p{font-size:13px;line-height:1.7;color:var(--muted)}
+
+/* CTA */
+.cta{background:var(--orange);color:white;padding:85px 0}
+.cta-inner{display:flex;justify-content:space-between;align-items:center;gap:30px}
+.cta h2{font-family:var(--serif);font-size:clamp(35px,5vw,60px);font-weight:400;line-height:1.1}
+.cta p{font-size:14px;color:rgba(255,255,255,.8);margin-top:13px}
+.cta .btn{background:var(--white);color:var(--green);white-space:nowrap}
+.cta .btn:hover{background:var(--green);color:white}
+
+/* FOOTER */
+.footer{background:var(--deep);color:white;padding:70px 0 25px}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:40px}
+.footer-about p{max-width:260px;color:rgba(255,255,255,.55);font-size:13px;line-height:1.8;margin-top:20px}
+.footer .brand-symbol{border-color:var(--yellow);color:var(--yellow)}
+.footer-col h4{font-size:11px;letter-spacing:2px;margin-bottom:22px;color:var(--yellow)}
+.footer-col a{display:block;color:rgba(255,255,255,.6);font-size:13px;margin:12px 0}
+.footer-col a:hover{color:white}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.12);margin-top:50px;padding-top:22px;display:flex;justify-content:space-between;color:rgba(255,255,255,.4);font-size:11px}
+
+/* MODAL */
+.modal-overlay{position:fixed;inset:0;background:rgba(13,29,22,.75);z-index:100;display:none;align-items:center;justify-content:center;padding:20px}
+.modal-overlay.open{display:flex}
+.modal{background:var(--white);width:min(520px,100%);padding:32px;position:relative;max-height:90vh;overflow-y:auto}
+.modal-close{position:absolute;right:20px;top:15px;border:0;background:none;font-size:25px;color:var(--green)}
+.modal img{height:220px;margin-bottom:20px}
+.modal h3{font-family:var(--serif);font-size:32px;font-weight:500;color:var(--green)}
+.modal p{color:var(--muted);font-size:14px;line-height:1.8;margin:14px 0}
+.modal-price{font-family:var(--serif);font-size:26px;color:var(--orange);margin-bottom:20px}
+.modal .btn{width:100%}
+
+@media(max-width:950px){
+  .nav{gap:15px}
+  .nav a{font-size:11px}
+  .search-box{grid-template-columns:repeat(2,1fr)}
+  .search-field{border:0}
+  .search-box .btn{grid-column:1/-1}
+  .intro-grid,.experience-grid,.budget-grid{grid-template-columns:1fr;gap:55px}
+  .destinations-grid{grid-template-columns:1fr 1fr}
+  .destination:first-child{grid-column:1/-1}
+  .trips-grid{grid-template-columns:repeat(2,1fr)}
+  .journal-grid{grid-template-columns:1fr 1fr}
+  .footer-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:700px){
+  .container{width:calc(100% - 32px)}
+  .section{padding:75px 0}
+  .header{height:70px}
+  .nav{display:none;position:absolute;top:70px;left:0;width:100%;padding:25px;background:var(--deep);flex-direction:column;align-items:flex-start}
+  .nav.open{display:flex}
+  .nav a{font-size:15px}
+  .header-right>.btn{display:none}
+  .menu{display:block}
+  .hero{min-height:720px}
+  .hero h1{letter-spacing:-2px}
+  .hero-desc{font-size:15px}
+  .hero-bottom{bottom:25px}
+  .search-box{grid-template-columns:1fr 1fr;padding:18px;gap:18px}
+  .search-field{padding-right:0}
+  .search-box .btn{grid-column:1/-1}
+  .intro-visual{height:400px}
+  .intro-small{height:160px}
+  .round-stamp{width:85px;height:85px;font-size:11px}
+  .section-top,.trips-header{align-items:flex-start;flex-direction:column}
+  .destinations-grid{grid-template-columns:1fr}
+  .destination:first-child{grid-column:auto}
+  .destination{height:390px}
+  .trips-grid{grid-template-columns:1fr}
+  .trip-image{height:245px}
+  .experience-image{height:400px}
+  .budget-panel{padding:22px}
+  .journal-grid{grid-template-columns:1fr}
+  .article img{height:240px}
+  .cta-inner{flex-direction:column;align-items:flex-start}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:35px 20px}
+  .footer-bottom{flex-direction:column;gap:12px}
+}
+@media(max-width:390px){
+  .hero h1{font-size:51px}
+  .search-box{grid-template-columns:1fr}
+  .search-box .btn{grid-column:auto}
+  .hero-actions .btn{width:100%}
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+  <div class="container header-inner">
+    <a href="#home" class="brand">
+      <div class="brand-symbol">N</div>
+      <div class="brand-name">NOMADICA<span>TRAVEL DIFFERENT</span></div>
+    </a>
+
+    <nav class="nav" id="nav">
+      <a href="#destinations">Yo‘nalishlar</a>
+      <a href="#trips">Sayohatlar</a>
+      <a href="#about">Biz haqimizda</a>
+      <a href="#journal">Jurnal</a>
+      <a href="#contact">Aloqa</a>
+    </nav>
+
+    <div class="header-right">
+      <a href="#trips" class="btn">SAYOHATLARNI KO‘RISH ↗</a>
+      <button class="menu" id="menu" aria-label="Menyu">☰</button>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="home">
+  <div class="hero-image"></div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="eyebrow">NOT ALL WHO WANDER ARE LOST</div>
+      <h1>Find your<br><i>somewhere.</i></h1>
+      <p class="hero-desc">Dunyoni shunchaki ko‘rmang. Uni his qiling. Siz uchun tanlangan betakror manzillar va unutilmas sayohat tajribalari.</p>
+      <div class="hero-actions">
+        <a href="#trips" class="btn btn-orange">SAYOHATNI KASHF ETISH ↗</a>
+        <a href="#about" class="btn btn-light">BIZNING HIKOYA</a>
+      </div>
+    </div>
+  </div>
+  <div class="hero-bottom">
+    <div class="container hero-bottom-inner">
+      <div class="hero-caption">CURATED JOURNEYS · MEANINGFUL EXPERIENCES</div>
+      <div class="hero-index">01 <span>/ 06</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="search-wrap">
+  <div class="container">
+    <form class="search-box" id="searchForm">
+      <div class="search-field">
+        <label>Qayerga?</label>
+        <select id="searchCountry">
+          <option value="all">Barcha yo‘nalishlar</option>
+          <option value="Indonesia">Indoneziya</option>
+          <option value="Turkey">Turkiya</option>
+          <option value="Switzerland">Shveytsariya</option>
+          <option value="UAE">BAA</option>
+          <option value="Georgia">Gruziya</option>
+          <option value="Morocco">Marokash</option>
+        </select>
+      </div>
+      <div class="search-field">
+        <label>Sayohat turi</label>
+        <select id="searchType">
+          <option value="all">Barcha turlar</option>
+          <option value="beach">Dengiz</option>
+          <option value="mountain">Tog‘lar</option>
+          <option value="city">Shahar</option>
+          <option value="adventure">Sarguzasht</option>
+        </select>
+      </div>
+      <div class="search-field">
+        <label>Byudjet</label>
+        <select id="searchBudget">
+          <option value="all">Cheklov yo‘q</option>
+          <option value="1000">1 000$ gacha</option>
+          <option value="1500">1 500$ gacha</option>
+          <option value="2500">2 500$ gacha</option>
+        </select>
+      </div>
+      <div class="search-field">
+        <label>Davomiyligi</label>
+        <select id="searchDuration">
+          <option value="all">Barchasi</option>
+          <option value="short">1–5 kun</option>
+          <option value="medium">6–9 kun</option>
+          <option value="long">10+ kun</option>
+        </select>
+      </div>
+      <button class="btn btn-dark" type="submit">QIDIRISH ↗</button>
+    </form>
+  </div>
+</div>
+
+<section class="section" id="about">
+  <div class="container intro-grid">
+    <div class="intro-visual reveal">
+      <img class="intro-main" src="https://images.unsplash.com/photo-1530789253388-582c481c54b0?auto=format&fit=crop&w=1000&q=85" alt="Sayohat manzarasi">
+      <img class="intro-small" src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=700&q=85" alt="Tabiat manzarasi">
+      <div class="round-stamp">GO<br>BEYOND<br>ORDINARY</div>
+    </div>
+    <div class="intro-copy reveal">
+      <div class="eyebrow">A LITTLE ABOUT US</div>
+      <h2 class="heading">Sayohat — bu<br><em>yangi bir hayot.</em></h2>
+      <p class="subheading">NOMADICA har bir sayohatni alohida hikoya sifatida ko‘radi. Biz shunchaki manzil tanlamaymiz — sizga yangi taassurotlar, yangi madaniyatlar va esda qoladigan lahzalarni kashf etishga yordam beramiz.</p>
+      <a href="#trips" class="btn btn-dark">BIZ BILAN SAYOHAT QILING ↗</a>
+      <div class="intro-note">
+        <strong>01</strong>
+        <span>HAR BIR MANZIL — YANGI<br>IMKONIYAT VA YANGI HIKOYA</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section destinations" id="destinations">
+  <div class="container">
+    <div class="section-top">
+      <div>
+        <div class="eyebrow">THE WORLD IS WAITING</div>
+        <h2 class="heading" style="margin-top:17px">Mashhur <em>manzillar.</em></h2>
+      </div>
+      <a href="#trips" class="btn btn-light">BARCHA YO‘NALISHLAR ↗</a>
+    </div>
+
+    <div class="destinations-grid">
+      <article class="destination reveal">
+        <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=1000&q=85" alt="Bali, Indoneziya" loading="lazy">
+        <span class="destination-price">850$ DAN</span>
+        <div class="destination-content">
+          <div class="eyebrow">INDONESIA</div>
+          <h3>Bali Island</h3>
+          <p>Yashil tabiat, okean va tropik orzular.</p>
+        </div>
+      </article>
+      <article class="destination reveal">
+        <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=800&q=85" alt="Alp tog‘lari" loading="lazy">
+        <span class="destination-price">1 400$ DAN</span>
+        <div class="destination-content">
+          <div class="eyebrow">SWITZERLAND</div>
+          <h3>Swiss Alps</h3>
+          <p>Tog‘lar bag‘rida sokinlik.</p>
+        </div>
+      </article>
+      <article class="destination reveal">
+        <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=800&q=85" alt="Dubay" loading="lazy">
+        <span class="destination-price">700$ DAN</span>
+        <div class="destination-content">
+          <div class="eyebrow">UNITED ARAB EMIRATES</div>
+          <h3>Dubai City</h3>
+          <p>Zamonaviylik va hashamat.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="trips">
+  <div class="container">
+    <div class="trips-header">
+      <div>
+        <div class="eyebrow">CURATED FOR YOU</div>
+        <h2 class="heading" style="margin-top:16px">Keyingi manzilingiz <em>qayerda?</em></h2>
+      </div>
+      <div class="filters">
+        <button class="filter-btn active" data-filter="all">Barchasi</button>
+        <button class="filter-btn" data-filter="beach">Dengiz</button>
+        <button class="filter-btn" data-filter="mountain">Tog‘lar</button>
+        <button class="filter-btn" data-filter="city">Shahar</button>
+        <button class="filter-btn" data-filter="adventure">Sarguzasht</button>
+      </div>
+    </div>
+
+    <div class="trips-grid" id="tripsGrid">
+      <article class="trip-card reveal" data-country="Indonesia" data-type="beach" data-price="850" data-duration="medium">
+        <div class="trip-image">
+          <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=900&q=85" alt="Bali" loading="lazy">
+          <span class="trip-label">TROPICAL ESCAPE</span>
+        </div>
+        <div class="trip-body">
+          <div class="trip-meta"><span>INDONESIA</span><span>7 KUN</span></div>
+          <h3>Bali Escape</h3>
+          <p>Okean, tropik tabiat va orolning betakror atmosferasi.</p>
+          <div class="trip-footer">
+            <div class="trip-price"><small>BIR KISHI UCHUN</small><strong>$850</strong></div>
+            <button class="trip-open" data-trip="bali">BATAFSIL ↗</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="trip-card reveal" data-country="Switzerland" data-type="mountain" data-price="1600" data-duration="medium">
+        <div class="trip-image">
+          <img src="https://images.unsplash.com/photo-1531366936337-7c912a4589a7?auto=format&fit=crop&w=900&q=85" alt="Shveytsariya" loading="lazy">
+          <span class="trip-label">MOUNTAIN RETREAT</span>
+        </div>
+        <div class="trip-body">
+          <div class="trip-meta"><span>SWITZERLAND</span><span>8 KUN</span></div>
+          <h3>Alpine Dream</h3>
+          <p>Alp tog‘lari, ko‘llar va ajoyib manzaralar.</p>
+          <div class="trip-footer">
+            <div class="trip-price"><small>BIR KISHI UCHUN</small><strong>$1 600</strong></div>
+            <button class="trip-open" data-trip="alps">BATAFSIL ↗</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="trip-card reveal" data-country="Turkey" data-type="adventure" data-price="650" data-duration="short">
+        <div class="trip-image">
+          <img src="https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?auto=format&fit=crop&w=900&q=85" alt="Turkiya" loading="lazy">
+          <span class="trip-label">CULTURE & HISTORY</span>
+        </div>
+        <div class="trip-body">
+          <div class="trip-meta"><span>TURKEY</span><span>5 KUN</span></div>
+          <h3>Istanbul Stories</h3>
+          <p>Tarixiy ko‘chalar, madaniyat va sharqona muhit.</p>
+          <div class="trip-footer">
+            <div class="trip-price"><small>BIR KISHI UCHUN</small><strong>$650</strong></div>
+            <button class="trip-open" data-trip="istanbul">BATAFSIL ↗</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="trip-card reveal" data-country="UAE" data-type="city" data-price="700" data-duration="short">
+        <div class="trip-image">
+          <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=900&q=85" alt="Dubay" loading="lazy">
+          <span class="trip-label">CITY EXPERIENCE</span>
+        </div>
+        <div class="trip-body">
+          <div class="trip-meta"><span>UAE</span><span>4 KUN</span></div>
+          <h3>Dubai Lights</h3>
+          <p>Arxitektura, zamonaviy shahar va cho‘l manzaralari.</p>
+          <div class="trip-footer">
+            <div class="trip-price"><small>BIR KISHI UCHUN</small><strong>$700</strong></div>
+            <button class="trip-open" data-trip="dubai">BATAFSIL ↗</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="trip-card reveal" data-country="Georgia" data-type="mountain" data-price="550" data-duration="medium">
+        <div class="trip-image">
+          <img src="https://images.unsplash.com/photo-1565008447742-97f6f38c985c?auto=format&fit=crop&w=900&q=85" alt="Gruziya" loading="lazy">
+          <span class="trip-label">NATURE & CULTURE</span>
+        </div>
+        <div class="trip-body">
+          <div class="trip-meta"><span>GEORGIA</span><span>6 KUN</span></div>
+          <h3>Georgia Journey</h3>
+          <p>Tog‘li qishloqlar, tarixiy shaharlar va tabiat.</p>
+          <div class="trip-footer">
+            <div class="trip-price"><small>BIR KISHI UCHUN</small><strong>$550</strong></div>
+            <button class="trip-open" data-trip="georgia">BATAFSIL ↗</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="trip-card reveal" data-country="Morocco" data-type="adventure" data-price="1200" data-duration="long">
+        <div class="trip-image">
+          <img src="https://images.unsplash.com/photo-1489749798305-4fea3ae63d43?auto=format&fit=crop&w=900&q=85" alt="Marokash" loading="lazy">
+          <span class="trip-label">DESERT ADVENTURE</span>
+        </div>
+        <div class="trip-body">
+          <div class="trip-meta"><span>MOROCCO</span><span>10 KUN</span></div>
+          <h3>Desert Odyssey</h3>
+          <p>Sahro, rang-barang bozorlar va qadimiy shaharlar.</p>
+          <div class="trip-footer">
+            <div class="trip-price"><small>BIR KISHI UCHUN</small><strong>$1 200</strong></div>
+            <button class="trip-open" data-trip="morocco">BATAFSIL ↗</button>
+          </div>
+        </div>
+      </article>
+
+      <div class="no-results" id="noResults">Bu filtrlar bo‘yicha sayohat topilmadi. Boshqa parametrlarni sinab ko‘ring.</div>
+    </div>
+  </div>
+</section>
+
+<section class="section experience">
+  <div class="container experience-grid">
+    <div>
+      <div class="eyebrow" style="color:var(--yellow)">THE NOMADICA DIFFERENCE</div>
+      <h2 class="heading" style="margin-top:18px">Faqat borish emas.<br><em>His qilish.</em></h2>
+      <p class="subheading">Sayohatni qulay, tushunarli va mazmunli qilish uchun har bir detalga e'tibor beramiz.</p>
+
+      <div class="experience-list">
+        <div class="experience-item">
+          <div class="experience-number">01</div>
+          <div><h4>O‘ylangan yo‘nalishlar</h4><p>Har bir sayohat uchun puxta tuzilgan marshrut va tavsiyalar.</p></div>
+        </div>
+        <div class="experience-item">
+          <div class="experience-number">02</div>
+          <div><h4>Shaxsiy yondashuv</h4><p>Sayohat maqsadi va byudjetiga mos variantlar.</p></div>
+        </div>
+        <div class="experience-item">
+          <div class="experience-number">03</div>
+          <div><h4>Yordam va maslahat</h4><p>Safar oldidan savollaringiz bo‘yicha aloqa va yo‘l-yo‘riq.</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="experience-image reveal">
+      <img src="https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&w=1100&q=85" alt="Tabiat va sayohat" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<section class="quote-section">
+  <div class="container">
+    <div class="quote-mark">“</div>
+    <blockquote>We travel not to escape life, but for life not to escape us.</blockquote>
+    <p>THE NOMADICA PHILOSOPHY</p>
+  </div>
+</section>
+
+<section class="section budget" id="budget">
+  <div class="container budget-grid">
+    <div>
+      <div class="eyebrow">PLAN YOUR NEXT TRIP</div>
+      <h2 class="heading" style="margin-top:18px">Sayohatingiz<br><em>qancha turadi?</em></h2>
+      <p class="subheading">Sayohat turi, kunlar soni va odamlar miqdorini tanlang. Taxminiy umumiy budjetni hisoblang.</p>
+      <p class="subheading" style="font-size:12px">Hisob-kitob demo narxlarga asoslangan. Yakuniy taklif individual aniqlanadi.</p>
+    </div>
+
+    <div>
+      <div class="budget-panel">
+        <div class="field">
+          <label>Sayohat turi</label>
+          <select id="budgetType">
+            <option value="850">Tropik sayohat</option>
+            <option value="1200">Sarguzasht</option>
+            <option value="1600">Premium sayohat</option>
+            <option value="650">Shahar sayohati</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Sayohatchilar soni</label>
+          <div class="range-row"><span>Odamlar</span><strong id="peopleValue">2 kishi</strong></div>
+          <input type="range" id="people" min="1" max="10" value="2">
+        </div>
+        <div class="field">
+          <label>Qo‘shimcha kunlar</label>
+          <div class="range-row"><span>Davomiylik</span><strong id="daysValue">7 kun</strong></div>
+          <input type="range" id="days" min="3" max="20" value="7">
+        </div>
+      </div>
+      <div class="budget-result">
+        <small>ESTIMATED TOTAL BUDGET</small>
+        <strong id="budgetTotal">$1 700</strong>
+        <p>Taxminiy hisob. Aviabilet, yashash va boshqa xizmatlar bo‘yicha yakuniy narx alohida kelishiladi.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="journal">
+  <div class="container">
+    <div class="eyebrow">THE TRAVEL JOURNAL</div>
+    <h2 class="heading" style="margin-top:17px">Yo‘ldagi <em>hikoyalar.</em></h2>
+    <p class="subheading">Dunyoning turli burchaklaridan ilhom va sayohat g‘oyalari.</p>
+
+    <div class="journal-grid">
+      <article class="article reveal">
+        <img src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=900&q=85" alt="Italiya manzarasi" loading="lazy">
+        <div class="eyebrow">INSPIRATION · 5 MIN READ</div>
+        <h3>Italiya: har bir ko‘cha alohida bir hikoya</h3>
+        <p>Qadimiy me'morchilik, kichik kafelar va unutilmas manzaralar.</p>
+      </article>
+      <article class="article reveal">
+        <img src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=900&q=85" alt="Sayohat manzarasi" loading="lazy">
+        <div class="eyebrow">TRAVEL GUIDE · 4 MIN READ</div>
+        <h3>Yangi mamlakatga sayohat qilishdan oldin</h3>
+        <p>Safaringizni qulay rejalashtirish uchun foydali tavsiyalar.</p>
+      </article>
+      <article class="article reveal">
+        <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=900&q=85" alt="Tog‘lar" loading="lazy">
+        <div class="eyebrow">NATURE · 6 MIN READ</div>
+        <h3>Tog‘lar sizga nimani o‘rgatishi mumkin?</h3>
+        <p>Tabiat qo‘ynida dam olish va yangi taassurotlar.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <div class="container cta-inner">
+    <div>
+      <h2>Somewhere is<br>calling you.</h2>
+      <p>Keyingi hikoyangizni birgalikda boshlaymiz.</p>
+    </div>
+    <a href="#" class="btn" id="ctaWhatsApp">SAYOHATNI REJALASHTIRISH ↗</a>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-about">
+        <a href="#home" class="brand">
+          <div class="brand-symbol">N</div>
+          <div class="brand-name">NOMADICA<span>TRAVEL DIFFERENT</span></div>
+        </a>
+        <p>Dunyoni boshqacha kashf eting. Har bir manzil yangi bir hikoyaning boshlanishi.</p>
+      </div>
+      <div class="footer-col">
+        <h4>EXPLORE</h4>
+        <a href="#destinations">Yo‘nalishlar</a>
+        <a href="#trips">Sayohatlar</a>
+        <a href="#budget">Budjet kalkulyatori</a>
+      </div>
+      <div class="footer-col">
+        <h4>DISCOVER</h4>
+        <a href="#about">Biz haqimizda</a>
+        <a href="#journal">Sayohat jurnali</a>
+        <a href="#contact">Aloqa</a>
+      </div>
+      <div class="footer-col">
+        <h4>CONTACT</h4>
+        <a href="#" id="footerWhatsApp">WhatsApp</a>
+        <a href="#contact">Sayohat maslahati</a>
+        <a href="#home">Yuqoriga ↑</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> NOMADICA. ALL RIGHTS RESERVED.</span>
+      <span>MADE FOR THE CURIOUS.</span>
+    </div>
+  </div>
+</footer>
+
+<div class="modal-overlay" id="tripModal">
+  <div class="modal">
+    <button class="modal-close" id="modalClose" aria-label="Yopish">×</button>
+    <img id="modalImage" src="" alt="Sayohat manzili">
+    <div class="eyebrow" id="modalCountry"></div>
+    <h3 id="modalTitle"></h3>
+    <p id="modalDescription"></p>
+    <div class="modal-price" id="modalPrice"></div>
+    <button class="btn btn-dark" id="modalBook">USHBU SAYOHATGA SO‘ROV YUBORISH ↗</button>
+  </div>
+</div>
+
+<script>
+/* NOMADICA CONFIG */
+const CONFIG = {
+  whatsappNumber: "998889822227"
+};
+
+const trips = {
+  bali:{
+    title:"Bali Escape",
+    country:"INDONESIA · 7 KUN",
+    price:850,
+    image:"https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=900&q=85",
+    description:"Bali orolining tropik tabiati, okean sohillari va mahalliy madaniyati bilan tanishing. Namuna dastur: 7 kunlik sayohat."
+  },
+  alps:{
+    title:"Alpine Dream",
+    country:"SWITZERLAND · 8 KUN",
+    price:1600,
+    image:"https://images.unsplash.com/photo-1531366936337-7c912a4589a7?auto=format&fit=crop&w=900&q=85",
+    description:"Shveytsariya Alp tog‘lari, ko‘llar va go‘zal qishloqlar. Namuna dastur: 8 kunlik tog‘ sayohati."
+  },
+  istanbul:{
+    title:"Istanbul Stories",
+    country:"TURKEY · 5 KUN",
+    price:650,
+    image:"https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?auto=format&fit=crop&w=900&q=85",
+    description:"Istanbulning tarixiy obidalari, bozorlar va madaniy maskanlarini kashf eting. Namuna dastur: 5 kun."
+  },
+  dubai:{
+    title:"Dubai Lights",
+    country:"UAE · 4 KUN",
+    price:700,
+    image:"https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=900&q=85",
+    description:"Dubayning zamonaviy arxitekturasi, diqqatga sazovor joylari va cho‘l manzaralari. Namuna dastur: 4 kun."
+  },
+  georgia:{
+    title:"Georgia Journey",
+    country:"GEORGIA · 6 KUN",
+    price:550,
+    image:"https://images.unsplash.com/photo-1565008447742-97f6f38c985c?auto=format&fit=crop&w=900&q=85",
+    description:"Gruziyaning tog‘li hududlari, tarixiy shaharlar va tabiatini kashf eting. Namuna dastur: 6 kun."
+  },
+  morocco:{
+    title:"Desert Odyssey",
+    country:"MOROCCO · 10 KUN",
+    price:1200,
+    image:"https://images.unsplash.com/photo-1489749798305-4fea3ae63d43?auto=format&fit=crop&w=900&q=85",
+    description:"Marokashning rang-barang shaharlari, sahro manzaralari va mahalliy madaniyati. Namuna dastur: 10 kun."
+  }
+};
+
+const $ = selector => document.querySelector(selector);
+const $$ = selector => document.querySelectorAll(selector);
+
+function money(value){
+  return "$" + new Intl.NumberFormat("en-US").format(value);
+}
+
+$("#year").textContent = new Date().getFullYear();
+
+/* MOBILE MENU */
+$("#menu").addEventListener("click",()=>{
+  $("#nav").classList.toggle("open");
+  $("#menu").textContent=$("#nav").classList.contains("open")?"×":"☰";
+});
+
+$$(".nav a").forEach(a=>a.addEventListener("click",()=>{
+  $("#nav").classList.remove("open");
+  $("#menu").textContent="☰";
+}));
+
+/* SCROLL ANIMATIONS */
+const revealObserver=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add("show");
+      revealObserver.unobserve(entry.target);
+    }
+  });
+},{threshold:.12});
+
+$$(".reveal").forEach(el=>revealObserver.observe(el));
+
+/* FILTER ENGINE */
+const filterButtons=$$(".filter-btn");
+const tripCards=$$(".trip-card");
+
+function filterTrips(){
+  const country=$("#searchCountry").value;
+  const type=$("#searchType").value;
+  const budget=$("#searchBudget").value;
+  const duration=$("#searchDuration").value;
+  let visible=0;
+
+  tripCards.forEach(card=>{
+    const matchCountry=country==="all"||card.dataset.country===country;
+    const matchType=type==="all"||card.dataset.type===type;
+    const matchBudget=budget==="all"||Number(card.dataset.price)<=Number(budget);
+    const matchDuration=duration==="all"||card.dataset.duration===duration;
+
+    const show=matchCountry&&matchType&&matchBudget&&matchDuration;
+    card.style.display=show?"block":"none";
+    if(show)visible++;
+  });
+
+  $("#noResults").style.display=visible?"none":"block";
+}
+
+$("#searchForm").addEventListener("submit",e=>{
+  e.preventDefault();
+  filterButtons.forEach(btn=>btn.classList.remove("active"));
+  $("#trips").scrollIntoView({behavior:"smooth"});
+  filterTrips();
+});
+
+filterButtons.forEach(button=>{
+  button.addEventListener("click",()=>{
+    filterButtons.forEach(btn=>btn.classList.remove("active"));
+    button.classList.add("active");
+
+    const selected=button.dataset.filter;
+    $("#searchType").value=selected;
+    $("#searchCountry").value="all";
+    $("#searchBudget").value="all";
+    $("#searchDuration").value="all";
+    filterTrips();
+  });
+});
+
+/* TRIP MODAL */
+let selectedTrip=null;
+const modal=$("#tripModal");
+
+$$(".trip-open").forEach(button=>{
+  button.addEventListener("click",()=>{
+    selectedTrip=button.dataset.trip;
+    const trip=trips[selectedTrip];
+
+    $("#modalImage").src=trip.image;
+    $("#modalCountry").textContent=trip.country;
+    $("#modalTitle").textContent=trip.title;
+    $("#modalDescription").textContent=trip.description;
+    $("#modalPrice").textContent=money(trip.price)+" / kishidan";
+
+    modal.classList.add("open");
+  });
+});
+
+function closeModal(){
+  modal.classList.remove("open");
+}
+$("#modalClose").addEventListener("click",closeModal);
+modal.addEventListener("click",e=>{
+  if(e.target===modal)closeModal();
+});
+
+function sendWhatsApp(message){
+  const url="https://wa.me/"+CONFIG.whatsappNumber+"?text="+encodeURIComponent(message);
+  window.open(url,"_blank","noopener,noreferrer");
+}
+
+$("#modalBook").addEventListener("click",()=>{
+  if(!selectedTrip)return;
+  const trip=trips[selectedTrip];
+
+  sendWhatsApp(
+    "NOMADICA — SAYOHAT SO‘ROVI\n\n"+
+    "Yo‘nalish: "+trip.title+"\n"+
+    "Mamlakat: "+trip.country+"\n"+
+    "Boshlang‘ich narx: "+money(trip.price)+"\n\n"+
+    "Ushbu sayohat haqida batafsil ma'lumot olmoqchiman."
+  );
+  closeModal();
+});
+
+/* BUDGET CALCULATOR */
+const budgetType=$("#budgetType");
+const people=$("#people");
+const days=$("#days");
+
+function calculateBudget(){
+  const base=Number(budgetType.value);
+  const persons=Number(people.value);
+  const duration=Number(days.value);
+
+  const total=Math.round(base*persons*(1+(Math.max(0,duration-7)*.055)));
+
+  $("#peopleValue").textContent=persons+" kishi";
+  $("#daysValue").textContent=duration+" kun";
+  $("#budgetTotal").textContent=money(total);
+}
+
+[budgetType,people,days].forEach(el=>{
+  el.addEventListener("input",calculateBudget);
+});
+calculateBudget();
+
+/* CONTACT LINKS */
+const contactMessage="Salom! NOMADICA orqali sayohat rejalashtirmoqchiman. Menga yo‘nalishlar va takliflar haqida ma'lumot bera olasizmi?";
+const whatsappUrl="https://wa.me/"+CONFIG.whatsappNumber+"?text="+encodeURIComponent(contactMessage);
+
+$("#ctaWhatsApp").href=whatsappUrl;
+$("#footerWhatsApp").href=whatsappUrl;
+$("#ctaWhatsApp").target="_blank";
+$("#footerWhatsApp").target="_blank";
+</script>
+
+
+<div class="mal-credit" style="padding:16px 22px;text-align:center;background:#080b10;color:#d8e0e8;border-top:1px solid #ffffff22;font:12px/1.8 system-ui,sans-serif">
+  <strong style="letter-spacing:1px">MUHAMMADAMIN AI LAB</strong>
+  <span style="display:block;color:#aab5c2">Ushbu sayt Muhammadamin tomonidan yaratilgan portfolio loyihasidir.</span>
+  <a href="https://t.me/Muhammad1y_20" target="_blank" rel="noopener" style="color:#c5ff76;margin:0 8px">Telegram: @Muhammad1y_20</a>
+  <a href="https://instagram.com/kamoliddinov._010" target="_blank" rel="noopener" style="color:#c5ff76;margin:0 8px">Instagram: @kamoliddinov._010</a>
+  <a href="tel:+998889822227" style="color:#c5ff76;margin:0 8px">+998 88 982 22 27</a>
+</div>
+
+</body>
+</html>
